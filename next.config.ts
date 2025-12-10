@@ -4,12 +4,12 @@ const nextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
 
-  // Github Pages served from https://odock-ai.github.io/landing
-  basePath: "/landing",
-  assetPrefix: "https://odock-ai.github.io/landing",
+  // Github Pages served from https://odock-ai.github.io/
+  basePath: "",
+  assetPrefix: "https://odock-ai.github.io",
   env: {
-    NEXT_PUBLIC_BASE_PATH: "/landing",
-    PAGES_BASE_PATH: "/landing",
+    NEXT_PUBLIC_BASE_PATH: "",
+    PAGES_BASE_PATH: "",
   },
   
   eslint: { ignoreDuringBuilds: true },

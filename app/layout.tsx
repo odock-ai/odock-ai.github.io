@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: 'Odock.ai - Unified API Gateway for LLMs & MCP',
   description: 'One unified endpoint for all LLM providers and MCP servers. Enterprise-grade security, quotas, and plugin marketplace.',
   generator: 'v0.app',
-  metadataBase: new URL('https://odock-ai.github.io/landing'),
+  metadataBase: new URL('https://odock-ai.github.io'),
   icons: {
     icon: [
       {
