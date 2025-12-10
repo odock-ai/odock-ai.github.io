@@ -28,7 +28,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center gap-2 drop-shadow-[0_0_4px_rgba(255,255,255,0.6)]">
             <Image
-              src="/logo-dark.svg"
+              src={`${process.env.PAGES_BASE_PATH || ''}/logo-dark.svg`}
               alt="odock.ai logo"
               width={16}
               height={16}

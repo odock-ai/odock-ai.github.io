@@ -30,7 +30,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      API_KEY_WEB3FORMS: ${{ secrets.API_KEY_WEB3FORMS }}      
+      NEXT_PUBLIC_API_KEY_WEB3FORMS: ${{ secrets.NEXT_PUBLIC_API_KEY_WEB3FORMS }}      
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,7 +38,6 @@ jobs:
         id: detect-package-manager
         run: |
           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "API_KEY_WEB3FORMS=$API_KEY_WEB3FORMS" >> .env.production
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             echo "runner=yarn" >> $GITHUB_OUTPUT

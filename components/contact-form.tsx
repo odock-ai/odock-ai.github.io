@@ -29,7 +29,7 @@ export default function ContactForm() {
     setIsSubmitting(true)
 
     const data = new FormData()
-    data.append("access_key", process.env.API_KEY_WEB3FORMS!);
+    data.append("access_key", process.env.NEXT_PUBLIC_API_KEY_WEB3FORMS!);
 
     for (const key in formData) {
       data.append(key, formData[key])

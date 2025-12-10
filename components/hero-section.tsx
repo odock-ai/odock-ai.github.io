@@ -117,7 +117,7 @@ export default function HeroSection() {
             {/* Illustration */}
             <div className="relative  h-full w-full">
               <Image
-                src="/hero-animation.svg"
+                src={`${process.env.PAGES_BASE_PATH || ''}/hero-animation.svg`}
                 alt="Hero illustration"
                 width={800}
                 height={600}
