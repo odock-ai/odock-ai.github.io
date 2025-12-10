@@ -1,0 +1,267 @@
+{
+  "howItWorks": {
+    "id": "how-it-works",
+    "title": "How Odock.ai Works",
+    "description": "Built for teams managing complexity. Unified control with enterprise-grade reliability.",
+    "layout": {
+      "grid": {
+        "gap": "gap-6",
+        "columns": {
+          "base": 1,
+          "md": 2,
+          "lg": 4
+        }
+      }
+    },
+    "steps": [
+      {
+        "icon": "Network",
+        "title": "Define Providers & Tools",
+        "description": "Register LLM providers, vector databases, and MCP tools. All become instantly accessible through a single standardized endpoint."
+      },
+      {
+        "icon": "Key",
+        "title": "Issue Virtual API Keys",
+        "description": "Create isolated API keys for organisations, teams, users, or projects with fine-grained policy controls and model-level permissions."
+      },
+      {
+        "icon": "Shield",
+        "title": "Apply Security Guardrails",
+        "description": "Odock automatically enforces prompt injection protection, jailbreak filtering, rate limits, data leakage controls, and safe output rules."
+      },
+      {
+        "icon": "Zap",
+        "title": "Define Budgets & Quotas",
+        "description": "Assign spending limits, token quotas, and usage caps per API key. Get real-time cost monitoring and automatic enforcement."
+      },
+      {
+        "icon": "Plug",
+        "title": "Extend with Plugins & Workflows",
+        "description": "Attach custom plugins to preprocess, validate, transform, or enrich requests and responses—sequentially or in parallel."
+      },
+      {
+        "icon": "Activity",
+        "title": "Monitor, Queue & Auto-Failover",
+        "description": "Track request flows, inspect queues, control batching, and enable seamless failover between providers when outages occur."
+      }
+    ]
+  },
+
+
+ "features": {
+  "id": "features",
+  "title": "Key Features",
+  "description": "Engineered for performance, reliability, and complete control of your LLM infrastructure.",
+  "layout": {
+    "grid": {
+      "gap": "gap-6",
+      "columns": {
+        "base": 1,
+        "md": 2,
+        "lg": 3
+      }
+    }
+  },
+  "items": [
+    {
+      "icon": "Cpu",
+      "title": "Ultra-Low Latency Gateway",
+      "description": "Built in Go with streaming, connection pooling, and optimized pipelines for sub-millisecond overhead on every request."
+    },
+    {
+      "icon": "Network",
+      "title": "Unified Multimodel Interface",
+      "description": "Standardized API across OpenAI, Anthropic, Groq, Bedrock, Vertex, Fireworks, LM Studio, and MCP tools—no SDK switching."
+    },
+    {
+      "icon": "KeySquare",
+      "title": "Hierarchical Virtual API Keys",
+      "description": "Isolated API keys with per-team, per-user, and per-project limits, permissions, scopes, and audit logs."
+    },
+    {
+      "icon": "ShieldCheck",
+      "title": "AI Firewall & Zero-Trust Guardrails",
+      "description": "Prompt injection defense, jailbreak detection, PII masking, and outbound blocking—executed in the request pipeline at wire speed."
+    },
+    {
+      "icon": "BarChart3",
+      "title": "Real-Time Budgets & Quotas",
+      "description": "Token-level spend tracking with hard/soft budgets, dynamic throttling, and anomaly detection for runaway usage."
+    },
+    {
+      "icon": "Repeat",
+      "title": "Adaptive Routing & Failover",
+      "description": "Automatically choose the fastest, cheapest, or healthiest provider. Instant failover when latency spikes or outages occur."
+    },
+    {
+      "icon": "Plug",
+      "title": "Extensible Plugin Engine",
+      "description": "Sequential or parallel middleware for validation, transformations, compliance, observability, or user-defined workflows."
+    },
+    {
+      "icon": "Database",
+      "title": "High-Throughput Queues & Batching",
+      "description": "Built-in request queuing, backpressure, concurrency controls, and micro-batching for heavy or long-running operations."
+    },
+    {
+      "icon": "Gauge",
+      "title": "Deep Observability",
+      "description": "Per-model, per-key, and per-tenant metrics, latency breakdowns, request traces, and replayable logs for debugging."
+    }
+  ]
+  },
+
+  "useCases": {
+    "title": "Perfect For",
+    "description": "From startups to enterprises—Odock.ai handles your LLM infrastructure.",
+    "layout": {
+      "grid": {
+        "gap": "gap-6",
+        "columns": {
+          "base": 1,
+          "md": 2
+        }
+      }
+    },
+    "items": [
+      {
+        "icon": "Briefcase",
+        "title": "AI-Powered SaaS",
+        "description": "Add AI features to your product without managing multiple API integrations."
+      },
+      {
+        "icon": "Shield",
+        "title": "Enterprise Teams",
+        "description": "Control AI spending, enforce security policies, and audit every request."
+      },
+      {
+        "icon": "Zap",
+        "title": "Startups Scaling Fast",
+        "description": "Scale usage behind a single API without vendor lock-in or complex migrations."
+      },
+      {
+        "icon": "Layers",
+        "title": "MCP-Enabled Workflows",
+        "description": "Build complex AI workflows with model context protocol servers seamlessly."
+      }
+    ]
+  },
+  "offers": {
+    "id": "offers",
+    "title": "Choose How You Dock",
+    "description": "Whether you're just starting out or scaling to millions of requests, there's an Odock.ai plan for you.",
+    "layout": {
+      "grid": {
+        "gap": "gap-8",
+        "columns": {
+          "base": 1,
+          "md": 3
+        }
+      }
+    },
+    "cta": {
+      "secondaryText": "Not sure which plan is right for you? Join the waitlist and let us help you choose.",
+      "secondaryButtonText": "Join the Waitlist",
+      "cardButtonText": "Learn More"
+    },
+    "plans": [
+      {
+        "title": "Open Source",
+        "subtitle": "Self-Hosted",
+        "description": "Perfect if you love running your own stack.",
+        "features": [
+          "Free & open source",
+          "Self-host on your infrastructure",
+          "Community-driven plugins",
+          "Full control & customization",
+          "Active developer community"
+        ],
+        "highlight": false
+      },
+      {
+        "title": "Managed Odock",
+        "subtitle": "Hosted by Us",
+        "description": "We run the dock, you ship the product.",
+        "features": [
+          "No hosting or infrastructure needed",
+          "Automatic scaling & updates",
+          "Community + premium plugins",
+          "Unified billing & quotas",
+          "Enterprise-grade security guardrails"
+        ],
+        "highlight": true
+      },
+      {
+        "title": "Enterprise",
+        "subtitle": "Private Network",
+        "description": "Designed for security, compliance, and scale.",
+        "features": [
+          "Dedicated, isolated environment",
+          "Deploy on our cloud or yours",
+          "Enterprise auth (SSO, SAML, OAuth)",
+          "Advanced compliance & custom SLAs",
+          "Custom plugins & private models"
+        ],
+        "highlight": false
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "description": "Everything you need to know about Odock.ai.",
+    "items": [
+      {
+        "question": "What is Odock.ai?",
+        "answer": "Odock.ai is an open-source unified API gateway that lets you access all LLM providers and MCP servers through a single endpoint. It includes API key management, quotas, security guardrails, and an extensible plugin marketplace."
+      },
+      {
+        "question": "How does the unified API work?",
+        "answer": "Instead of managing separate API keys and integrations for each provider, Odock.ai acts as a middleware. You send requests to Odock.ai, and we route them to your chosen provider(s) with automatic fallbacks if needed."
+      },
+      {
+        "question": "How do security guardrails function?",
+        "answer": "Our security layer automatically detects and blocks prompt injections, prevents sensitive data leakage, enforces rate limits, and filters outbound data—all without configuration required."
+      },
+      {
+        "question": "What providers are supported?",
+        "answer": "We support OpenAI, Anthropic, Google Vertex, AWS Bedrock, Groq, Fireworks, and 50+ other LLM providers and MCP servers. New integrations are added regularly."
+      },
+      {
+        "question": "What are virtual API keys?",
+        "answer": "Virtual API keys allow you to issue child keys for different teams, projects, or users without sharing your primary credentials. Each key can have custom quotas, rate limits, and audit trails."
+      },
+      {
+        "question": "How does the plugin system work?",
+        "answer": "Plugins are middleware that execute sequentially or in parallel within the request pipeline. Build custom plugins for logging, webhooks, compliance checks, or any custom workflow."
+      },
+      {
+        "question": "Is Odock.ai open source?",
+        "answer": "Yes! Odock.ai is fully open source under an MIT license. You can self-host, fork, or contribute to the project on GitHub."
+      },
+      {
+        "question": "How does fallback routing work?",
+        "answer": "You can configure primary and fallback providers. If your primary provider fails, requests automatically route to the backup provider without interrupting service."
+      }
+    ]
+  },
+  "whyDifferent": {
+    "title": "Why It's Different",
+    "description": "Unlike traditional API gateways, Odock.ai is built specifically for LLMs with enterprise security baked in from day one.",
+    "layout": {
+      "grid": {
+        "gap": "gap-12",
+        "columns": {
+          "base": 1,
+          "lg": 2
+        }
+      }
+    },
+    "reasons": [
+      "Security-first design with guardrails always active",
+      "Prevent data leakage to external APIs automatically",
+      "Unified user & quota management across providers",
+      "Extensible plugin pipeline for custom integrations",
+      "Open source—fully transparent and auditable"
+    ]
+  }
+}
