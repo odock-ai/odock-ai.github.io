@@ -31,6 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_API_KEY_WEB3FORMS: ${{ secrets.NEXT_PUBLIC_API_KEY_WEB3FORMS }}      
+      NEXT_PUBLIC_G_ANALYTICS: ${{ secrets.NEXT_PUBLIC_G_ANALYTICS }}      
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4

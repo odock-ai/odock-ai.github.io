@@ -2,9 +2,14 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { buildMetadata } from '@/lib/seo';
+import { CookieConsent } from "@/components/cookie-consent"
+
 import './globals.css';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || process.env.PAGES_BASE_PATH || '';
+const googleAnalyticsId = process.env.NEXT_PUBLIC_G_ANALYTICS
+
+
 const withBasePath = (path: string) => `${basePath}${path}`;
 
 const geistSans = Geist({ subsets: ['latin'], display: 'swap', variable: '--font-sans' });
@@ -45,6 +50,8 @@ export default function RootLayout({
       <body className={`font-sans antialiased`}>
         {children}
         <Analytics />
+        <CookieConsent gaId={googleAnalyticsId} />
+
       </body>
     </html>
   );

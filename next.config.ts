@@ -4,9 +4,9 @@ const nextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
 
-  // Github Pages served from https://odock-ai.github.io/
+  // Github Pages served from https://odock.ai
   basePath: "",
-  assetPrefix: "https://odock-ai.github.io",
+  assetPrefix: "",
   env: {
     NEXT_PUBLIC_BASE_PATH: "",
     PAGES_BASE_PATH: "",

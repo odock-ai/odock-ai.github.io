@@ -29,8 +29,8 @@ export default function Home() {
         <Header />
         <HeroSection />
         <HowItWorks />
-        <Features />
         <WhyDifferent />
+        <Features />
         <UseCases />
         <Offers />
         <FAQ />
