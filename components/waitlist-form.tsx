@@ -104,7 +104,7 @@ export default function WaitlistForm() {
         >
           <option value="">{waitlistForm.fields.teamSizePlaceholder}</option>
           {teamSizes.map((size) => (
-            <option key={size} value={size}>{size} people</option>
+            <option key={size} value={size}>{size} {waitlistForm.fields.teamSizeUnit}</option>
           ))}
         </select>
       </div>

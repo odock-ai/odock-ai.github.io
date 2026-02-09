@@ -8,7 +8,7 @@ import landingContent from "@/data/landing-content.json";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || process.env.PAGES_BASE_PATH || "";
 
-const { header } = landingContent;
+const { header, contact } = landingContent;
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,7 +52,7 @@ export default function Header() {
                 variant="ghost"
                 size="icon"
                 onClick={toggleMenu}
-                aria-label={isOpen ? "Close menu" : "Open menu"}
+                aria-label={isOpen ? header.mobileMenu.closeAriaLabel : header.mobileMenu.openAriaLabel}
               >
                 {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
@@ -66,7 +66,7 @@ export default function Header() {
               </a>
               <Button
                 className="bg-accent text-accent-foreground hover:bg-accent/90"
-                onClick={() => document.getElementById("waitlist-section")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => document.getElementById(contact.id)?.scrollIntoView({ behavior: "smooth" })}
               >
                 {header.cta.primaryLabel}
               </Button>
@@ -112,7 +112,7 @@ export default function Header() {
               className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
               onClick={() => {
                 closeMenu();
-                document.getElementById('waitlist-section')?.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById(contact.id)?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
               {header.cta.primaryLabel}

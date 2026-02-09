@@ -38,7 +38,7 @@ export default function ContactForm() {
       data.append(key, formData[key])
     }
 
-    const res = await fetch("https://api.web3forms.com/submit", {
+    const res = await fetch(contact.form.submitUrl, {
       method: "POST",
       body: data,
     })
@@ -49,7 +49,7 @@ export default function ContactForm() {
     if (json.success) {
       setIsSubmitted(true)
     } else {
-      alert("Submission failed. Check console.")
+      alert(contact.form.errorAlert)
       console.error(json)
     }
   }
@@ -244,7 +244,7 @@ export default function ContactForm() {
 
                   {/* HCaptcha */}
                   <HCaptcha
-                    sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                    sitekey={contact.form.hcaptchaSiteKey}
                     reCaptchaCompat={false}
                     onVerify={onHCaptchaChange}
                   />

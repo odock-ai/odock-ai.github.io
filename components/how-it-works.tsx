@@ -20,7 +20,7 @@ export default function HowItWorks() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
 
   return (
-    <section className="relative py-24 px-4 overflow-hidden" id="how-it-works">
+    <section className="relative py-24 px-4 overflow-hidden" id={howItWorks.id}>
       <div className="mx-auto max-w-6xl">
         <div className="mb-20 text-center">
           <motion.h2
@@ -169,5 +169,4 @@ export default function HowItWorks() {
     </section>
   )
 }
-
 

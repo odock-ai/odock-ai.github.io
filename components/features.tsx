@@ -3,33 +3,28 @@
 import landingContent from "@/data/landing-content.json"
 import { getIconByName } from "@/lib/icon-map"
 import { useRef, useState, type MouseEvent } from "react"
-import { motion, useInView } from "framer-motion"
+import { motion } from "framer-motion"
 
 const { features } = landingContent
 
 export default function Features() {
   const containerRef = useRef(null)
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" })
 
   return (
-    <section className="relative py-24 px-4 " id="features">
+    <section className="relative py-24 px-4 " id={features.id}>
       <div className="relative mx-auto max-w-7xl z-10">
         <div className="mb-20 text-center max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5 }}
-          >
+          <div>
             <h2 className="mb-6 text-4xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
               {features.title}
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{features.description}</p>
-          </motion.div>
+          </div>
         </div>
 
         <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(280px,auto)]">
           {features.items.map((feature, index) => (
-            <BentoCard key={index} feature={feature} index={index} className={getBentoSpan(index)} />
+            <BentoCard key={index} feature={feature} className={getBentoSpan(index)} />
           ))}
         </div>
       </div>
@@ -51,7 +46,7 @@ function getBentoSpan(index: number) {
   return "md:col-span-1"
 }
 
-function BentoCard({ feature, index, className = "" }: { feature: any; index: number; className?: string }) {
+function BentoCard({ feature, className = "" }: { feature: any; className?: string }) {
   const Icon = getIconByName(feature.icon)
   const divRef = useRef<HTMLDivElement>(null)
   const [isFocused, setIsFocused] = useState(false)
@@ -85,10 +80,6 @@ function BentoCard({ feature, index, className = "" }: { feature: any; index: nu
   return (
     <motion.div
       ref={divRef}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.05 }}
       onMouseMove={handleMouseMove}
       onFocus={handleFocus}
       onBlur={handleBlur}

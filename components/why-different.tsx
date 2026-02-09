@@ -27,47 +27,7 @@ type Token = {
   value: string;
 };
 
-const CODE_SNIPPETS: Record<Lang, string> = {
-  javascript: `import OpenAI from "openai";
-
-const client = new OpenAI({
-  apiKey: "YOUR_VIRTUAL_API_KEY",
-  baseURL: "https://your-gateway-url", // ← replace with your URL
-});
-
-const response = await client.chat.completions.create({
-  model: "any-model",
-  messages: [
-    { role: "user", content: "Say hello from your gateway." },
-  ],
-});
-
-console.log(response.choices[0].message.content);`,
-  python: `from openai import OpenAI
-
-client = OpenAI(
-    api_key="YOUR_VIRTUAL_API_KEY",
-    base_url="https://your-gateway-url",  # ← replace with your URL
-)
-
-response = client.chat.completions.create(
-    model="any-model",
-    messages=[
-        {"role": "user", "content": "Say hello from your gateway."},
-    ],
-)
-
-print(response.choices[0].message.content)`,
-  curl: `curl https://your-gateway-url/chat/completions \\
-  -H "Authorization: Bearer YOUR_VIRTUAL_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "model": "any-model",
-    "messages": [
-      {"role": "user", "content": "Say hello from your gateway."}
-    ]
-  }'`,
-};
+const CODE_SNIPPETS = whyDifferent.codeCard.codeSnippets as Record<Lang, string>;
 
 const KEYWORDS: Record<Lang, Set<string>> = {
   javascript: new Set([
@@ -114,12 +74,9 @@ const TOKEN_CLASSES: Record<TokenType, string> = {
   whitespace: '',
 };
 
-// NEW: per-language header titles
-const HEADER_TITLES: Record<Lang, string> = {
-  javascript: 'inference.js — nano',
-  python: 'inference.py — nano',
-  curl: 'inference.sh — nano',
-};
+const HEADER_TITLES = whyDifferent.codeCard.headerTitles as Record<Lang, string>;
+const LANGUAGE_ORDER = whyDifferent.codeCard.languageOrder as Lang[];
+const LANGUAGE_LABELS = whyDifferent.codeCard.languageLabels as Record<Lang, string>;
 
 function tokenizeCode(code: string, lang: Lang): Token[] {
   const tokens: Token[] = [];
@@ -255,7 +212,7 @@ export default function WhyDifferent() {
   const [activeLang, setActiveLang] = useState<Lang>('python');
 
   return (
-    <section id="why-different" className="relative py-24 px-4">
+    <section id={whyDifferent.id} className="relative py-24 px-4">
       <div className="mx-auto max-w-6xl">
         <div className={`${gridClasses} items-center gap-10`}>
           {/* Left: copy & reasons */}
@@ -303,7 +260,7 @@ export default function WhyDifferent() {
             </p>
             {/* Language tabs */}
             <div className="mb-3 flex flex-wrap gap-2 text-xs font-mono">
-              {(['python', 'javascript', 'curl'] as Lang[]).map((lang) => (
+              {LANGUAGE_ORDER.map((lang) => (
                 <button
                   key={lang}
                   type="button"
@@ -314,7 +271,7 @@ export default function WhyDifferent() {
                       : 'border-border/70 bg-muted hover:bg-muted/80'
                   }`}
                 >
-                  {lang === 'javascript' ? 'JavaScript' : lang}
+                  {LANGUAGE_LABELS[lang]}
                 </button>
               ))}
             </div>

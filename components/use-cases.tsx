@@ -3,30 +3,25 @@
 import landingContent from "@/data/landing-content.json";
 import { getIconByName } from "@/lib/icon-map";
 import { useRef, useState, type MouseEvent } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 
 const { useCases } = landingContent;
 
 export default function UseCases() {
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="use-cases" className="relative py-24 px-4">
+    <section id={useCases.id} className="relative py-24 px-4">
       <div className="mx-auto max-w-6xl">
         <div className="mb-16 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5 }}
-          >
+          <div>
             <h2 className="mb-4 text-4xl md:text-5xl font-bold text-foreground">
               {useCases.title}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               {useCases.description}
             </p>
-          </motion.div>
+          </div>
         </div>
 
         {/* Same auto-fit dynamic grid as before */}
@@ -39,7 +34,7 @@ export default function UseCases() {
           "
         >
           {useCases.items.map((useCase, index) => (
-            <UseCaseCard key={index} useCase={useCase} index={index} />
+            <UseCaseCard key={index} useCase={useCase} />
           ))}
         </div>
       </div>
@@ -49,10 +44,8 @@ export default function UseCases() {
 
 function UseCaseCard({
   useCase,
-  index,
 }: {
   useCase: any;
-  index: number;
 }) {
   const Icon = getIconByName(useCase.icon);
   const divRef = useRef<HTMLDivElement>(null);
@@ -71,10 +64,6 @@ function UseCaseCard({
   return (
     <motion.div
       ref={divRef}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.05 }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setOpacity(1)}
       onMouseLeave={() => setOpacity(0)}

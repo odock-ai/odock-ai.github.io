@@ -9,11 +9,11 @@ import HeroBackround from './HeroFigure/hero-backround';
 import landingContent from '@/data/landing-content.json';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || process.env.PAGES_BASE_PATH || '';
-const { hero } = landingContent;
+const { hero, contact } = landingContent;
 
 export default function HeroSection() {
   const scrollToWaitlist = () => {
-    const element = document.getElementById('waitlist-section');
+    const element = document.getElementById(contact.id);
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 

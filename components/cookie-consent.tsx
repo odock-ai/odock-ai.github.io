@@ -16,6 +16,7 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { Switch } from "@/components/ui/switch"
 import { Button } from "@/components/ui/button"
+import landingContent from "@/data/landing-content.json"
 
 type ConsentPreferences = {
   analytics: boolean
@@ -23,7 +24,8 @@ type ConsentPreferences = {
   updatedAt: number
 }
 
-const STORAGE_KEY = "cookie-consent:v1"
+const { cookieConsent } = landingContent
+const STORAGE_KEY = cookieConsent.storageKey
 const defaultPreferences: ConsentPreferences = {
   analytics: true,
   marketing: false,
@@ -100,29 +102,29 @@ export function CookieConsent({ gaId }: { gaId?: string }) {
                   variant="outline"
                   className="border-primary/50 bg-primary/10 text-primary"
                 >
-                  Privacy-first
+                  {cookieConsent.badge}
                 </Badge>
                 <span className="text-muted-foreground">
-                  You decide what gets measured.
+                  {cookieConsent.badgeDescription}
                 </span>
               </div>
-              <DialogTitle className="text-xl">Cookie preferences</DialogTitle>
+              <DialogTitle className="text-xl">{cookieConsent.title}</DialogTitle>
               <DialogDescription className="text-sm leading-relaxed">
-                Essential cookies keep this site running. Turn on analytics to
-                allow Google Analytics tracking and help improve the experience.
-                You can change your mind anytime.
+                {cookieConsent.description}
               </DialogDescription>
             </DialogHeader>
 
             <div className="space-y-3">
               <PreferenceToggle
-                title="Essential"
-                description="Required for core features like theme and language choices."
+                title={cookieConsent.toggles.essential.title}
+                description={cookieConsent.toggles.essential.description}
+                lockedBadge={cookieConsent.toggles.essential.alwaysOnLabel}
+                requiredLabel={cookieConsent.toggles.essential.requiredLabel}
                 locked
               />
               <PreferenceToggle
-                title="Analytics"
-                description="Measure visits and performance via Google Analytics."
+                title={cookieConsent.toggles.analytics.title}
+                description={cookieConsent.toggles.analytics.description}
                 value={preferences.analytics}
                 onChange={(checked) =>
                   setPreferences((prev) => ({ ...prev, analytics: checked }))
@@ -135,16 +137,15 @@ export function CookieConsent({ gaId }: { gaId?: string }) {
 
             <div className="space-y-1 text-xs text-muted-foreground">
               <p>
-                Preference data is stored locally in your browser. You can
-                revisit this modal by clearing that storage or cookies.
+                {cookieConsent.footer.localStorageCopy}
               </p>
               <p>
-                Read more in the{" "}
+                {cookieConsent.footer.readMoreCopy}{" "}
                 <Link
                   href="/privacy"
                   className="text-primary underline underline-offset-4"
                 >
-                  privacy policy
+                  {cookieConsent.footer.privacyPolicyLabel}
                 </Link>
                 .
               </p>
@@ -156,19 +157,19 @@ export function CookieConsent({ gaId }: { gaId?: string }) {
                 className="w-full sm:w-auto"
                 onClick={handleDecline}
               >
-                Essential only
+                {cookieConsent.buttons.essentialOnly}
               </Button>
               <Button
                 variant={"outline"}
                 className="w-full sm:w-auto"
                 onClick={handleSave}
               >
-                Save selection
+                {cookieConsent.buttons.saveSelection}
               </Button>
               <Button 
                   variant="default"
                   className="w-full sm:w-auto" onClick={handleAcceptAll}>
-                Accept all
+                {cookieConsent.buttons.acceptAll}
               </Button>
             </DialogFooter>
           </DialogContent>
@@ -184,6 +185,8 @@ type PreferenceToggleProps = {
   value?: boolean
   badge?: string
   locked?: boolean
+  lockedBadge?: string
+  requiredLabel?: string
   onChange?: (checked: boolean) => void
 }
 
@@ -193,6 +196,8 @@ function PreferenceToggle({
   value,
   badge,
   locked,
+  lockedBadge,
+  requiredLabel,
   onChange,
 }: PreferenceToggleProps) {
   return (
@@ -207,7 +212,7 @@ function PreferenceToggle({
           ) : null}
           {locked ? (
             <Badge variant="outline" className="text-[11px]">
-              Always on
+              {lockedBadge}
             </Badge>
           ) : null}
         </div>
@@ -215,13 +220,13 @@ function PreferenceToggle({
       </div>
       {locked ? (
         <span className="text-xs font-medium text-muted-foreground">
-          Required
+          {requiredLabel}
         </span>
       ) : (
         <Switch
           checked={!!value}
           onCheckedChange={(checked) => onChange?.(checked)}
-          aria-label={`Toggle ${title} cookies`}
+          aria-label={`${cookieConsent.toggles.ariaLabelPrefix} ${title} cookies`}
         />
       )}
     </div>

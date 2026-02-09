@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
 
-const { offers } = landingContent;
+const { offers, contact } = landingContent;
 
 export default function Offers() {
   const gridClasses = buildGridClasses(offers.layout?.grid);
@@ -68,7 +68,7 @@ export default function Offers() {
                   variant="outline"
                   className="w-full border-border hover:bg-primary hover:text-primary-foreground transition-colors"
                   onClick={() => {
-                    document.getElementById('waitlist-section')?.scrollIntoView({ behavior: 'smooth' });
+                    document.getElementById(contact.id)?.scrollIntoView({ behavior: 'smooth' });
                   }}
                 >
                   {offers.cta.cardButtonText}
@@ -86,7 +86,7 @@ export default function Offers() {
             size="lg"
             className="bg-accent hover:bg-accent/90 text-accent-foreground"
             onClick={() => {
-              document.getElementById('waitlist-section')?.scrollIntoView({ behavior: 'smooth' });
+              document.getElementById(contact.id)?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
             {offers.cta.secondaryButtonText}

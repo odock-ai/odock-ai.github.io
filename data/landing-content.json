@@ -17,6 +17,10 @@
       "primaryLabel": "Join Waitlist",
       "githubLabel": "View on GitHub",
       "githubUrl": "https://github.com/odock-ai"
+    },
+    "mobileMenu": {
+      "openAriaLabel": "Open menu",
+      "closeAriaLabel": "Close menu"
     }
   },
   "hero": {
@@ -40,7 +44,8 @@
       "rolePlaceholder": "Select your role",
       "teamSizeLabel": "Team Size",
       "teamSizeHint": "(optional)",
-      "teamSizePlaceholder": "Select team size"
+      "teamSizePlaceholder": "Select team size",
+      "teamSizeUnit": "people"
     },
     "roles": ["CEO", "Developer", "CTO", "Product Manager", "Founder", "Other"],
     "teamSizes": ["10", "50", "100", "500", "500+"],
@@ -75,9 +80,12 @@
     "form": {
       "title": "Contact our team",
       "description": "Share a few details so we can prep the right demo and guidance for you.",
+      "submitUrl": "https://api.web3forms.com/submit",
+      "hcaptchaSiteKey": "50b2fe65-b00b-4b9e-ad62-3ba471098be2",
       "successTitle": "Thank you!",
       "successDescription": "Your inquiry is in. Our team will reach out shortly with next steps tailored to your environment.",
       "successCta": "Submit another inquiry",
+      "errorAlert": "Submission failed. Check console.",
       "submitText": "Request information",
       "submittingText": "Submitting...",
       "disclaimer": "By submitting this form, you agree to our privacy policy and terms of service.",
@@ -92,6 +100,184 @@
         "message": { "label": "How can we help?", "placeholder": "Tell us about your specific requirements..." }
       }
     }
+  },
+  "cookieConsent": {
+    "storageKey": "cookie-consent:v1",
+    "badge": "Privacy-first",
+    "badgeDescription": "You decide what gets measured.",
+    "title": "Cookie preferences",
+    "description": "Essential cookies keep this site running. Turn on analytics to allow Google Analytics tracking and help improve the experience. You can change your mind anytime.",
+    "toggles": {
+      "essential": {
+        "title": "Essential",
+        "description": "Required for core features like theme and language choices.",
+        "alwaysOnLabel": "Always on",
+        "requiredLabel": "Required"
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Measure visits and performance via Google Analytics."
+      },
+      "ariaLabelPrefix": "Toggle"
+    },
+    "footer": {
+      "localStorageCopy": "Preference data is stored locally in your browser. You can revisit this modal by clearing that storage or cookies.",
+      "readMoreCopy": "Read more in the",
+      "privacyPolicyLabel": "privacy policy"
+    },
+    "buttons": {
+      "essentialOnly": "Essential only",
+      "saveSelection": "Save selection",
+      "acceptAll": "Accept all"
+    }
+  },
+  "privacyPage": {
+    "metadata": {
+      "title": "Privacy Policy | Odock.ai",
+      "description": "Learn how Odock.ai handles data for the waitlist and optional Google Analytics in line with GDPR requirements."
+    },
+    "badge": "Privacy",
+    "title": "Privacy Policy",
+    "intro": "We keep data collection limited to what is needed for the waitlist and to understand site usage when you accept analytics cookies. Everything is handled to remain GDPR compliant.",
+    "lastUpdatedLabel": "Last updated",
+    "lastUpdatedDate": "2025-12-09",
+    "backToHomepageLabel": "<- Back to homepage",
+    "email": "hello@odock.ai",
+    "sections": {
+      "informationCollected": {
+        "title": "Information we collect",
+        "intro": "Our site is intentionally minimal. We collect only the information you choose to share so we can manage the waitlist or respond to your inquiries.",
+        "bullets": [
+          {
+            "label": "Waitlist sign-up:",
+            "text": "name, email, role, and optional team size so we can confirm your place on the list and send updates."
+          },
+          {
+            "label": "Contact and enterprise inquiries:",
+            "text": "the details you provide (such as company, role, and message) plus hCaptcha verification to prevent spam."
+          },
+          {
+            "label": "Analytics (optional):",
+            "text": "Google Analytics runs only after you accept analytics cookies. We view aggregated trends (e.g., page views, device/browser details) to improve the site."
+          },
+          {
+            "label": "Technical logs:",
+            "text": "minimal logs for security and reliability (e.g., request metadata) retained for short periods."
+          }
+        ]
+      },
+      "usage": {
+        "title": "How we use your information",
+        "bullets": [
+          "To send waitlist confirmations, product updates, or invitations to early access.",
+          "To respond to messages you send through the contact form.",
+          "To protect the service from abuse (spam prevention and security monitoring).",
+          "To understand how the site is used through aggregated analytics when you have opted in. We do not sell or share data for advertising."
+        ]
+      },
+      "cookies": {
+        "title": "Cookies and tracking",
+        "bullets": [
+          "Essential cookies are limited to site reliability and spam prevention (e.g., hCaptcha).",
+          "Google Analytics cookies are set only after you accept them. Data is used in aggregate to improve the site, and you can withdraw consent at any time through your browser or the cookie controls.",
+          "We do not use advertising or social media tracking pixels."
+        ]
+      },
+      "sharing": {
+        "title": "Sharing and transfers",
+        "bullets": [
+          "We share data only with service providers that help us operate the site (for example, hosting, email, form handling, analytics, and security). These providers are bound by data protection agreements.",
+          "We do not sell personal data.",
+          "Data may be processed outside your country, but always with protections consistent with GDPR."
+        ]
+      },
+      "retention": {
+        "title": "Retention",
+        "bullets": [
+          "Waitlist and inquiry details are kept only as long as needed to manage access and conversations.",
+          "Analytics data is kept in aggregate form according to Google Analytics retention settings.",
+          "If you ask us to delete your data, we will remove it unless we need to keep it to meet legal or security obligations."
+        ]
+      },
+      "rights": {
+        "title": "Your rights",
+        "copyBeforeEmail": "If you are in the EU/UK (or similar jurisdictions), you can request access, correction, deletion, restriction of processing, portability, or withdraw consent for analytics at any time. To exercise these rights or ask a privacy question, contact us at",
+        "copyAfterEmail": "."
+      }
+    }
+  },
+  "termsPage": {
+    "metadata": {
+      "title": "Terms of Use | Odock.ai",
+      "description": "Terms for using the Odock.ai marketing site and waitlist, including acceptable use and limitations of liability."
+    },
+    "badge": "Legal",
+    "title": "Terms of Use",
+    "intro": "These terms govern how you may use the Odock.ai marketing site, waitlist, and contact channels.",
+    "lastUpdatedLabel": "Last updated",
+    "lastUpdatedDate": "2025-12-09",
+    "backToHomepageLabel": "<- Back to homepage",
+    "email": "hello@odock.ai",
+    "sections": [
+      {
+        "title": "1. Using this site",
+        "paragraphs": [
+          "The site is provided to share information about Odock.ai and to let you join the waitlist or contact us. You must use the site lawfully and agree to these terms each time you access it."
+        ]
+      },
+      {
+        "title": "2. Waitlist and inquiries",
+        "bullets": [
+          "Joining the waitlist does not guarantee product availability or timing.",
+          "Provide accurate information when you submit forms. We use it to contact you about access or to respond to your message.",
+          "You may ask to be removed from the waitlist or stop communications at any time."
+        ]
+      },
+      {
+        "title": "3. Acceptable use",
+        "bullets": [
+          "No interfering with or disrupting the site, security features, or infrastructure.",
+          "No attempting to access data that does not belong to you.",
+          "No automated scraping, scanning, or reverse engineering of the site without consent.",
+          "No use that violates applicable laws or regulations."
+        ]
+      },
+      {
+        "title": "4. Analytics and cookies",
+        "paragraphs": [
+          "We keep cookies limited. Google Analytics is used only if you accept analytics cookies so we can understand traffic in aggregate. See the Privacy Policy for details on data handling and your choices."
+        ]
+      },
+      {
+        "title": "5. Intellectual property",
+        "paragraphs": [
+          "All content on the site (brand, copy, graphics, and layout) is owned by Odock.ai or its licensors. You may not reuse it without prior written permission unless a specific license is provided."
+        ]
+      },
+      {
+        "title": "6. Disclaimer",
+        "paragraphs": [
+          "The site is provided \"as is\" for informational purposes. We may update or discontinue parts of the site at any time. To the fullest extent permitted by law, Odock.ai disclaims warranties of fitness, merchantability, and non-infringement."
+        ]
+      },
+      {
+        "title": "7. Limitation of liability",
+        "paragraphs": [
+          "To the extent permitted by law, Odock.ai is not liable for indirect, incidental, consequential, or punitive damages arising from your use of the site. If liability cannot be excluded, it is limited to the amount you paid us for accessing the site (which is typically zero)."
+        ]
+      },
+      {
+        "title": "8. Changes to these terms",
+        "paragraphs": [
+          "We may update these terms to reflect new features or legal requirements. If changes are material, we will note it on this page. Continued use of the site after changes means you accept the updated terms."
+        ]
+      },
+      {
+        "title": "9. Contact",
+        "contactPrefix": "Questions about these terms? Reach us at",
+        "contactSuffix": "."
+      }
+    ]
   },
   "footer": {
     "brand": {
@@ -242,6 +428,7 @@
   },
 
   "useCases": {
+    "id": "use-cases",
     "title": "Perfect For",
     "description": "From startups to enterprises—Odock.ai handles your LLM infrastructure.",
     "layout": {
@@ -338,6 +525,7 @@
     ]
   },
   "faq": {
+    "id": "faq",
     "title": "Frequently Asked Questions",
     "description": "Everything you need to know about Odock.ai.",
     "items": [
@@ -376,12 +564,29 @@
     ]
   },
   "whyDifferent": {
+    "id": "why-different",
     "title": "Why It's Different",
     "description": "Unlike traditional API gateways, Odock.ai is built specifically for LLMs with enterprise security baked in from day one.",
     "codeCard": {
       "title": "OpenAI-style usage",
       "badge": "Drop-in compatible",
-      "description": "Just replace the URL and virtual API key."
+      "description": "Just replace the URL and virtual API key.",
+      "languageOrder": ["python", "javascript", "curl"],
+      "languageLabels": {
+        "python": "python",
+        "javascript": "JavaScript",
+        "curl": "curl"
+      },
+      "headerTitles": {
+        "javascript": "inference.js — nano",
+        "python": "inference.py — nano",
+        "curl": "inference.sh — nano"
+      },
+      "codeSnippets": {
+        "javascript": "import OpenAI from \"openai\";\n\nconst client = new OpenAI({\n  apiKey: \"YOUR_VIRTUAL_API_KEY\",\n  baseURL: \"https://your-gateway-url\", // ← replace with your URL\n});\n\nconst response = await client.chat.completions.create({\n  model: \"any-model\",\n  messages: [\n    { role: \"user\", content: \"Say hello from your gateway.\" },\n  ],\n});\n\nconsole.log(response.choices[0].message.content);",
+        "python": "from openai import OpenAI\n\nclient = OpenAI(\n    api_key=\"YOUR_VIRTUAL_API_KEY\",\n    base_url=\"https://your-gateway-url\",  # ← replace with your URL\n)\n\nresponse = client.chat.completions.create(\n    model=\"any-model\",\n    messages=[\n        {\"role\": \"user\", \"content\": \"Say hello from your gateway.\"},\n    ],\n)\n\nprint(response.choices[0].message.content)",
+        "curl": "curl https://your-gateway-url/chat/completions \\\n  -H \"Authorization: Bearer YOUR_VIRTUAL_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"model\": \"any-model\",\n    \"messages\": [\n      {\"role\": \"user\", \"content\": \"Say hello from your gateway.\"}\n    ]\n  }'"
+      }
     },
     "layout": {
       "grid": {
