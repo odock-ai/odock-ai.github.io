@@ -49,14 +49,18 @@ function deepMerge<T>(base: T, override: DeepPartial<T>): T {
 
   if (isObject(base) && isObject(override)) {
     const merged: Record<string, unknown> = { ...base };
-    for (const key of Object.keys(override)) {
-      const overrideValue = override[key];
+    const overrideRecord = override as Record<string, unknown>;
+    for (const key of Object.keys(overrideRecord)) {
+      const overrideValue = overrideRecord[key];
       if (overrideValue === undefined) continue;
       const baseValue = (base as Record<string, unknown>)[key];
       if (Array.isArray(baseValue) && Array.isArray(overrideValue)) {
         merged[key] = overrideValue.length ? overrideValue : baseValue;
       } else if (isObject(baseValue) && isObject(overrideValue)) {
-        merged[key] = deepMerge(baseValue, overrideValue);
+        merged[key] = deepMerge(
+          baseValue,
+          overrideValue as DeepPartial<Record<string, unknown>>
+        );
       } else {
         merged[key] = overrideValue;
       }
