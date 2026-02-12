@@ -137,7 +137,7 @@ export function TerminalSection() {
     if (line.type === 'command') {
       return (
         <div key={index} className="text-cyan-300 font-mono text-sm">
-          <span className="text-cyan-400">{'[root@odock-ai]$ '}</span>
+          <span className="text-cyan-400">{'odock@server:~$ '}</span>
           {line.text}
         </div>
       );
@@ -166,7 +166,7 @@ export function TerminalSection() {
 
     if (line.type === 'box') {
       return (
-        <div key={index} className="border border-cyan-400/30 p-4 rounded w-fit">
+        <div key={index} className="border border-cyan-400/30 bg-black/20 p-4 rounded w-fit">
           <div className="font-mono text-sm whitespace-pre leading-tight">
             {statusRows.map((row, i) => (
               <div key={i}>
@@ -209,7 +209,7 @@ export function TerminalSection() {
     if (line.type === 'command') {
       return (
         <div key={index} className="text-cyan-300 font-mono text-xs whitespace-nowrap min-w-max">
-          <span className="text-cyan-400">{'[root@odock-ai]$ '}</span>
+          <span className="text-cyan-400">{'odock@server:~$ '}</span>
           {line.text}
         </div>
       );
@@ -238,7 +238,7 @@ export function TerminalSection() {
 
     if (line.type === 'box') {
       return (
-        <div key={index} className="border border-cyan-400/30 p-3 rounded w-full">
+        <div key={index} className="border border-cyan-400/30 bg-black/20 p-3 rounded w-full">
           <div className="font-mono text-xs leading-tight space-y-1">
             {statusRows.map((row, i) => (
               <div key={i} className="flex justify-between gap-3">
@@ -281,12 +281,15 @@ export function TerminalSection() {
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 to-blue-900/20 rounded-lg blur-xl" />
 
-          <div className="relative border border-cyan-400/30 rounded-lg p-3 sm:p-6 backdrop-blur-md bg-slate-900/30 shadow-2xl overflow-hidden">
-            <div className="flex items-center gap-1.5 sm:gap-2 mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-cyan-400/20">
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/70" />
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500/70" />
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500/70" />
-              <span className="ml-2 sm:ml-4 text-[10px] sm:text-xs text-slate-400 font-mono">terminal - bash</span>
+          <div className="linux-terminal relative border border-cyan-400/30 rounded-lg p-3 sm:p-6 bg-[#0a0f0a]/95 shadow-2xl overflow-hidden">
+            <div className="flex items-center justify-between mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-cyan-400/20">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/80" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-amber-400/80" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-emerald-500/80" />
+              </div>
+              <span className="text-[10px] sm:text-xs text-slate-400 font-mono">odock@server: ~/bash</span>
+              <div className="w-10" />
             </div>
 
             <div className="hidden sm:block">
@@ -319,6 +322,20 @@ export function TerminalSection() {
       </div>
 
       <style jsx>{`
+        .linux-terminal::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background: repeating-linear-gradient(
+            to bottom,
+            rgba(34, 211, 238, 0.05) 0px,
+            rgba(34, 211, 238, 0.05) 1px,
+            transparent 2px,
+            transparent 4px
+          );
+          opacity: 0.25;
+        }
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }

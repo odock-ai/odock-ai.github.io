@@ -1,14 +1,14 @@
 'use client';
 
-import landingContent from '@/data/landing-content.json';
 import { buildGridClasses } from '@/lib/layout';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
-
-const { offers, contact } = landingContent;
+import { useLandingContent } from '@/components/providers/landing-content-provider';
 
 export default function Offers() {
+  const { content } = useLandingContent();
+  const { offers, contact } = content;
   const gridClasses = buildGridClasses(offers.layout?.grid);
 
   return (

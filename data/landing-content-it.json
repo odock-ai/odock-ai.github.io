@@ -1,0 +1,604 @@
+{
+  "header": {
+    "brand": {
+      "name": "odock.ai",
+      "logoAlt": "logo odock.ai"
+    },
+    "navLinks": [
+      { "href": "#how-it-works", "label": "Come funziona" },
+      { "href": "#features", "label": "Funzionalita" },
+      { "href": "#use-cases", "label": "Casi d'uso" },
+      { "href": "#offers", "label": "Offerte" },
+      { "href": "#faq", "label": "FAQ" },
+      { "href": "#waitlist-section", "label": "Contatto" }
+    ],
+    "cta": {
+      "primaryLabel": "Unisciti alla waitlist",
+      "githubLabel": "Vedi su GitHub",
+      "githubUrl": "https://github.com/odock-ai"
+    },
+    "mobileMenu": {
+      "openAriaLabel": "Apri menu",
+      "closeAriaLabel": "Chiudi menu"
+    }
+  },
+  "hero": {
+    "badge": "In arrivo • Open source",
+    "headline": "Un solo Dock per",
+    "rotatingWords": ["OpenAI", "Anthropic", "vLLM", "DeepSeek", "Server MCP", "Ogni modello"],
+    "subheadline": "Gateway API unificato per tutti i modelli e strumenti AI. Sicurezza enterprise, governance delle quote e plugin estendibili tramite un unico endpoint.",
+    "emailPlaceholder": "Il tuo indirizzo email",
+    "ctaText": "Accesso anticipato",
+    "imageAlt": "Illustrazione hero"
+  },
+  "waitlistForm": {
+    "successTitle": "Sei nella lista!",
+    "successDescription": "Controlla la tua email per aggiornamenti sull'accesso anticipato e anteprime esclusive.",
+    "fields": {
+      "nameLabel": "Nome",
+      "namePlaceholder": "Il tuo nome",
+      "emailLabel": "Email",
+      "emailPlaceholder": "tu@email.com",
+      "roleLabel": "Il tuo ruolo",
+      "rolePlaceholder": "Seleziona il tuo ruolo",
+      "teamSizeLabel": "Dimensione del team",
+      "teamSizeHint": "(opzionale)",
+      "teamSizePlaceholder": "Seleziona la dimensione del team",
+      "teamSizeUnit": "persone"
+    },
+    "roles": ["CEO", "Sviluppatore", "CTO", "Product Manager", "Founder", "Altro"],
+    "teamSizes": ["10", "50", "100", "500", "500+"],
+    "submitText": "Unisciti alla waitlist",
+    "submittingText": "Iscrizione in corso..."
+  },
+  "contact": {
+    "id": "waitlist-section",
+    "badge": "Contatto",
+    "title": "Parla con il nostro team",
+    "description": "Ottieni una demo su misura di Odock.ai e scopri come un gateway API unificato puo semplificare routing dei modelli, governance e controlli enterprise per la tua organizzazione.",
+    "highlights": [
+      "Supporto enterprise e SLA",
+      "Revisioni di sicurezza e compliance",
+      "Routing e governance model-agnostic",
+      "Opzioni cloud privato e on-prem"
+    ],
+    "contactEmail": "hello@odock.ai",
+    "githubUrl": "https://github.com/odock-ai",
+    "githubLabel": "github.com/odock-ai",
+    "emailCopy": "Preferisci email? Scrivici a",
+    "emailResponseTime": "e risponderemo entro un giorno lavorativo.",
+    "githubCopy": "Vuoi contribuire al nostro progetto open source? Visita il nostro GitHub su",
+    "organizationSizes": [
+      { "value": "1-50", "label": "1-50 dipendenti" },
+      { "value": "51-200", "label": "51-200 dipendenti" },
+      { "value": "201-500", "label": "201-500 dipendenti" },
+      { "value": "501-1000", "label": "501-1000 dipendenti" },
+      { "value": "1001+", "label": "1001+ dipendenti" },
+      { "value": "government", "label": "Agenzia governativa" }
+    ],
+    "form": {
+      "title": "Contatta il nostro team",
+      "description": "Condividi qualche dettaglio cosi possiamo preparare la demo e le indicazioni piu adatte a te.",
+      "submitUrl": "https://api.web3forms.com/submit",
+      "hcaptchaSiteKey": "50b2fe65-b00b-4b9e-ad62-3ba471098be2",
+      "successTitle": "Grazie!",
+      "successDescription": "La tua richiesta e stata inviata. Il nostro team ti contattera a breve con i prossimi passi adatti al tuo ambiente.",
+      "successCta": "Invia un'altra richiesta",
+      "errorAlert": "Invio non riuscito. Controlla la console.",
+      "submitText": "Richiedi informazioni",
+      "submittingText": "Invio in corso...",
+      "disclaimer": "Inviando questo modulo, accetti la nostra informativa sulla privacy e i termini di servizio.",
+      "fields": {
+        "firstName": { "label": "Nome", "placeholder": "Alex" },
+        "lastName": { "label": "Cognome", "placeholder": "Rossi" },
+        "email": { "label": "Email di lavoro", "placeholder": "alex.rossi@azienda.com" },
+        "company": { "label": "Azienda/Organizzazione", "placeholder": "Acme S.p.A." },
+        "role": { "label": "Il tuo ruolo", "placeholder": "CTO, IT Director, ecc." },
+        "size": { "label": "Dimensione organizzazione", "placeholder": "Seleziona dimensione" },
+        "offer": { "label": "Offerta di interesse", "placeholder": "Seleziona un'offerta" },
+        "message": { "label": "Come possiamo aiutarti?", "placeholder": "Raccontaci i tuoi requisiti specifici..." }
+      }
+    }
+  },
+  "cookieConsent": {
+    "storageKey": "cookie-consent:v1",
+    "badge": "Privacy al primo posto",
+    "badgeDescription": "Decidi tu cosa viene misurato.",
+    "title": "Preferenze cookie",
+    "description": "I cookie essenziali mantengono il sito operativo. Attiva le analitiche per consentire il tracciamento Google Analytics e migliorare l'esperienza. Puoi cambiare idea in qualsiasi momento.",
+    "toggles": {
+      "essential": {
+        "title": "Essenziali",
+        "description": "Necessari per funzionalita di base come tema e lingua.",
+        "alwaysOnLabel": "Sempre attivi",
+        "requiredLabel": "Obbligatori"
+      },
+      "analytics": {
+        "title": "Analitiche",
+        "description": "Misura visite e prestazioni tramite Google Analytics."
+      },
+      "ariaLabelPrefix": "Attiva/disattiva"
+    },
+    "footer": {
+      "localStorageCopy": "I dati delle preferenze sono salvati localmente nel tuo browser. Puoi riaprire questa finestra cancellando tale storage o i cookie.",
+      "readMoreCopy": "Maggiori dettagli nella",
+      "privacyPolicyLabel": "informativa sulla privacy"
+    },
+    "buttons": {
+      "essentialOnly": "Solo essenziali",
+      "saveSelection": "Salva selezione",
+      "acceptAll": "Accetta tutti"
+    }
+  },
+  "privacyPage": {
+    "metadata": {
+      "title": "Informativa sulla privacy | Odock.ai",
+      "description": "Scopri come Odock.ai gestisce i dati per la waitlist e le analitiche Google Analytics opzionali in conformita al GDPR."
+    },
+    "badge": "Privacy",
+    "title": "Informativa sulla privacy",
+    "intro": "Manteniamo la raccolta dati limitata a cio che serve per la waitlist e per capire l'uso del sito quando accetti i cookie analitici. Tutto e gestito per restare conforme al GDPR.",
+    "lastUpdatedLabel": "Ultimo aggiornamento",
+    "lastUpdatedDate": "2025-12-09",
+    "backToHomepageLabel": "<- Torna alla homepage",
+    "email": "hello@odock.ai",
+    "sections": {
+      "informationCollected": {
+        "title": "Informazioni che raccogliamo",
+        "intro": "Il nostro sito e volutamente minimale. Raccogliamo solo le informazioni che scegli di condividere per gestire la waitlist o rispondere alle tue richieste.",
+        "bullets": [
+          {
+            "label": "Iscrizione alla waitlist:",
+            "text": "nome, email, ruolo e dimensione team opzionale per confermare il tuo posto in lista e inviare aggiornamenti."
+          },
+          {
+            "label": "Contatti e richieste enterprise:",
+            "text": "i dettagli che fornisci (come azienda, ruolo e messaggio) piu la verifica hCaptcha per prevenire spam."
+          },
+          {
+            "label": "Analitiche (opzionali):",
+            "text": "Google Analytics viene eseguito solo dopo l'accettazione dei cookie analitici. Osserviamo tendenze aggregate (es. visualizzazioni pagina, dettagli dispositivo/browser) per migliorare il sito."
+          },
+          {
+            "label": "Log tecnici:",
+            "text": "log minimi per sicurezza e affidabilita (es. metadati richiesta) conservati per brevi periodi."
+          }
+        ]
+      },
+      "usage": {
+        "title": "Come usiamo le tue informazioni",
+        "bullets": [
+          "Per inviare conferme waitlist, aggiornamenti prodotto o inviti all'accesso anticipato.",
+          "Per rispondere ai messaggi inviati tramite il modulo di contatto.",
+          "Per proteggere il servizio da abusi (prevenzione spam e monitoraggio sicurezza).",
+          "Per capire come viene usato il sito tramite analitiche aggregate quando hai dato consenso. Non vendiamo ne condividiamo dati per pubblicita."
+        ]
+      },
+      "cookies": {
+        "title": "Cookie e tracciamento",
+        "bullets": [
+          "I cookie essenziali sono limitati ad affidabilita del sito e prevenzione spam (es. hCaptcha).",
+          "I cookie Google Analytics vengono impostati solo dopo la tua accettazione. I dati sono usati in forma aggregata per migliorare il sito e puoi revocare il consenso in qualsiasi momento dal browser o dai controlli cookie.",
+          "Non utilizziamo pixel di tracciamento pubblicitari o social media."
+        ]
+      },
+      "sharing": {
+        "title": "Condivisione e trasferimenti",
+        "bullets": [
+          "Condividiamo i dati solo con fornitori di servizi che ci aiutano a gestire il sito (ad esempio hosting, email, moduli, analitiche e sicurezza). Questi fornitori sono vincolati da accordi di protezione dati.",
+          "Non vendiamo dati personali.",
+          "I dati possono essere trattati fuori dal tuo paese, ma sempre con tutele coerenti con il GDPR."
+        ]
+      },
+      "retention": {
+        "title": "Conservazione",
+        "bullets": [
+          "I dettagli di waitlist e richieste vengono conservati solo per il tempo necessario a gestire accesso e conversazioni.",
+          "I dati analitici sono conservati in forma aggregata secondo le impostazioni di retention di Google Analytics.",
+          "Se ci chiedi di eliminare i tuoi dati, li rimuoveremo salvo obblighi legali o di sicurezza."
+        ]
+      },
+      "rights": {
+        "title": "I tuoi diritti",
+        "copyBeforeEmail": "Se ti trovi in UE/UK (o giurisdizioni simili), puoi richiedere accesso, rettifica, cancellazione, limitazione del trattamento, portabilita o revocare il consenso alle analitiche in qualsiasi momento. Per esercitare questi diritti o porre una domanda sulla privacy, contattaci a",
+        "copyAfterEmail": "."
+      }
+    }
+  },
+  "termsPage": {
+    "metadata": {
+      "title": "Termini di utilizzo | Odock.ai",
+      "description": "Termini per l'uso del sito marketing e della waitlist di Odock.ai, inclusi uso accettabile e limitazioni di responsabilita."
+    },
+    "badge": "Legale",
+    "title": "Termini di utilizzo",
+    "intro": "Questi termini disciplinano come puoi usare il sito marketing Odock.ai, la waitlist e i canali di contatto.",
+    "lastUpdatedLabel": "Ultimo aggiornamento",
+    "lastUpdatedDate": "2025-12-09",
+    "backToHomepageLabel": "<- Torna alla homepage",
+    "email": "hello@odock.ai",
+    "sections": [
+      {
+        "title": "1. Uso di questo sito",
+        "paragraphs": [
+          "Il sito e fornito per condividere informazioni su Odock.ai e per consentirti di iscriverti alla waitlist o contattarci. Devi usare il sito in modo lecito e accettare questi termini ogni volta che vi accedi."
+        ]
+      },
+      {
+        "title": "2. Waitlist e richieste",
+        "bullets": [
+          "L'iscrizione alla waitlist non garantisce disponibilita del prodotto o tempistiche.",
+          "Fornisci informazioni accurate quando invii i moduli. Le usiamo per contattarti sull'accesso o rispondere al tuo messaggio.",
+          "Puoi chiedere di essere rimosso dalla waitlist o interrompere le comunicazioni in qualsiasi momento."
+        ]
+      },
+      {
+        "title": "3. Uso accettabile",
+        "bullets": [
+          "Non interferire o interrompere il sito, le funzionalita di sicurezza o l'infrastruttura.",
+          "Non tentare di accedere a dati che non ti appartengono.",
+          "Nessuno scraping automatico, scansione o reverse engineering del sito senza consenso.",
+          "Nessun uso che violi leggi o regolamenti applicabili."
+        ]
+      },
+      {
+        "title": "4. Analitiche e cookie",
+        "paragraphs": [
+          "Manteniamo l'uso dei cookie limitato. Google Analytics viene usato solo se accetti i cookie analitici cosi possiamo comprendere il traffico in forma aggregata. Consulta l'Informativa sulla privacy per dettagli sul trattamento dati e sulle tue scelte."
+        ]
+      },
+      {
+        "title": "5. Proprieta intellettuale",
+        "paragraphs": [
+          "Tutti i contenuti del sito (brand, testi, grafiche e layout) sono di proprieta di Odock.ai o dei suoi licenzianti. Non puoi riutilizzarli senza previa autorizzazione scritta, salvo specifica licenza."
+        ]
+      },
+      {
+        "title": "6. Disclaimer",
+        "paragraphs": [
+          "Il sito e fornito \"cosi com'e\" a scopo informativo. Possiamo aggiornare o interrompere parti del sito in qualsiasi momento. Nella massima misura consentita dalla legge, Odock.ai esclude garanzie di idoneita, commerciabilita e non violazione."
+        ]
+      },
+      {
+        "title": "7. Limitazione di responsabilita",
+        "paragraphs": [
+          "Nella misura consentita dalla legge, Odock.ai non e responsabile per danni indiretti, incidentali, consequenziali o punitivi derivanti dall'uso del sito. Se la responsabilita non puo essere esclusa, e limitata all'importo che ci hai pagato per accedere al sito (tipicamente zero)."
+        ]
+      },
+      {
+        "title": "8. Modifiche ai termini",
+        "paragraphs": [
+          "Possiamo aggiornare questi termini per riflettere nuove funzionalita o requisiti legali. Se le modifiche sono sostanziali, lo indicheremo in questa pagina. L'uso continuato del sito dopo le modifiche implica accettazione dei termini aggiornati."
+        ]
+      },
+      {
+        "title": "9. Contatto",
+        "contactPrefix": "Domande su questi termini? Contattaci a",
+        "contactSuffix": "."
+      }
+    ]
+  },
+  "footer": {
+    "brand": {
+      "name": "odock.ai",
+      "logoAlt": "logo odock.ai"
+    },
+    "description": "Gateway API unificato per tutti i provider LLM e server MCP.",
+    "linkGroups": [
+      {
+        "title": "Prodotto",
+        "links": [
+          { "label": "Come funziona", "href": "/#how-it-works" },
+          { "label": "Funzionalita", "href": "/#features" },
+          { "label": "Offerte", "href": "/#offers" }
+        ]
+      },
+      {
+        "title": "Community",
+        "links": [
+          { "label": "GitHub", "href": "https://github.com/odock-ai" },
+          { "label": "X", "href": "https://x.com/odock_ai" }
+        ]
+      },
+      {
+        "title": "Legale",
+        "links": [
+          { "label": "Privacy", "href": "/privacy" },
+          { "label": "Termini", "href": "/terms" }
+        ]
+      }
+    ],
+    "social": [
+      { "type": "github", "href": "https://github.com/odock-ai", "label": "GitHub" },
+      { "type": "x", "href": "https://x.com/odock_ai", "label": "X (Twitter)" }
+    ],
+    "copyright": "© 2025 Odock.ai. Creato per sviluppatori, da sviluppatori."
+  },
+  "howItWorks": {
+    "id": "how-it-works",
+    "title": "Come funziona Odock.ai",
+    "description": "Pensato per team che gestiscono complessita. Controllo unificato con affidabilita di livello enterprise.",
+    "layout": {
+      "grid": {
+        "gap": "gap-6",
+        "columns": {
+          "base": 1,
+          "md": 2,
+          "lg": 4
+        }
+      }
+    },
+    "steps": [
+      {
+        "icon": "Network",
+        "title": "Definisci provider e strumenti",
+        "description": "Registra provider LLM, database vettoriali e strumenti MCP. Tutto diventa subito accessibile tramite un unico endpoint standardizzato."
+      },
+      {
+        "icon": "Key",
+        "title": "Emetti chiavi API virtuali",
+        "description": "Crea chiavi API isolate per organizzazioni, team, utenti o progetti con controlli di policy granulari e permessi a livello modello."
+      },
+      {
+        "icon": "Shield",
+        "title": "Applica guardrail di sicurezza",
+        "description": "Odock applica automaticamente protezione da prompt injection, filtro jailbreak, rate limit, controlli perdita dati e regole di output sicuro."
+      },
+      {
+        "icon": "Zap",
+        "title": "Definisci budget e quote",
+        "description": "Assegna limiti di spesa, quote token e limiti d'uso per chiave API. Ottieni monitoraggio costi in tempo reale e applicazione automatica."
+      },
+      {
+        "icon": "Plug",
+        "title": "Estendi con plugin e workflow",
+        "description": "Collega plugin personalizzati per pre-elaborare, validare, trasformare o arricchire richieste e risposte, in sequenza o in parallelo."
+      },
+      {
+        "icon": "Activity",
+        "title": "Monitora, accoda e failover automatico",
+        "description": "Traccia i flussi richiesta, ispeziona le code, controlla il batching e abilita failover fluido tra provider quando si verificano outage."
+      }
+    ]
+  },
+  "features": {
+    "id": "features",
+    "title": "Funzionalita principali",
+    "description": "Progettato per prestazioni, affidabilita e controllo completo della tua infrastruttura LLM.",
+    "layout": {
+      "grid": {
+        "gap": "gap-6",
+        "columns": {
+          "base": 1,
+          "md": 2,
+          "lg": 3
+        }
+      }
+    },
+    "items": [
+      {
+        "icon": "Cpu",
+        "title": "Gateway a latenza ultra-bassa",
+        "description": "Costruito in Go con streaming, connection pooling e pipeline ottimizzate per overhead sotto il millisecondo su ogni richiesta."
+      },
+      {
+        "icon": "Network",
+        "title": "Interfaccia multimodello unificata",
+        "description": "API standardizzata su OpenAI, Anthropic, Groq, Bedrock, Vertex, Fireworks, LM Studio e strumenti MCP, senza cambiare SDK."
+      },
+      {
+        "icon": "KeySquare",
+        "title": "Chiavi API virtuali gerarchiche",
+        "description": "Chiavi API isolate con limiti, permessi, scope e audit log per team, utente e progetto."
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Firewall AI e guardrail zero-trust",
+        "description": "Difesa da prompt injection, rilevamento jailbreak, mascheramento PII e blocco outbound, eseguiti nella pipeline richiesta a velocita wire."
+      },
+      {
+        "icon": "BarChart3",
+        "title": "Budget e quote in tempo reale",
+        "description": "Tracciamento spesa a livello token con budget hard/soft, throttling dinamico e rilevamento anomalie per uso fuori controllo."
+      },
+      {
+        "icon": "Repeat",
+        "title": "Routing adattivo e failover",
+        "description": "Scegli automaticamente il provider piu veloce, economico o sano. Failover immediato quando latenza cresce o ci sono outage."
+      },
+      {
+        "icon": "Plug",
+        "title": "Motore plugin estendibile",
+        "description": "Middleware sequenziale o parallelo per validazione, trasformazioni, compliance, osservabilita o workflow definiti dall'utente."
+      },
+      {
+        "icon": "Database",
+        "title": "Code ad alto throughput e batching",
+        "description": "Accodamento richieste integrato, backpressure, controlli di concorrenza e micro-batching per operazioni pesanti o lunghe."
+      },
+      {
+        "icon": "Gauge",
+        "title": "Osservabilita profonda",
+        "description": "Metriche per modello, chiave e tenant, breakdown latenza, trace richieste e log riproducibili per il debugging."
+      }
+    ]
+  },
+  "useCases": {
+    "id": "use-cases",
+    "title": "Perfetto per",
+    "description": "Dalle startup alle enterprise: Odock.ai gestisce la tua infrastruttura LLM.",
+    "layout": {
+      "grid": {
+        "gap": "gap-6",
+        "columns": {
+          "base": 1,
+          "md": 2
+        }
+      }
+    },
+    "items": [
+      {
+        "icon": "Briefcase",
+        "title": "SaaS con AI",
+        "description": "Aggiungi funzionalita AI al tuo prodotto senza gestire molte integrazioni API."
+      },
+      {
+        "icon": "Shield",
+        "title": "Team enterprise",
+        "description": "Controlla la spesa AI, applica policy di sicurezza e verifica ogni richiesta."
+      },
+      {
+        "icon": "Zap",
+        "title": "Startup in rapida crescita",
+        "description": "Scala l'utilizzo dietro una singola API senza vendor lock-in o migrazioni complesse."
+      },
+      {
+        "icon": "Layers",
+        "title": "Workflow abilitati MCP",
+        "description": "Crea workflow AI complessi con server Model Context Protocol in modo fluido."
+      }
+    ]
+  },
+  "offers": {
+    "id": "offers",
+    "title": "Scegli come fare Dock",
+    "description": "Che tu stia iniziando o scalando a milioni di richieste, c'e un piano Odock.ai per te.",
+    "layout": {
+      "grid": {
+        "gap": "gap-8",
+        "columns": {
+          "base": 1,
+          "md": 3
+        }
+      }
+    },
+    "cta": {
+      "secondaryText": "Non sai quale piano fa per te? Unisciti alla waitlist e ti aiutiamo a scegliere.",
+      "secondaryButtonText": "Unisciti alla waitlist",
+      "cardButtonText": "Scopri di piu"
+    },
+    "highlightLabel": "MIGLIORE",
+    "plans": [
+      {
+        "title": "Open Source",
+        "subtitle": "Self-hosted",
+        "description": "Perfetto se ami gestire il tuo stack.",
+        "features": [
+          "Gratuito e open source",
+          "Self-host sulla tua infrastruttura",
+          "Plugin guidati dalla community",
+          "Controllo e personalizzazione completi",
+          "Community sviluppatori attiva"
+        ],
+        "highlight": false
+      },
+      {
+        "title": "Managed Odock",
+        "subtitle": "Ospitato da noi",
+        "description": "Noi gestiamo il dock, tu rilasci il prodotto.",
+        "features": [
+          "Nessun hosting o infrastruttura necessaria",
+          "Scalabilita e aggiornamenti automatici",
+          "Plugin community + premium",
+          "Billing e quote unificate",
+          "Guardrail di sicurezza livello enterprise"
+        ],
+        "highlight": true
+      },
+      {
+        "title": "Enterprise",
+        "subtitle": "Rete privata",
+        "description": "Progettato per sicurezza, compliance e scala.",
+        "features": [
+          "Ambiente dedicato e isolato",
+          "Deploy sul nostro cloud o sul tuo",
+          "Auth enterprise (SSO, SAML, OAuth)",
+          "Compliance avanzata e SLA personalizzati",
+          "Plugin personalizzati e modelli privati"
+        ],
+        "highlight": false
+      }
+    ]
+  },
+  "faq": {
+    "id": "faq",
+    "title": "Domande frequenti",
+    "description": "Tutto quello che devi sapere su Odock.ai.",
+    "items": [
+      {
+        "question": "Cos'e Odock.ai?",
+        "answer": "Odock.ai e un gateway API unificato open source che ti consente di accedere a tutti i provider LLM e server MCP tramite un unico endpoint. Include gestione chiavi API, quote, guardrail di sicurezza e un marketplace plugin estendibile."
+      },
+      {
+        "question": "Come funziona l'API unificata?",
+        "answer": "Invece di gestire chiavi API e integrazioni separate per ogni provider, Odock.ai agisce da middleware. Invi le richieste a Odock.ai e noi le instradiamo verso i provider scelti, con fallback automatici se necessario."
+      },
+      {
+        "question": "Come funzionano i guardrail di sicurezza?",
+        "answer": "Il nostro livello di sicurezza rileva e blocca automaticamente prompt injection, previene perdite di dati sensibili, applica rate limit e filtra i dati in uscita, senza configurazione obbligatoria."
+      },
+      {
+        "question": "Quali provider sono supportati?",
+        "answer": "Supportiamo OpenAI, Anthropic, Google Vertex, AWS Bedrock, Groq, Fireworks e oltre 50 altri provider LLM e server MCP. Nuove integrazioni vengono aggiunte regolarmente."
+      },
+      {
+        "question": "Cosa sono le chiavi API virtuali?",
+        "answer": "Le chiavi API virtuali permettono di emettere chiavi figlie per team, progetti o utenti diversi senza condividere credenziali primarie. Ogni chiave puo avere quote, rate limit e tracciamento audit personalizzati."
+      },
+      {
+        "question": "Come funziona il sistema plugin?",
+        "answer": "I plugin sono middleware che vengono eseguiti in sequenza o in parallelo nella pipeline di richiesta. Puoi creare plugin personalizzati per logging, webhook, controlli di compliance o qualsiasi workflow su misura."
+      },
+      {
+        "question": "Odock.ai e open source?",
+        "answer": "Si! Odock.ai e completamente open source con licenza MIT. Puoi fare self-host, fork o contribuire al progetto su GitHub."
+      },
+      {
+        "question": "Come funziona il routing con fallback?",
+        "answer": "Puoi configurare provider primari e di fallback. Se il provider primario fallisce, le richieste vengono instradate automaticamente al provider di backup senza interrompere il servizio."
+      }
+    ]
+  },
+  "whyDifferent": {
+    "id": "why-different",
+    "title": "Perche e diverso",
+    "description": "A differenza dei gateway API tradizionali, Odock.ai e progettato specificamente per gli LLM con sicurezza enterprise integrata fin dal primo giorno.",
+    "codeCard": {
+      "title": "Utilizzo stile OpenAI",
+      "badge": "Compatibile drop-in",
+      "description": "Sostituisci solo URL e chiave API virtuale.",
+      "languageOrder": ["python", "javascript", "curl"],
+      "languageLabels": {
+        "python": "python",
+        "javascript": "JavaScript",
+        "curl": "curl"
+      },
+      "headerTitles": {
+        "javascript": "inference.js — nano",
+        "python": "inference.py — nano",
+        "curl": "inference.sh — nano"
+      },
+      "codeSnippets": {
+        "javascript": "import OpenAI from \"openai\";\n\nconst client = new OpenAI({\n  apiKey: \"YOUR_VIRTUAL_API_KEY\",\n  baseURL: \"https://your-gateway-url\", // ← replace with your URL\n});\n\nconst response = await client.chat.completions.create({\n  model: \"any-model\",\n  messages: [\n    { role: \"user\", content: \"Say hello from your gateway.\" },\n  ],\n});\n\nconsole.log(response.choices[0].message.content);",
+        "python": "from openai import OpenAI\n\nclient = OpenAI(\n    api_key=\"YOUR_VIRTUAL_API_KEY\",\n    base_url=\"https://your-gateway-url\",  # ← replace with your URL\n)\n\nresponse = client.chat.completions.create(\n    model=\"any-model\",\n    messages=[\n        {\"role\": \"user\", \"content\": \"Say hello from your gateway.\"},\n    ],\n)\n\nprint(response.choices[0].message.content)",
+        "curl": "curl https://your-gateway-url/chat/completions \\\n  -H \"Authorization: Bearer YOUR_VIRTUAL_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"model\": \"any-model\",\n    \"messages\": [\n      {\"role\": \"user\", \"content\": \"Say hello from your gateway.\"}\n    ]\n  }'"
+      }
+    },
+    "layout": {
+      "grid": {
+        "gap": "gap-12",
+        "columns": {
+          "base": 1,
+          "lg": 2
+        }
+      }
+    },
+    "reasons": [
+      "Design security-first con guardrail sempre attivi",
+      "Previeni automaticamente la perdita di dati verso API esterne",
+      "Gestione unificata di utenti e quote tra provider",
+      "Pipeline plugin estendibile per integrazioni personalizzate",
+      "Open source: completamente trasparente e verificabile"
+    ]
+  }
+}

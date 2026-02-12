@@ -16,7 +16,8 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { Switch } from "@/components/ui/switch"
 import { Button } from "@/components/ui/button"
-import landingContent from "@/data/landing-content.json"
+import { useLandingContent } from "@/components/providers/landing-content-provider"
+import { localizePath } from "@/lib/i18n"
 
 type ConsentPreferences = {
   analytics: boolean
@@ -24,8 +25,6 @@ type ConsentPreferences = {
   updatedAt: number
 }
 
-const { cookieConsent } = landingContent
-const STORAGE_KEY = cookieConsent.storageKey
 const defaultPreferences: ConsentPreferences = {
   analytics: true,
   marketing: false,
@@ -33,6 +32,9 @@ const defaultPreferences: ConsentPreferences = {
 }
 
 export function CookieConsent({ gaId }: { gaId?: string }) {
+  const { content, locale } = useLandingContent()
+  const { cookieConsent } = content
+  const STORAGE_KEY = cookieConsent.storageKey
   const [ready, setReady] = useState(false)
   const [open, setOpen] = useState(false)
   const [hasDecision, setHasDecision] = useState(false)
@@ -125,6 +127,7 @@ export function CookieConsent({ gaId }: { gaId?: string }) {
               <PreferenceToggle
                 title={cookieConsent.toggles.analytics.title}
                 description={cookieConsent.toggles.analytics.description}
+                ariaLabelPrefix={cookieConsent.toggles.ariaLabelPrefix}
                 value={preferences.analytics}
                 onChange={(checked) =>
                   setPreferences((prev) => ({ ...prev, analytics: checked }))
@@ -142,7 +145,7 @@ export function CookieConsent({ gaId }: { gaId?: string }) {
               <p>
                 {cookieConsent.footer.readMoreCopy}{" "}
                 <Link
-                  href="/privacy"
+                  href={localizePath('/privacy', locale)}
                   className="text-primary underline underline-offset-4"
                 >
                   {cookieConsent.footer.privacyPolicyLabel}
@@ -187,6 +190,7 @@ type PreferenceToggleProps = {
   locked?: boolean
   lockedBadge?: string
   requiredLabel?: string
+  ariaLabelPrefix?: string
   onChange?: (checked: boolean) => void
 }
 
@@ -198,6 +202,7 @@ function PreferenceToggle({
   locked,
   lockedBadge,
   requiredLabel,
+  ariaLabelPrefix,
   onChange,
 }: PreferenceToggleProps) {
   return (
@@ -226,7 +231,7 @@ function PreferenceToggle({
         <Switch
           checked={!!value}
           onCheckedChange={(checked) => onChange?.(checked)}
-          aria-label={`${cookieConsent.toggles.ariaLabelPrefix} ${title} cookies`}
+          aria-label={`${ariaLabelPrefix || 'Toggle'} ${title} cookies`}
         />
       )}
     </div>

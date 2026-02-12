@@ -1,16 +1,15 @@
 'use client';
 
-import landingContent from '@/data/landing-content.json';
 import { getIconByName } from '@/lib/icon-map';
-import { Card } from '@/components/ui/card';
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import { cn } from "@/lib/utils"
-
-const { howItWorks } = landingContent;
+import { useLandingContent } from '@/components/providers/landing-content-provider';
 
 
 export default function HowItWorks() {
+  const { content } = useLandingContent();
+  const { howItWorks } = content;
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -169,4 +168,3 @@ export default function HowItWorks() {
     </section>
   )
 }
-

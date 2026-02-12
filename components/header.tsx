@@ -4,14 +4,25 @@ import { useState } from "react";
 import { Github, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import landingContent from "@/data/landing-content.json";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useLandingContent } from "@/components/providers/landing-content-provider";
+import {
+  LOCALE_LABELS,
+  SUPPORTED_LOCALES,
+  localizePath,
+  stripLocalePrefix,
+} from "@/lib/i18n";
+import { persistPreferredLocale } from "@/lib/i18n-client";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || process.env.PAGES_BASE_PATH || "";
 
-const { header, contact } = landingContent;
-
 export default function Header() {
+  const { content, locale } = useLandingContent();
+  const { header, contact } = content;
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const strippedPath = stripLocalePrefix(pathname);
 
   const toggleMenu = () => setIsOpen((open) => !open);
   const closeMenu = () => setIsOpen(false);
@@ -59,6 +70,22 @@ export default function Header() {
             </div>
 
             <div className="hidden md:flex items-center gap-3">
+              <div className="flex items-center rounded-md border border-border/60 bg-card/40 p-1">
+                {SUPPORTED_LOCALES.map((lang) => (
+                  <Link
+                    key={lang}
+                    href={localizePath(strippedPath, lang)}
+                    onClick={() => persistPreferredLocale(lang)}
+                    className={`rounded px-2 py-1 text-xs font-semibold transition-colors ${
+                      lang === locale
+                        ? "bg-accent text-accent-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {LOCALE_LABELS[lang]}
+                  </Link>
+                ))}
+              </div>
               <a href={header.cta.githubUrl} target="_blank" rel="noopener noreferrer">
                 <Button variant="ghost" size="icon" aria-label={header.cta.githubLabel}>
                   <Github className="h-4 w-4" />
@@ -77,10 +104,10 @@ export default function Header() {
         {/* Mobile Menu */}
         <div
           className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ${
-            isOpen ? "max-h-96 opacity-100 pb-4" : "max-h-0 opacity-0"
+            isOpen ? "max-h-[calc(100dvh-5rem)] opacity-100 pb-4" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="rounded-2xl border border-border/60 bg-background/90 p-4 shadow-lg">
+          <div className="max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-2xl border border-border/60 bg-background/90 p-4 shadow-lg">
             <nav className="flex flex-col gap-3 items-center">
             {header.navLinks.map((link) => (
                 <a
@@ -93,6 +120,25 @@ export default function Header() {
                 </a>
               ))}
             </nav>
+            <div className="flex items-center justify-center gap-2 py-2">
+              {SUPPORTED_LOCALES.map((lang) => (
+                <Link
+                  key={lang}
+                  href={localizePath(strippedPath, lang)}
+                  onClick={() => {
+                    persistPreferredLocale(lang);
+                    closeMenu();
+                  }}
+                  className={`rounded px-2 py-1 text-xs font-semibold transition-colors ${
+                    lang === locale
+                      ? "bg-accent text-accent-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {LOCALE_LABELS[lang]}
+                </Link>
+              ))}
+            </div>
             <div className="mt-4 flex flex-col gap-3">
             <a
               href={header.cta.githubUrl}

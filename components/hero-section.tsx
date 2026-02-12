@@ -6,15 +6,27 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import HeroBackround from './HeroFigure/hero-backround';
-import landingContent from '@/data/landing-content.json';
+import { useLandingContent } from '@/components/providers/landing-content-provider';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || process.env.PAGES_BASE_PATH || '';
-const { hero, contact } = landingContent;
 
 export default function HeroSection() {
+  const { content } = useLandingContent();
+  const { hero, contact } = content;
+  const [email, setEmail] = useState('');
+
   const scrollToWaitlist = () => {
     const element = document.getElementById(contact.id);
     element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const redirectToContactWithEmail = () => {
+    const trimmedEmail = email.trim();
+    if (trimmedEmail && typeof window !== 'undefined') {
+      window.sessionStorage.setItem('contact_prefill_email', trimmedEmail);
+      window.dispatchEvent(new CustomEvent('contact-prefill-email', { detail: trimmedEmail }));
+    }
+    scrollToWaitlist();
   };
 
   const [index, setIndex] = useState(0);
@@ -83,20 +95,28 @@ export default function HeroSection() {
 
           {/* CTA input + button */}
           <div className="flex w-full justify-center lg:justify-start">
-            <div className="flex w-full max-w-md items-center overflow-hidden rounded-lg border border-border bg-card">
+            <form
+              className="flex w-full max-w-md items-center overflow-hidden rounded-lg border border-border bg-card"
+              onSubmit={(e) => {
+                e.preventDefault();
+                redirectToContactWithEmail();
+              }}
+            >
               <input
                 type="email"
                 placeholder={hero.emailPlaceholder}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 bg-transparent px-4 text-foreground placeholder:text-muted-foreground focus:outline-none"
               />
               <Button
-                onClick={scrollToWaitlist}
+                type="submit"
                 className="h-full rounded-none bg-accent px-5 text-accent-foreground font-semibold"
               >
                 {hero.ctaText}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-            </div>
+            </form>
           </div>
         </div>
 

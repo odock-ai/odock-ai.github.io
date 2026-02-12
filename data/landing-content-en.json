@@ -7,7 +7,6 @@
     "navLinks": [
       { "href": "#how-it-works", "label": "How it works" },
       { "href": "#features", "label": "Features" },
-      { "href": "#why-different", "label": "Why it's different" },
       { "href": "#use-cases", "label": "Use cases" },
       { "href": "#offers", "label": "Offers" },
       { "href": "#faq", "label": "FAQ" },

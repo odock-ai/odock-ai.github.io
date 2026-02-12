@@ -1,13 +1,14 @@
 "use client";
 
-import landingContent from "@/data/landing-content.json";
 import { getIconByName } from "@/lib/icon-map";
 import { useRef, useState, type MouseEvent } from "react";
 import { motion } from "framer-motion";
+import { useLandingContent } from "@/components/providers/landing-content-provider";
 
-const { useCases } = landingContent;
 
 export default function UseCases() {
+  const { content } = useLandingContent();
+  const { useCases } = content;
   const containerRef = useRef(null);
 
   return (

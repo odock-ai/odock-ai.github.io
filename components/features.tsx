@@ -1,14 +1,15 @@
 "use client"
 
-import landingContent from "@/data/landing-content.json"
 import { getIconByName } from "@/lib/icon-map"
 import { useRef, useState, type MouseEvent } from "react"
 import { motion } from "framer-motion"
 import { TerminalSection } from "./terminal-section"
 
-const { features } = landingContent
+import { useLandingContent } from '@/components/providers/landing-content-provider';
 
 export default function Features() {
+  const { content } = useLandingContent()
+  const { features } = content
   const containerRef = useRef(null)
 
   return (

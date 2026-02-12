@@ -1,13 +1,13 @@
 'use client';
 
-import landingContent from '@/data/landing-content.json';
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { ChevronDown } from 'lucide-react';
-
-const { faq } = landingContent;
+import { useLandingContent } from '@/components/providers/landing-content-provider';
 
 export default function FAQ() {
+  const { content } = useLandingContent();
+  const { faq } = content;
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (

@@ -3,12 +3,14 @@
 import { Github } from 'lucide-react';
 import Image from "next/image";
 import Link from "next/link";
-import landingContent from "@/data/landing-content.json";
+import { useLandingContent } from "@/components/providers/landing-content-provider";
+import { localizePath } from "@/lib/i18n";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || process.env.PAGES_BASE_PATH || "";
-const { footer } = landingContent;
 
 export default function Footer() {
+  const { content, locale } = useLandingContent();
+  const { footer } = content;
   return (
     <footer className="border-t border-border bg-card/30 backdrop-blur py-12 px-4">
       <div className="mx-auto max-w-6xl">
@@ -46,7 +48,7 @@ export default function Footer() {
                       </a>
                     ) : (
                       <Link
-                        href={link.href}
+                        href={localizePath(link.href, locale)}
                         className="text-muted-foreground hover:text-foreground transition-colors"
                       >
                         {link.label}

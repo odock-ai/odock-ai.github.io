@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import HCaptcha from "@hcaptcha/react-hcaptcha"
 
@@ -12,16 +12,34 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { CheckCircle2 } from "lucide-react"
-import landingContent from "@/data/landing-content.json"
-
-const { contact, offers } = landingContent
+import { useLandingContent } from "@/components/providers/landing-content-provider"
 
 export default function ContactForm() {
+  const { content } = useLandingContent()
+  const { contact, offers } = content
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   // react-hook-form
-  const { register, handleSubmit, setValue, watch } = useForm()
+  const { register, handleSubmit, setValue } = useForm()
+
+  useEffect(() => {
+    const storedEmail = window.sessionStorage.getItem("contact_prefill_email")?.trim()
+    if (storedEmail) {
+      setValue("email", storedEmail)
+    }
+
+    const handlePrefillEmail = (event: Event) => {
+      const customEvent = event as CustomEvent<string>
+      const value = customEvent.detail?.trim()
+      if (value) {
+        setValue("email", value)
+      }
+    }
+
+    window.addEventListener("contact-prefill-email", handlePrefillEmail)
+    return () => window.removeEventListener("contact-prefill-email", handlePrefillEmail)
+  }, [setValue])
 
   // Web3Forms requires this field exactly
   const onHCaptchaChange = (token: string) => {

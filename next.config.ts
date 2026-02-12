@@ -11,8 +11,7 @@ const nextConfig = {
     NEXT_PUBLIC_BASE_PATH: "",
     PAGES_BASE_PATH: "",
   },
-  
-  eslint: { ignoreDuringBuilds: true },
+
   typescript: { ignoreBuildErrors: true },
 };
 

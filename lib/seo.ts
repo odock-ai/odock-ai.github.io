@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import landingContent from '@/data/landing-content.json';
 import landingSeo from '@/data/landing-seo.json';
+import type { LandingContent, Locale } from '@/lib/i18n';
 
 type Breadcrumb = { name: string; url: string };
 
@@ -13,7 +13,13 @@ const normalizeUrl = (url: string) => {
   return canonicalBase ? `${canonicalBase}/${cleanPath}` : `/${cleanPath}`;
 };
 
-export function buildMetadata(): Metadata {
+const localeToOgLocale: Record<Locale, string> = {
+  en: 'en_US',
+  fr: 'fr_FR',
+  it: 'it_IT',
+};
+
+export function buildMetadata(locale: Locale, landingContent: LandingContent): Metadata {
   const ogImages = landingSeo.openGraph?.images?.map((image) => ({
     ...image,
     url: normalizeUrl(image.url),
@@ -24,13 +30,21 @@ export function buildMetadata(): Metadata {
       ? { default: landingSeo.title, template: landingSeo.titleTemplate }
       : landingSeo.title;
 
+  const localePath = `/${locale}`;
+  const canonical = `${canonicalBase}${localePath}`;
+
   return {
     title,
-    description: landingSeo.description,
+    description: landingContent.hero.subheadline || landingSeo.description,
     keywords: landingSeo.keywords,
     metadataBase: canonicalBase ? new URL(canonicalBase) : undefined,
     alternates: {
-      canonical: landingSeo.canonical,
+      canonical,
+      languages: {
+        en: `${canonicalBase}/en`,
+        fr: `${canonicalBase}/fr`,
+        it: `${canonicalBase}/it`,
+      },
     },
     robots: {
       index: landingSeo.robots?.index ?? true,
@@ -38,14 +52,15 @@ export function buildMetadata(): Metadata {
     },
     openGraph: {
       ...landingSeo.openGraph,
-      url: landingSeo.openGraph?.url || landingSeo.canonical,
+      locale: localeToOgLocale[locale],
+      url: canonical,
       images: ogImages,
     },
     twitter: landingSeo.twitter,
   };
 }
 
-export function buildStructuredData() {
+export function buildStructuredData(locale: Locale, landingContent: LandingContent) {
   const faqItems =
     landingContent.faq?.items?.map((item) => ({
       '@type': 'Question',
@@ -61,7 +76,7 @@ export function buildStructuredData() {
       '@type': 'ListItem',
       position: index + 1,
       name: crumb.name,
-      item: normalizeUrl(crumb.url),
+      item: normalizeUrl(`/${locale}${crumb.url}`),
     })) || [];
 
   const organization =
@@ -81,7 +96,7 @@ export function buildStructuredData() {
           '@context': 'https://schema.org',
           '@type': 'WebSite',
           ...landingSeo.schema.website,
-          url: normalizeUrl(landingSeo.schema.website.url),
+          url: normalizeUrl(`/${locale}`),
         }
       : null;
 

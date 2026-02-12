@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ArrowRight } from 'lucide-react';
-import landingContent from '@/data/landing-content.json';
-
-const { waitlistForm } = landingContent;
+import { useLandingContent } from '@/components/providers/landing-content-provider';
 
 export default function WaitlistForm() {
+  const { content } = useLandingContent();
+  const { waitlistForm } = content;
   const [formData, setFormData] = useState({ 
     name: '', 
     email: '', 

@@ -1,13 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import landingContent from '@/data/landing-content.json';
 import { buildGridClasses } from '@/lib/layout';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { CheckCircle } from 'lucide-react';
 import { Badge } from './ui/badge';
-
-const { whyDifferent } = landingContent;
+import { useLandingContent } from '@/components/providers/landing-content-provider';
 
 type Lang = 'javascript' | 'python' | 'curl';
 
@@ -26,8 +24,6 @@ type Token = {
   type: TokenType;
   value: string;
 };
-
-const CODE_SNIPPETS = whyDifferent.codeCard.codeSnippets as Record<Lang, string>;
 
 const KEYWORDS: Record<Lang, Set<string>> = {
   javascript: new Set([
@@ -73,10 +69,6 @@ const TOKEN_CLASSES: Record<TokenType, string> = {
   punctuation: 'text-[#d4d4d4]',
   whitespace: '',
 };
-
-const HEADER_TITLES = whyDifferent.codeCard.headerTitles as Record<Lang, string>;
-const LANGUAGE_ORDER = whyDifferent.codeCard.languageOrder as Lang[];
-const LANGUAGE_LABELS = whyDifferent.codeCard.languageLabels as Record<Lang, string>;
 
 function tokenizeCode(code: string, lang: Lang): Token[] {
   const tokens: Token[] = [];
@@ -161,55 +153,83 @@ function tokenizeCode(code: string, lang: Lang): Token[] {
   return tokens;
 }
 
-function HighlightedCode({ code, lang }: { code: string; lang: Lang }) {
+function HighlightedCode({
+  code,
+  lang,
+  headerTitles,
+}: {
+  code: string;
+  lang: Lang;
+  headerTitles: Record<Lang, string>;
+}) {
   const tokens = tokenizeCode(code, lang);
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-border/70 bg-gradient-to-br from-[#0f172a] via-[#0c1224] to-[#0d162c] shadow-inner">
-      {/* Linux-style window header */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex h-7 items-center justify-between border-b border-white/5 bg-black/30 px-3 text-[11px] text-zinc-300">
-        <div className="flex items-center gap-2">
-          <span className="h-3 w-3 rounded-sm bg-emerald-400/80" />
-          <span className="font-mono text-[11px] text-zinc-300">
-            {HEADER_TITLES[lang]}
+    <div className="relative">
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 to-blue-900/20 rounded-lg blur-xl" />
+
+      <div className="linux-terminal relative overflow-hidden rounded-lg border border-cyan-400/30 bg-[#0a0f0a]/95 shadow-inner">
+        <div className="pointer-events-none relative z-10 flex h-8 items-center justify-between border-b border-cyan-400/20 px-3 text-[11px]">
+          <div className="flex items-center gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
+            <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
+            <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
+          </div>
+          <span className="font-mono text-[11px] text-slate-400">
+            {headerTitles[lang]}
           </span>
+          <span className="w-10" />
         </div>
-        <div className="flex items-center gap-1">
-          <span className="flex h-4 w-4 items-center justify-center rounded-sm border border-white/15 text-[9px] leading-none">
-            _
-          </span>
-          <span className="flex h-4 w-4 items-center justify-center rounded-sm border border-white/15 text-[9px] leading-none">
-            🗗
-          </span>
-          <span className="flex h-4 w-4 items-center justify-center rounded-sm border border-white/15 text-[9px] leading-none">
-            ×
-          </span>
-        </div>
+
+        <pre className="relative w-full px-4 pb-4 pt-4 text-[12px] leading-relaxed text-[#d4d4d4]">
+          <code className="block w-full whitespace-pre-wrap break-words font-mono">
+            {tokens.map((token, index) =>
+              token.type === 'whitespace' ? (
+                token.value
+              ) : (
+                <span
+                  key={`${token.type}-${index}`}
+                  className={TOKEN_CLASSES[token.type]}
+                >
+                  {token.value}
+                </span>
+              ),
+            )}
+          </code>
+        </pre>
+
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-cyan-500/10 to-transparent pointer-events-none rounded-lg" />
       </div>
 
-      <pre className="relative w-full px-4 pb-4 pt-10 text-[12px] leading-relaxed text-[#d4d4d4]">
-        <code className="block w-full whitespace-pre-wrap break-words font-mono">
-          {tokens.map((token, index) =>
-            token.type === 'whitespace' ? (
-              token.value
-            ) : (
-              <span
-                key={`${token.type}-${index}`}
-                className={TOKEN_CLASSES[token.type]}
-              >
-                {token.value}
-              </span>
-            ),
-          )}
-        </code>
-      </pre>
+      <style jsx>{`
+        .linux-terminal::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background: repeating-linear-gradient(
+            to bottom,
+            rgba(34, 211, 238, 0.05) 0px,
+            rgba(34, 211, 238, 0.05) 1px,
+            transparent 2px,
+            transparent 4px
+          );
+          opacity: 0.25;
+        }
+      `}</style>
     </div>
   );
 }
 
 export default function WhyDifferent() {
+  const { content } = useLandingContent();
+  const { whyDifferent } = content;
   const gridClasses = buildGridClasses(whyDifferent.layout?.grid);
   const [activeLang, setActiveLang] = useState<Lang>('python');
+  const codeSnippets = whyDifferent.codeCard.codeSnippets as Record<Lang, string>;
+  const headerTitles = whyDifferent.codeCard.headerTitles as Record<Lang, string>;
+  const languageOrder = whyDifferent.codeCard.languageOrder as Lang[];
+  const languageLabels = whyDifferent.codeCard.languageLabels as Record<Lang, string>;
 
   return (
     <section id={whyDifferent.id} className="relative py-24 px-4">
@@ -260,7 +280,7 @@ export default function WhyDifferent() {
             </p>
             {/* Language tabs */}
             <div className="mb-3 flex flex-wrap gap-2 text-xs font-mono">
-              {LANGUAGE_ORDER.map((lang) => (
+              {languageOrder.map((lang) => (
                 <button
                   key={lang}
                   type="button"
@@ -271,15 +291,16 @@ export default function WhyDifferent() {
                       : 'border-border/70 bg-muted hover:bg-muted/80'
                   }`}
                 >
-                  {LANGUAGE_LABELS[lang]}
+                  {languageLabels[lang]}
                 </button>
               ))}
             </div>
 
             {/* Code block - responsive, no scrolling */}
             <HighlightedCode
-              code={CODE_SNIPPETS[activeLang]}
+              code={codeSnippets[activeLang]}
               lang={activeLang}
+              headerTitles={headerTitles}
             />
           </Card>
         </div>
