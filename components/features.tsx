@@ -4,6 +4,7 @@ import landingContent from "@/data/landing-content.json"
 import { getIconByName } from "@/lib/icon-map"
 import { useRef, useState, type MouseEvent } from "react"
 import { motion } from "framer-motion"
+import { TerminalSection } from "./terminal-section"
 
 const { features } = landingContent
 
@@ -21,6 +22,12 @@ export default function Features() {
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{features.description}</p>
           </div>
         </div>
+
+        <div className="mb-20 text-start">
+
+          <TerminalSection />
+        </div>
+
 
         <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(280px,auto)]">
           {features.items.map((feature, index) => (

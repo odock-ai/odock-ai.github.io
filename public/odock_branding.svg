@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="847" height="285" viewBox="0 0 847 285">
+  <text xml:space="preserve"
+        font-family="Courier New, Courier, monospace"
+        font-size="24">
+    <tspan x="20" y="48.8" fill="#5fd7ff"> ██████╗ ██████╗  ██████╗  ██████╗██╗  ██╗    █████╗ ██╗</tspan><tspan x="20" y="77.6" fill="#00d7d7">██╔═══██╗██╔══██╗██╔═══██╗██╔════╝██║ ██╔╝   ██╔══██╗██║</tspan><tspan x="20" y="106.39999999999999" fill="#00afaf">██║   ██║██║  ██║██║   ██║██║     █████╔╝    ███████║██║</tspan><tspan x="20" y="135.2" fill="#0087af">██║   ██║██║  ██║██║   ██║██║     ██╔═██╗    ██╔══██║██║</tspan><tspan x="20" y="164.0" fill="#005f87">╚██████╔╝██████╔╝╚██████╔╝╚██████╗██║  ██╗██╗██║  ██║██║</tspan><tspan x="20" y="192.79999999999998" fill="#005f5f"> ╚═════╝ ╚═════╝  ╚═════╝  ╚═════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝</tspan><tspan x="315.50" y="235.99999999999997" fill="#00d7d7">O D O C K</tspan><tspan dx="1.60" fill="#5fffff"> . A I</tspan><tspan x="99.50" y="264.79999999999995" fill="#FFFFFF">ONE Unified API Gateway for AI Models &amp; Tools</tspan>
+  </text>
+</svg>
