@@ -7,6 +7,7 @@ import {
   localizePath,
   type Locale,
 } from '@/lib/i18n';
+import { buildSubpageMetadata } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({
@@ -17,10 +18,12 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const content = getLandingContent(locale);
-  return {
-    title: content.termsPage.metadata.title,
-    description: content.termsPage.metadata.description,
-  };
+  return buildSubpageMetadata(
+    locale as Locale,
+    '/terms',
+    content.termsPage.metadata.title,
+    content.termsPage.metadata.description
+  );
 }
 
 export default async function TermsPage({

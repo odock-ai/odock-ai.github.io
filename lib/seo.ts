@@ -4,7 +4,7 @@ import type { LandingContent, Locale } from '@/lib/i18n';
 
 type Breadcrumb = { name: string; url: string };
 
-const canonicalBase = landingSeo.canonical?.replace(/\/$/, '') || '';
+export const canonicalBase = landingSeo.canonical?.replace(/\/$/, '') || '';
 
 const normalizeUrl = (url: string) => {
   if (!url) return canonicalBase;
@@ -19,11 +19,27 @@ const localeToOgLocale: Record<Locale, string> = {
   it: 'it_IT',
 };
 
-export function buildMetadata(locale: Locale, landingContent: LandingContent): Metadata {
-  const ogImages = landingSeo.openGraph?.images?.map((image) => ({
+function withCanonicalBase(path: string) {
+  return canonicalBase ? `${canonicalBase}${path}` : path;
+}
+
+function buildLanguageAlternates(pathSuffix = '') {
+  return {
+    en: withCanonicalBase(`/en${pathSuffix}`),
+    fr: withCanonicalBase(`/fr${pathSuffix}`),
+    it: withCanonicalBase(`/it${pathSuffix}`),
+  };
+}
+
+function buildOgImages() {
+  return landingSeo.openGraph?.images?.map((image) => ({
     ...image,
     url: normalizeUrl(image.url),
   }));
+}
+
+export function buildMetadata(locale: Locale, landingContent: LandingContent): Metadata {
+  const ogImages = buildOgImages();
 
   const title =
     landingSeo.titleTemplate && landingSeo.title
@@ -31,7 +47,7 @@ export function buildMetadata(locale: Locale, landingContent: LandingContent): M
       : landingSeo.title;
 
   const localePath = `/${locale}`;
-  const canonical = `${canonicalBase}${localePath}`;
+  const canonical = withCanonicalBase(localePath);
 
   return {
     title,
@@ -40,11 +56,7 @@ export function buildMetadata(locale: Locale, landingContent: LandingContent): M
     metadataBase: canonicalBase ? new URL(canonicalBase) : undefined,
     alternates: {
       canonical,
-      languages: {
-        en: `${canonicalBase}/en`,
-        fr: `${canonicalBase}/fr`,
-        it: `${canonicalBase}/it`,
-      },
+      languages: buildLanguageAlternates(),
     },
     robots: {
       index: landingSeo.robots?.index ?? true,
@@ -57,6 +69,43 @@ export function buildMetadata(locale: Locale, landingContent: LandingContent): M
       images: ogImages,
     },
     twitter: landingSeo.twitter,
+  };
+}
+
+export function buildSubpageMetadata(
+  locale: Locale,
+  pathSuffix: string,
+  title: string,
+  description: string
+): Metadata {
+  const canonical = withCanonicalBase(`/${locale}${pathSuffix}`);
+
+  return {
+    title,
+    description,
+    keywords: landingSeo.keywords,
+    metadataBase: canonicalBase ? new URL(canonicalBase) : undefined,
+    alternates: {
+      canonical,
+      languages: buildLanguageAlternates(pathSuffix),
+    },
+    robots: {
+      index: landingSeo.robots?.index ?? true,
+      follow: landingSeo.robots?.follow ?? true,
+    },
+    openGraph: {
+      ...landingSeo.openGraph,
+      title,
+      description,
+      locale: localeToOgLocale[locale],
+      url: canonical,
+      images: buildOgImages(),
+    },
+    twitter: {
+      ...landingSeo.twitter,
+      title,
+      description,
+    },
   };
 }
 

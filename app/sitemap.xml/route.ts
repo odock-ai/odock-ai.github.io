@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import landingSeo from '@/data/landing-seo.json';
+import { SUPPORTED_LOCALES } from '@/lib/i18n';
 
 const canonicalBase = landingSeo.canonical?.replace(/\/$/, '') || '';
 const withBase = (path: string) => (canonicalBase ? `${canonicalBase}${path}` : path);
@@ -9,11 +10,15 @@ export const dynamic = 'force-static';
 export function GET() {
   const lastModified = new Date().toISOString();
 
-  const urls = [
+  const rootUrls = [
     { loc: withBase('/'), changefreq: 'daily', priority: '1.0' },
-    { loc: withBase('/privacy/'), changefreq: 'yearly', priority: '0.4' },
-    { loc: withBase('/terms/'), changefreq: 'yearly', priority: '0.4' },
   ];
+  const localizedUrls = SUPPORTED_LOCALES.flatMap((locale) => [
+    { loc: withBase(`/${locale}/`), changefreq: 'daily', priority: '0.9' },
+    { loc: withBase(`/${locale}/privacy/`), changefreq: 'yearly', priority: '0.4' },
+    { loc: withBase(`/${locale}/terms/`), changefreq: 'yearly', priority: '0.4' },
+  ]);
+  const urls = [...rootUrls, ...localizedUrls];
 
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',

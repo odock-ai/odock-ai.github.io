@@ -7,6 +7,7 @@ import {
   localizePath,
   type Locale,
 } from '@/lib/i18n';
+import { buildSubpageMetadata } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({
@@ -17,10 +18,12 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const content = getLandingContent(locale);
-  return {
-    title: content.privacyPage.metadata.title,
-    description: content.privacyPage.metadata.description,
-  };
+  return buildSubpageMetadata(
+    locale as Locale,
+    '/privacy',
+    content.privacyPage.metadata.title,
+    content.privacyPage.metadata.description
+  );
 }
 
 export default async function PrivacyPage({
