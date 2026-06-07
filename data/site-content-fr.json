@@ -22,6 +22,7 @@
       },
       { "label": "Gateway MCP", "href": "/mcp-gateway" },
       { "label": "Entreprise", "href": "/enterprise" },
+      { "label": "Tarifs", "href": "/pricing" },
       { "label": "EU", "href": "/eu" },
       { "label": "Blog", "href": "/blog" }
     ],
@@ -885,6 +886,21 @@
     "eyebrow": "Tarifs",
     "title": "Self-hosted, managé ou cloud privé.",
     "description": "Commencez en open source, passez à un cloud managé ou déployez dans votre propre infrastructure.",
+    "hero": {
+      "titleStart": "Une seule platforme.",
+      "titleAccent": "Trois façons",
+      "titleEnd": "de la déployer.",
+      "body": "Le pricing dépend du modèle de déploiement et du niveau d'accompagnement, pas d'une matrice de fonctionnalités bridée. Le même cycle de gouvernance s'applique à tous les plans : authentifier, autoriser, inspecter, réserver le budget, router et tracer.",
+      "compareLabel": "voir la comparaison"
+    },
+    "sections": {
+      "tiersEyebrow": "modes de déploiement",
+      "decisionGuideEyebrow": "guide de décision",
+      "enterpriseEyebrow": "déploiement enterprise",
+      "faqEyebrow": "faq"
+    },
+    "popularLabel": "Le plus choisi",
+    "footnote": "Même cycle de gouvernance sur tous les plans — authentifier → autoriser → inspecter → réserver → router → tracer",
     "tiers": [
       {
         "name": "Open Source",
@@ -904,7 +920,7 @@
       },
       {
         "name": "Cloud",
-        "price": "$99",
+        "price": "$299",
         "period": "/mois",
         "description": "Odock managé, sans infrastructure à opérer",
         "features": [
@@ -935,7 +951,84 @@
         "href": "/contact",
         "highlight": false
       }
-    ]
+    ],
+    "decisionGuide": [
+      {
+        "tier": "Open Source",
+        "signal": "À choisir si…",
+        "mono": "self-hosted",
+        "points": [
+          "Vous voulez garder le contrôle direct de l'infrastructure",
+          "Le proof-of-value rapide est prioritaire",
+          "Votre équipe peut opérer la gateway",
+          "Vous voulez éviter le verrouillage fournisseur au début"
+        ]
+      },
+      {
+        "tier": "Cloud",
+        "signal": "À choisir si…",
+        "mono": "managed",
+        "points": [
+          "L'exploitation plateforme vous ralentit",
+          "Vous voulez une disponibilité et des mises à jour gérées",
+          "Vous préférez livrer du produit plutôt qu'opérer l'infra",
+          "Vous avez besoin d'onboarder plus vite de nouvelles équipes"
+        ]
+      },
+      {
+        "tier": "Enterprise",
+        "signal": "Conçu pour…",
+        "mono": "private-cloud",
+        "points": [
+          "Les environnements à forte contrainte d'achats",
+          "Les déploiements en cloud privé ou VPC",
+          "Les workloads régulés ou multi business units",
+          "Les SLA et revues d'architecture sur mesure"
+        ]
+      }
+    ],
+    "enterpriseRollout": {
+      "title": "Les décisions d'infrastructure ne rentrent pas dans une grille self-serve.",
+      "description": [
+        "Les engagements enterprise couvrent l'architecture de production, le SSO ou les intégrations d'identité, le choix du mode de déploiement, les attentes de support, ainsi que les exigences d'audit, de résidence des données ou de connectivité privée.",
+        "Si vous faites déjà transiter du trafic OpenAI-compatible, la migration se mesure en minutes : Odock s'installe à la frontière gateway, pas dans votre couche applicative."
+      ],
+      "stats": [
+        { "value": "< 5 min", "label": "temps de migration" },
+        { "value": "6 étapes", "label": "cycle de gouvernance" },
+        { "value": "3 modes", "label": "déploiement" }
+      ],
+      "contactNeedsLabel": "contactez-nous si vous avez besoin de",
+      "contactNeeds": [
+        "Déploiement en cloud privé ou on-premises",
+        "SLA et réponse à incident sur mesure",
+        "Support achats ou revue sécurité",
+        "Outillage de preuve pour la conformité au Règlement IA",
+        "Accompagnement d'architecture pour un déploiement multi-BU"
+      ],
+      "ctaLabel": "Nous contacter pour le pricing enterprise",
+      "responseNote": "Réponse généralement sous un jour ouvré"
+    },
+    "faq": {
+      "items": [
+        {
+          "question": "Puis-je commencer en open source puis passer à une offre supérieure ?",
+          "answer": "Oui. La gateway open source repose sur le même produit cœur. Le passage à Cloud ou Enterprise ajoute des opérations managées et des engagements de support, pas des fonctionnalités artificiellement verrouillées."
+        },
+        {
+          "question": "À quoi ressemble la migration ?",
+          "answer": "Odock est OpenAI-compatible. Il suffit de pointer vos appels API existants vers l'endpoint Odock et d'émettre des clés API virtuelles. Aucune modification du code applicatif n'est requise. La plupart des équipes sont en ligne en moins de 5 minutes."
+        },
+        {
+          "question": "La gouvernance MCP est-elle incluse dans tous les plans ?",
+          "answer": "Oui. Le contrôle d'accès aux outils MCP, les allowlists et les pistes d'audit font partie du cycle de vie cœur de la gateway sur les trois offres."
+        },
+        {
+          "question": "Le pricing enterprise inclut-il un accompagnement pour la conformité au Règlement IA européen ?",
+          "answer": "Les engagements enterprise incluent des outils de preuve d'audit, une journalisation structurée pour les exigences à haut risque et des options de résidence des données, tous utiles dans un processus de revue de conformité au Règlement IA."
+        }
+      ]
+    }
   },
   "faq": {
     "eyebrow": "FAQ",
@@ -994,9 +1087,8 @@
         "links": [
           { "label": "Plateforme", "href": "/#platform" },
           { "label": "Gateway IA et MCP", "href": "/#ai-gateway" },
-          
           { "label": "Sécurité", "href": "/#security" },
-          { "label": "Tarifs", "href": "/#pricing" },
+          { "label": "Tarifs", "href": "/pricing" },
           { "label": "La Gateway MCP", "href": "/mcp-gateway" }
         ]
       },

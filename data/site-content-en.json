@@ -22,6 +22,7 @@
       },
       { "label": "MCP Gateway", "href": "/mcp-gateway" },
       { "label": "Enterprise", "href": "/enterprise" },
+      { "label": "Pricing", "href": "/pricing" },
       { "label": "EU", "href": "/eu" },
       { "label": "Blog", "href": "/blog" }
     ],
@@ -885,6 +886,21 @@
     "eyebrow": "Pricing",
     "title": "Self-host, managed, or private cloud.",
     "description": "Start with open source, scale to managed cloud, or deploy in your own infrastructure.",
+    "hero": {
+      "titleStart": "One gateway.",
+      "titleAccent": "Three ways",
+      "titleEnd": "to run it.",
+      "body": "Pricing maps to deployment model and support expectations, not a stripped feature matrix. The same governance lifecycle runs across every tier: authenticate, authorize, inspect, reserve budget, route, and record.",
+      "compareLabel": "scroll to compare"
+    },
+    "sections": {
+      "tiersEyebrow": "deployment tiers",
+      "decisionGuideEyebrow": "decision guide",
+      "enterpriseEyebrow": "enterprise rollout",
+      "faqEyebrow": "faq"
+    },
+    "popularLabel": "Popular",
+    "footnote": "Same governance lifecycle across all tiers — authenticate → authorize → inspect → reserve → route → record",
     "tiers": [
       {
         "name": "Open Source",
@@ -904,7 +920,7 @@
       },
       {
         "name": "Cloud",
-        "price": "$99",
+        "price": "$299",
         "period": "/month",
         "description": "Managed Odock with zero infrastructure",
         "features": [
@@ -935,7 +951,84 @@
         "href": "/contact",
         "highlight": false
       }
-    ]
+    ],
+    "decisionGuide": [
+      {
+        "tier": "Open Source",
+        "signal": "Start here when…",
+        "mono": "self-hosted",
+        "points": [
+          "You want direct infrastructure control",
+          "Fast proof-of-value matters",
+          "Your team can operate the gateway",
+          "You prefer to avoid vendor lock-in early"
+        ]
+      },
+      {
+        "tier": "Cloud",
+        "signal": "Move here when…",
+        "mono": "managed",
+        "points": [
+          "Platform overhead is slowing you down",
+          "You want managed uptime and updates",
+          "You'd rather ship product than operate infra",
+          "You need faster onboarding for new teams"
+        ]
+      },
+      {
+        "tier": "Enterprise",
+        "signal": "Designed for…",
+        "mono": "private-cloud",
+        "points": [
+          "Procurement-heavy environments",
+          "Private cloud or VPC deployment",
+          "Regulated or multi-BU workloads",
+          "Custom SLA and architecture review"
+        ]
+      }
+    ],
+    "enterpriseRollout": {
+      "title": "Infrastructure decisions don't fit a self-serve matrix.",
+      "description": [
+        "Enterprise engagements cover production architecture, SSO or identity integration, deployment model selection, support expectations, and requirements around audit evidence, data residency, or private connectivity.",
+        "If you run OpenAI-compatible traffic, migration is measured in minutes — Odock sits at the gateway boundary, not inside your application layer."
+      ],
+      "stats": [
+        { "value": "< 5 min", "label": "migration time" },
+        { "value": "6-stage", "label": "lifecycle model" },
+        { "value": "3 modes", "label": "deployment" }
+      ],
+      "contactNeedsLabel": "contact us when you need",
+      "contactNeeds": [
+        "Private cloud or on-premises deployment",
+        "Custom SLA and incident response",
+        "Procurement or security review support",
+        "EU AI Act compliance evidence tooling",
+        "Multi-BU rollout architecture guidance"
+      ],
+      "ctaLabel": "Contact us for enterprise pricing",
+      "responseNote": "Typically responds within one business day"
+    },
+    "faq": {
+      "items": [
+        {
+          "question": "Can I start with open source and upgrade later?",
+          "answer": "Yes. The open-source gateway is the same core product. Upgrading to Cloud or Enterprise adds managed operations and support commitments, not new features gated behind a paywall."
+        },
+        {
+          "question": "What does migration look like?",
+          "answer": "Odock is OpenAI-compatible. Point your existing API calls to the Odock endpoint and issue virtual API keys. No application code changes required. Most teams are live within 5 minutes."
+        },
+        {
+          "question": "Is MCP governance included in all tiers?",
+          "answer": "Yes. MCP tool access control, allowlists, and audit trails are part of the core gateway lifecycle across all three tiers."
+        },
+        {
+          "question": "Does enterprise pricing include EU AI Act compliance support?",
+          "answer": "Enterprise engagements include audit evidence tooling, structured logging for high-risk provisions, and data residency options, all relevant for EU AI Act compliance reviews."
+        }
+      ]
+    }
   },
   "faq": {
     "eyebrow": "Q&A",
@@ -996,7 +1089,7 @@
           { "label": "AI & MCP Gateway", "href": "/#ai-gateway" },
           { "label": "MCP Gateway", "href": "/mcp-gateway" },
           { "label": "Security", "href": "/#security" },
-          { "label": "Pricing", "href": "/#pricing" }
+          { "label": "Pricing", "href": "/pricing" }
         ]
       },
       {

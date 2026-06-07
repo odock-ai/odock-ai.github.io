@@ -39,17 +39,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const localizedStaticPages = SUPPORTED_LOCALES.flatMap((locale) =>
     staticPages
-      .filter((page) => !(locale !== DEFAULT_LOCALE && page.path === '/pricing'))
       .map((page) => ({
         url: pathForLocale(locale, page.path),
         lastModified: now,
         changeFrequency: page.changeFrequency,
         priority: page.priority,
         alternates: {
-          languages: languageAlternates(
-            page.path,
-            page.path === '/pricing' ? [DEFAULT_LOCALE] : SUPPORTED_LOCALES
-          ),
+          languages: languageAlternates(page.path),
         },
       }))
   );
