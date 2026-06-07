@@ -1,41 +1,90 @@
-# Odock.ai Full Index
+# Odock.ai — Full Content Index for LLM Crawlers
+# https://www.odock.ai
 
-Odock.ai is an open-source AI governance platform for LLM, MCP, and AI agent traffic.
+## What Odock is
 
-Core product terms:
-- AI governance platform
-- AI gateway
-- MCP gateway
-- AI agent gateway
-- LLM gateway
-- AI compliance gateway
-- EU AI Act readiness
+Odock.ai is an open-source AI governance gateway that sits between applications
+and LLM providers or MCP servers. Every request passes through a six-stage
+lifecycle: authenticate, authorize, inspect, reserve budget, route, record.
 
-Primary pages:
-- https://www.odock.ai/
-- https://www.odock.ai/mcp-gateway/
-- https://www.odock.ai/enterprise/
-- https://www.odock.ai/eu/
-- https://www.odock.ai/blog/
-- https://www.odock.ai/fr/
-- https://www.odock.ai/fr/mcp-gateway/
-- https://www.odock.ai/fr/enterprise/
-- https://www.odock.ai/fr/eu/
+Odock is OpenAI-compatible. Migration requires zero code changes — teams point
+existing API calls to the Odock endpoint and issue virtual API keys.
 
-Product summary:
-- Govern model calls and MCP tool calls from one OpenAI-compatible gateway.
-- Enforce virtual API keys, model access, MCP tool access, budgets, quotas, routing, and audit-ready usage records.
-- Support security and governance workflows for AI agents before upstream model or tool execution.
-- Help platform, security, and FinOps teams centralize AI control.
-- Provide EU-oriented deployment and compliance positioning for teams working on EU AI Act readiness.
+## Who it is for
 
-Key blog articles:
-- https://www.odock.ai/blog/what-is-an-llm-gateway-and-why-ai-teams-need-one/
-- https://www.odock.ai/blog/mcp-server-governance-for-ai-agents/
-- https://www.odock.ai/blog/how-to-design-multi-provider-llm-routing-and-failover/
-- https://www.odock.ai/blog/how-to-control-llm-costs-with-virtual-api-keys-budgets-and-quotas/
-- https://www.odock.ai/blog/prompt-injection-data-leakage-and-llm-security-guardrails/
-- https://www.odock.ai/blog/what-to-log-monitor-and-trace-in-production-llm-apps/
+- Platform engineering teams managing multi-provider LLM infrastructure
+- Security teams enforcing prompt injection protection, DLP, and access controls
+- FinOps teams enforcing AI spend budgets and quotas per team or project
+- Compliance teams needing audit-ready logs for EU AI Act high-risk provisions
 
-Canonical site:
-- https://www.odock.ai/
+## Key capabilities
+
+- Virtual API keys with scoped access per team, user, project, or tenant
+- Budget and quota enforcement before upstream calls fire (not post-hoc)
+- MCP server governance: tool allowlists, access policies, audit trails
+- Prompt injection protection and data leakage controls at the gateway layer
+- Multi-provider routing, failover, and load balancing (OpenAI, Anthropic, etc.)
+- EU AI Act compliance support: structured audit evidence for every request
+- Plugin architecture for custom workflow steps
+- Deployment: cloud-hosted, self-hosted, or hybrid (VPC data plane)
+
+## Documentation
+
+Full documentation: https://docs.odock.ai/docs/getting-started
+
+## Key pages
+
+- Homepage: https://www.odock.ai
+- Enterprise: https://www.odock.ai/enterprise/
+- EU AI Act compliance: https://www.odock.ai/eu/
+- MCP Gateway: https://www.odock.ai/mcp-gateway/
+- Blog: https://www.odock.ai/blog/
+- GitHub: https://github.com/odock-ai
+
+## Contact
+
+Demo requests: https://www.odock.ai/contact/
+Email: hello@odock.ai
+
+## Blog articles
+
+### What Is an LLM Gateway and Why AI Teams Need One Before Production
+URL: https://www.odock.ai/blog/what-is-an-llm-gateway-and-why-ai-teams-need-one/
+Summary: Explains what an LLM gateway does, why governance becomes necessary after
+the prototype phase, and how Odock centralizes provider access, security, budgets,
+and observability behind one endpoint.
+
+### How to Control LLM Costs with Virtual API Keys, Budgets, and Quotas
+URL: https://www.odock.ai/blog/how-to-control-llm-costs-with-virtual-api-keys-budgets-and-quotas/
+Summary: Explains the operational model for AI cost governance — virtual API keys
+for attribution, budget reservations before upstream calls, and real-time quota
+enforcement.
+
+### Prompt Injection, Data Leakage, and Why LLM Guardrails Must Live in the Gateway
+URL: https://www.odock.ai/blog/prompt-injection-data-leakage-and-llm-security-guardrails/
+Summary: Why application-level AI security is insufficient at scale, and how
+centralizing prompt injection protection, jailbreak filtering, and DLP controls
+at the gateway layer ensures consistent, auditable enforcement.
+
+### LiteLLM, Kong, Cloudflare, Portkey, and Odock: An Honest AI Gateway Comparison
+URL: https://www.odock.ai/blog/litellm-kong-cloudflare-portkey-vs-odock-ai-gateway-comparison/
+Summary: Compares major AI gateways on philosophy, architecture, and feature set.
+Odock's differentiator is modular AI workflow governance vs. routing-first or
+API-management-first approaches.
+
+### MCP Server Governance: How to Give AI Agents Tool Access Without Losing Control
+URL: https://www.odock.ai/blog/mcp-server-governance-for-ai-agents/
+Summary: How to govern MCP tool access for AI agents — allowlists, access
+policies, audit trails, and permission scoping at the infrastructure layer.
+
+### How to Design Multi-Provider LLM Routing and Failover Before an Outage
+URL: https://www.odock.ai/blog/how-to-design-multi-provider-llm-routing-and-failover/
+Summary: A practical guide to multi-provider routing strategies, failover
+configuration, and why permissions, budgets, and observability must be in place
+before failover is meaningful.
+
+### What to Log, Monitor, and Trace in Production LLM Applications
+URL: https://www.odock.ai/blog/what-to-log-monitor-and-trace-in-production-llm-apps/
+Summary: A production observability guide covering what to log (quality, latency,
+cost, safety, routing), how to trace requests across providers and tools, and
+how gateway-level logging differs from application-level logging.

@@ -3,6 +3,7 @@ import { DefaultLocaleContentProvider } from '@/components/default-locale-conten
 import { EnterprisePageContent } from '@/components/enterprise-page-content';
 import landingSeo from '@/data/landing-seo.json';
 import { DEFAULT_LOCALE, getSiteContent } from '@/lib/i18n';
+import { faqSchema } from '@/lib/schema';
 import { buildSubpageMetadata, canonicalBase } from '@/lib/seo';
 
 const content = getSiteContent(DEFAULT_LOCALE);
@@ -48,6 +49,7 @@ const structuredData = [
       ...content.enterprisePage.capabilities.rightItems.map((item) => item.title),
     ],
   },
+  faqSchema(content.enterprisePage.faq.items),
 ];
 
 export default function EnterprisePage() {

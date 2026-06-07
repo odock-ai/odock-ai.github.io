@@ -9,6 +9,10 @@ import { localizePath } from "@/lib/i18n"
 
 export function Hero() {
   const { content, locale } = useLandingContent()
+  const heroHeadline =
+    locale === "en"
+      ? "AI Governance Gateway for LLM & MCP Traffic"
+      : [content.hero.headlinePrefix, content.hero.headlineAccent].filter(Boolean).join(" ")
   const featureIcons = {
     shield: Shield,
     gauge: Gauge,
@@ -48,10 +52,7 @@ export function Hero() {
             </div>
 
             <h1 className="mb-5 max-w-[12ch] text-3xl font-medium leading-[1.05] tracking-tight text-foreground sm:mb-6 sm:max-w-[13ch] sm:text-4xl lg:max-w-none lg:text-5xl">
-              <span className="block">{content.hero.headlinePrefix}</span>
-              <span className="mt-2 block text-primary">
-                {content.hero.headlineAccent}
-              </span>
+              {heroHeadline}
             </h1>
 
             <p className="mb-7 max-w-xl text-sm leading-relaxed text-muted-foreground sm:mb-8 lg:text-base">

@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import blogUi from '@/data/blog-ui.json';
 import { extractMarkdownHeadings, type MarkdownHeading } from '@/lib/markdown';
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES, type Locale } from '@/lib/i18n';
+import { articleSchema, breadcrumbSchema, faqSchema } from '@/lib/schema';
 import {
   buildLanguageAlternates,
   canonicalBase,
@@ -398,14 +399,16 @@ export function buildBlogPostStructuredData(locale: Locale, post: BlogPost) {
   const authorUrl = getLocalizedAuthorUrl(locale, post.author.profileHref);
 
   const article = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.description,
+    ...articleSchema({
+      title: post.title,
+      description: post.description,
+      slug: post.slug,
+      publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt,
+      authorName: post.author.name,
+    }),
     mainEntityOfPage: articleUrl,
     url: articleUrl,
-    datePublished: post.publishedAt,
-    dateModified: post.updatedAt,
     keywords: post.keywords.join(', '),
     articleSection: post.category,
     author: {
@@ -422,28 +425,13 @@ export function buildBlogPostStructuredData(locale: Locale, post: BlogPost) {
     image: [getLocalizedOpenGraphImage(locale)],
   };
 
-  const breadcrumb = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: withCanonicalBase(getLocalizedPath(locale)) },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: withCanonicalBase(getBlogIndexPath(locale)) },
-      { '@type': 'ListItem', position: 3, name: post.title, item: articleUrl },
-    ],
-  };
+  const breadcrumb = breadcrumbSchema([
+    { name: 'Home', url: withCanonicalBase(getLocalizedPath(locale)) },
+    { name: 'Blog', url: withCanonicalBase(getBlogIndexPath(locale)) },
+    { name: post.title, url: articleUrl },
+  ]);
 
-  const faq =
-    post.faq.length > 0
-      ? {
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: post.faq.map((item) => ({
-            '@type': 'Question',
-            name: item.question,
-            acceptedAnswer: { '@type': 'Answer', text: item.answer },
-          })),
-        }
-      : null;
+  const faq = post.faq.length > 0 ? faqSchema(post.faq) : null;
 
   return [article, breadcrumb, faq].filter(Boolean);
 }

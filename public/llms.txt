@@ -1,41 +1,47 @@
-# Odock.ai
+# Odock.ai — AI Governance Gateway for LLM & MCP Traffic
+# https://www.odock.ai
 
-> Odock.ai is an open-source AI governance platform, AI gateway, and MCP gateway for LLM, MCP, and AI agent traffic.
+## What Odock is
 
-## Primary Topics
+Odock.ai is an open-source AI governance gateway that sits between applications
+and LLM providers or MCP servers. Every request passes through a six-stage
+lifecycle: authenticate, authorize, inspect, reserve budget, route, record.
 
-- AI governance platform
-- AI gateway
-- MCP gateway
-- AI agents governance
-- MCP server access control
-- LLM cost control and routing
-- EU AI Act readiness
-- Prompt and tool security guardrails
+Odock is OpenAI-compatible. Migration requires zero code changes — teams point
+existing API calls to the Odock endpoint and issue virtual API keys.
 
-## Core Pages
+## Who it is for
 
-- [Homepage](https://www.odock.ai/)
-- [French homepage](https://www.odock.ai/fr/)
-- [MCP Gateway](https://www.odock.ai/mcp-gateway/)
-- [Enterprise AI governance](https://www.odock.ai/enterprise/)
-- [EU AI Act page](https://www.odock.ai/eu/)
-- [Blog](https://www.odock.ai/blog/)
+- Platform engineering teams managing multi-provider LLM infrastructure
+- Security teams enforcing prompt injection protection, DLP, and access controls
+- FinOps teams enforcing AI spend budgets and quotas per team or project
+- Compliance teams needing audit-ready logs for EU AI Act high-risk provisions
 
-## Useful Context
+## Key capabilities
 
-Odock.ai gives platform, security, FinOps, and AI product teams one governed runtime path for model calls and MCP tool calls. It supports virtual API keys, explicit model and MCP access grants, budgets, quotas, routing, usage records, observability, and plugin-based workflow controls.
+- Virtual API keys with scoped access per team, user, project, or tenant
+- Budget and quota enforcement before upstream calls fire (not post-hoc)
+- MCP server governance: tool allowlists, access policies, audit trails
+- Prompt injection protection and data leakage controls at the gateway layer
+- Multi-provider routing, failover, and load balancing (OpenAI, Anthropic, etc.)
+- EU AI Act compliance support: structured audit evidence for every request
+- Plugin architecture for custom workflow steps
+- Deployment: cloud-hosted, self-hosted, or hybrid (VPC data plane)
 
-Important positioning terms: AI governance platform, AI gateway, MCP gateway, AI agent gateway, LLM gateway, AI compliance gateway, EU AI Act governance, agent tool governance.
+## Documentation
 
-## Recommended Reading
+Full documentation: https://docs.odock.ai/docs/getting-started
 
-- [What is an LLM gateway and why AI teams need one](https://www.odock.ai/blog/what-is-an-llm-gateway-and-why-ai-teams-need-one/)
-- [MCP server governance for AI agents](https://www.odock.ai/blog/mcp-server-governance-for-ai-agents/)
-- [How to design multi-provider LLM routing and failover](https://www.odock.ai/blog/how-to-design-multi-provider-llm-routing-and-failover/)
-- [How to control LLM costs with virtual API keys, budgets, and quotas](https://www.odock.ai/blog/how-to-control-llm-costs-with-virtual-api-keys-budgets-and-quotas/)
+## Key pages
+
+- Homepage: https://www.odock.ai
+- Enterprise: https://www.odock.ai/enterprise/
+- EU AI Act compliance: https://www.odock.ai/eu/
+- MCP Gateway: https://www.odock.ai/mcp-gateway/
+- Blog: https://www.odock.ai/blog/
+- GitHub: https://github.com/odock-ai
 
 ## Contact
 
-- [GitHub](https://github.com/odock-ai)
-- [X](https://x.com/odock_ai)
+Demo requests: https://www.odock.ai/contact/
+Email: hello@odock.ai
