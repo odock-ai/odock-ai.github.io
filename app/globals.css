@@ -1,0 +1,370 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Light mode (default) */
+:root {
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.12 0.01 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.12 0.01 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.12 0.01 250);
+  --primary: oklch(0.55 0.18 250);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.94 0.01 250);
+  --secondary-foreground: oklch(0.12 0.01 250);
+  --muted: oklch(0.92 0.01 250);
+  --muted-foreground: oklch(0.45 0.01 250);
+  --accent: oklch(0.55 0.18 250);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.88 0.01 250);
+  --input: oklch(0.92 0.01 250);
+  --ring: oklch(0.55 0.18 250);
+  --chart-1: oklch(0.55 0.18 250);
+  --chart-2: oklch(0.60 0.15 165);
+  --chart-3: oklch(0.70 0.18 85);
+  --chart-4: oklch(0.55 0.22 25);
+  --chart-5: oklch(0.50 0.12 300);
+  --radius: 0.125rem;
+  --grid-color: oklch(0.62 0.02 250 / 0.35);
+  --glow-color: oklch(0.55 0.18 250 / 0.15);
+}
+
+/* Dark mode */
+.dark {
+  --background: oklch(0.08 0.01 250);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.12 0.01 250);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.12 0.01 250);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: oklch(0.70 0.15 195);
+  --primary-foreground: oklch(0.08 0.01 250);
+  --secondary: oklch(0.18 0.01 250);
+  --secondary-foreground: oklch(0.95 0 0);
+  --muted: oklch(0.16 0.01 250);
+  --muted-foreground: oklch(0.60 0 0);
+  --accent: oklch(0.70 0.15 195);
+  --accent-foreground: oklch(0.08 0.01 250);
+  --destructive: oklch(0.60 0.22 25);
+  --destructive-foreground: oklch(0.95 0 0);
+  --border: oklch(0.22 0.02 250);
+  --input: oklch(0.18 0.01 250);
+  --ring: oklch(0.70 0.15 195);
+  --chart-1: oklch(0.70 0.15 195);
+  --chart-2: oklch(0.65 0.12 165);
+  --chart-3: oklch(0.75 0.18 85);
+  --chart-4: oklch(0.60 0.22 25);
+  --chart-5: oklch(0.55 0.12 300);
+  --grid-color: oklch(0.22 0.02 250 / 0.5);
+  --glow-color: oklch(0.70 0.15 195 / 0.1);
+}
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Grid pattern background - code editor style */
+.grid-pattern {
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Large grid overlay */
+.grid-pattern-large {
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 120px 120px;
+}
+
+/* Dot pattern alternative */
+.dot-pattern {
+  background-image: radial-gradient(circle, var(--grid-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Animated pulse for active elements */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Blink animation for cursor */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Network line animation */
+@keyframes flow {
+  0% { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.animate-flow {
+  animation: flow 2s linear infinite;
+}
+
+/* Data stream animation */
+@keyframes data-stream {
+  0% { transform: translateX(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+.animate-data-stream {
+  animation: data-stream 3s linear infinite;
+}
+
+/* Fade in up animation */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* Stagger children animations */
+.stagger-children > * {
+  opacity: 0;
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* Glow effect */
+.glow {
+  box-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
+}
+
+/* Terminal style scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* Code block styling */
+.code-block {
+  font-family: var(--font-mono);
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+/* Blog prose styling for optimal reading experience */
+.blog-prose {
+  position: relative;
+}
+
+.blog-prose > :first-child {
+  margin-top: 0;
+}
+
+.blog-prose a {
+  word-break: break-word;
+}
+
+.blog-prose h2,
+.blog-prose h3 {
+  scroll-margin-top: 6rem;
+}
+
+.blog-prose h2 a,
+.blog-prose h3 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.blog-prose h2 a:hover,
+.blog-prose h3 a:hover {
+  color: var(--primary);
+}
+
+.blog-prose p {
+  text-wrap: pretty;
+}
+
+.blog-prose code {
+  font-family: var(--font-mono);
+}
+
+.blog-prose pre code {
+  font-size: 0.875rem;
+  line-height: 1.75;
+}
+
+/* Smooth scroll behavior for TOC links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* Typing animation */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.animate-typing {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(40, end);
+}
+
+/* Scan line effect for retro feel */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes scanline-vertical {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100vw); }
+}
+
+@keyframes scanline-vertical-reverse {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100vw); }
+}
+
+.scanline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to bottom, transparent, var(--primary) 50%, transparent);
+  opacity: 0.08;
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+}
+
+.scanline-vertical::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background: linear-gradient(to right, transparent, var(--primary) 50%, transparent);
+  opacity: 0.06;
+  animation: scanline-vertical 10s linear infinite;
+  pointer-events: none;
+}
+
+.scanline-vertical-reverse::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 3px;
+  background: linear-gradient(to right, transparent, var(--primary) 50%, transparent);
+  opacity: 0.05;
+  animation: scanline-vertical-reverse 14s linear infinite;
+  pointer-events: none;
+}
+
+/* Line numbers gutter style */
+.line-numbers {
+  counter-reset: line;
+}
+
+.line-numbers > * {
+  counter-increment: line;
+}
+
+.line-numbers > *::before {
+  content: counter(line);
+  display: inline-block;
+  width: 2rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: var(--muted-foreground);
+  opacity: 0.5;
+}
