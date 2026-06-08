@@ -1,7 +1,90 @@
 {
   "seo": {
     "title": "Odock.ai - Plateforme de gouvernance IA pour le trafic LLM et MCP",
-    "description": "Gouvernez chaque appel modèle. Contrôlez chaque appel outil. Odock.ai offre aux équipes une passerelle unique pour le trafic LLM et MCP avec politiques d'accès, garde-fous de sécurité, budgets, quotas, routage et journaux d'usage prêts pour l'audit."
+    "description": "Gouvernez chaque appel modèle. Contrôlez chaque appel outil. Odock.ai offre aux équipes une passerelle unique pour le trafic LLM et MCP avec politiques d'accès, garde-fous de sécurité, budgets, quotas, routage et journaux d'usage prêts pour l'audit.",
+    "canonical": "https://www.odock.ai/",
+    "titleTemplate": "%s | Odock.ai",
+    "keywords": [
+      "AI governance gateway",
+      "AI governance platform",
+      "AI gateway",
+      "AI agent gateway",
+      "AI agents governance",
+      "open-source AI gateway",
+      "LLM gateway",
+      "MCP gateway",
+      "MCP server gateway",
+      "agent gateway",
+      "AI platform governance",
+      "OpenAI-compatible gateway",
+      "self-hosted AI gateway",
+      "LLM cost governance",
+      "AI gateway budgets",
+      "MCP access control",
+      "AI tool governance",
+      "AI traffic governance",
+      "EU AI Act compliance tools",
+      "EU AI Act governance platform",
+      "AI compliance gateway",
+      "prompt injection gateway",
+      "LLM observability gateway",
+      "virtual API keys",
+      "budget reservation",
+      "odock.ai"
+    ],
+    "openGraph": {
+      "title": "Odock.ai | Plateforme de gouvernance IA pour les LLM, MCP et agents IA",
+      "description": "Gouvernez chaque requête LLM, MCP et agent IA avec des clés virtuelles, des droits d'accès, des budgets, du routage, des journaux d'usage et de l'observabilité.",
+      "url": "https://www.odock.ai/",
+      "siteName": "Odock.ai",
+      "images": [
+        {
+          "url": "https://www.odock.ai/odock-ai-fr.png",
+          "width": 1280,
+          "height": 720,
+          "alt": "Page d'accueil Odock.ai de la passerelle de gouvernance IA"
+        }
+      ],
+      "locale": "fr_FR",
+      "type": "website"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "site": "@odock_ai",
+      "creator": "@odock_ai"
+    },
+    "robots": {
+      "index": true,
+      "follow": true,
+      "googleBot": {
+        "index": true,
+        "follow": true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1
+      }
+    },
+    "schema": {
+      "organization": {
+        "@id": "https://www.odock.ai/#organization",
+        "name": "Odock.ai",
+        "url": "https://www.odock.ai",
+        "logo": "https://www.odock.ai/logo-dark.svg",
+        "description": "Plateforme open source de gouvernance IA et passerelle pour le trafic LLM, MCP et agents IA.",
+        "sameAs": [
+          "https://github.com/odock-ai",
+          "https://x.com/odock_ai"
+        ]
+      },
+      "website": {
+        "@id": "https://www.odock.ai/#website",
+        "name": "Odock.ai",
+        "url": "https://www.odock.ai",
+        "description": "Plateforme de gouvernance IA, AI gateway et passerelle MCP pour le trafic de modèles et d'outils."
+      },
+      "faq": [],
+      "breadcrumbs": []
+    }
   },
   "header": {
     "brand": {
@@ -883,6 +966,10 @@
     ]
   },
   "pricing": {
+    "metadata": {
+      "title": "Tarifs | Odock.ai — Passerelle de gouvernance IA",
+      "description": "Tarifs Odock.ai : offre open source auto-hébergée, passerelle managée dans le cloud et offres entreprise avec SLA, SSO et support dédié. Contactez-nous pour le tarif entreprise."
+    },
     "eyebrow": "Tarifs",
     "title": "Self-hosted, managé ou cloud privé.",
     "description": "Commencez en open source, passez à un cloud managé ou déployez dans votre propre infrastructure.",

@@ -2,8 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { LocalizedContentProvider } from '@/components/localized-content-provider';
 import { EuPageContent } from '@/components/eu-page-content';
-import landingSeo from '@/data/landing-seo.json';
-import { buildSubpageMetadata, canonicalBase } from '@/lib/seo';
+import { buildEuStructuredData, buildSubpageMetadata } from '@/lib/seo';
 import { getSiteContent, isLocale, NON_DEFAULT_LOCALES, type Locale } from '@/lib/i18n';
 
 export const dynamic = 'force-static';
@@ -36,38 +35,7 @@ export default async function LocaleEUPage({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const content = getSiteContent(locale);
-  const title = content.euPage.metadata.title;
-  const description = content.euPage.metadata.description;
-  const pageUrl = canonicalBase ? `${canonicalBase}/${locale}/eu/` : `/${locale}/eu/`;
-
-  const structuredData = [
-    {
-      '@context': 'https://schema.org',
-      '@type': 'WebPage',
-      '@id': `${pageUrl}#webpage`,
-      url: pageUrl,
-      name: title,
-      description,
-      inLanguage: locale,
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: content.euPage.faq.items.map((item) => ({
-        '@type': 'Question',
-        name: item.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: item.answer,
-        },
-      })),
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      ...landingSeo.schema.organization,
-    },
-  ];
+  const structuredData = buildEuStructuredData(locale as Locale, content);
 
   return (
     <>

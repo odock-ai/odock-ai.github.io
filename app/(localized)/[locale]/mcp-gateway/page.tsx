@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { LocalizedContentProvider } from '@/components/localized-content-provider';
 import { MCPGatewayPageContent } from '@/components/mcp-gateway-page-content';
-import { buildSubpageMetadata } from '@/lib/seo';
+import { buildMcpGatewayStructuredData, buildSubpageMetadata } from '@/lib/seo';
 import { getSiteContent, isLocale, NON_DEFAULT_LOCALES, type Locale } from '@/lib/i18n';
 
 export const dynamic = 'force-static';
@@ -35,10 +35,20 @@ export default async function LocaleMCPGatewayPage({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const content = getSiteContent(locale);
+  const structuredData = buildMcpGatewayStructuredData(locale as Locale, content);
 
   return (
-    <LocalizedContentProvider locale={locale as Locale}>
-      <MCPGatewayPageContent locale={locale as Locale} content={content} />
-    </LocalizedContentProvider>
+    <>
+      {structuredData.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+      <LocalizedContentProvider locale={locale as Locale}>
+        <MCPGatewayPageContent locale={locale as Locale} content={content} />
+      </LocalizedContentProvider>
+    </>
   );
 }

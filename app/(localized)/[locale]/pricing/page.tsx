@@ -23,8 +23,8 @@ export async function generateMetadata({
   return buildSubpageMetadata(
     locale as Locale,
     '/pricing',
-    `${content.pricing.eyebrow} | Odock.ai`,
-    content.pricing.description
+    content.pricing.metadata.title,
+    content.pricing.metadata.description
   );
 }
 

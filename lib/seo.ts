@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import landingSeo from '@/data/landing-seo.json';
-import { DEFAULT_LOCALE, SUPPORTED_LOCALES, type Locale, type SiteContent } from '@/lib/i18n';
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES, getSiteContent, type Locale, type SiteContent } from '@/lib/i18n';
 
 type Breadcrumb = { name: string; url: string };
 
-export const canonicalBase = landingSeo.canonical?.replace(/\/$/, '') || '';
-const siteName = landingSeo.schema?.website?.name || 'Odock.ai';
-export const defaultRobots: Metadata['robots'] = {
+const defaultSiteContent = getSiteContent(DEFAULT_LOCALE);
+const siteName = defaultSiteContent.seo.schema?.website?.name || defaultSiteContent.header.brand.name;
+export const canonicalBase = defaultSiteContent.seo.canonical?.replace(/\/$/, '') || '';
+export const defaultRobots = {
   index: true,
   follow: true,
   googleBot: {
@@ -15,8 +15,8 @@ export const defaultRobots: Metadata['robots'] = {
     'max-image-preview': 'large',
     'max-snippet': -1,
     'max-video-preview': -1,
-  },
-};
+  } as const,
+} satisfies Metadata['robots'];
 
 const localeToOgLocale: Record<Locale, string> = {
   en: 'en_US',
@@ -64,6 +64,10 @@ function normalizeAssetUrl(url: string) {
   return canonicalBase ? `${canonicalBase}${cleanPath}` : cleanPath;
 }
 
+function getSeoConfig(content: SiteContent) {
+  return content.seo;
+}
+
 function getCanonicalPath(locale: Locale, pathSuffix = '') {
   return locale === DEFAULT_LOCALE ? pathSuffix || '/' : `/${locale}${pathSuffix}`;
 }
@@ -88,21 +92,21 @@ export function getOpenGraphLocale(locale: Locale) {
   return localeToOgLocale[locale];
 }
 
-function buildOgImages() {
-  return landingSeo.openGraph?.images?.map((image) => ({
+function buildOgImages(content: SiteContent) {
+  return getSeoConfig(content).openGraph?.images?.map((image) => ({
     ...image,
     url: normalizeUrl(image.url),
   }));
 }
 
-function buildPreviewImages(locale: Locale) {
+function buildPreviewImages(locale: Locale, content: SiteContent) {
   const localizedImage = localePreviewImage[locale];
   const images = [
     {
       ...localizedImage,
       url: normalizeAssetUrl(localizedImage.url),
     },
-    ...(buildOgImages() ?? []),
+    ...(buildOgImages(content) ?? []),
   ];
 
   return images.filter(
@@ -112,72 +116,74 @@ function buildPreviewImages(locale: Locale) {
 
 export function buildRootMetadata(content: SiteContent): Metadata {
   const canonical = getCanonicalUrl(DEFAULT_LOCALE);
+  const seo = getSeoConfig(content);
 
   return {
-    title: content.seo.title,
-    description: content.seo.description,
-    keywords: landingSeo.keywords,
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
     applicationName: siteName,
     metadataBase: canonicalBase ? new URL(canonicalBase) : undefined,
     alternates: {
       canonical,
       languages: buildLanguageAlternates(),
     },
-    robots: defaultRobots,
+    robots: (seo.robots as Metadata['robots'] | undefined) ?? defaultRobots,
     category: 'technology',
     creator: siteName,
     publisher: siteName,
     referrer: 'origin-when-cross-origin',
     openGraph: {
-      ...landingSeo.openGraph,
-      title: content.seo.title,
-      description: content.seo.description,
+      ...seo.openGraph,
+      title: seo.title,
+      description: seo.description,
       locale: localeToOgLocale.en,
       url: canonical,
       siteName,
-      images: buildPreviewImages(DEFAULT_LOCALE),
+      images: buildPreviewImages(DEFAULT_LOCALE, content),
     },
     twitter: {
-      ...landingSeo.twitter,
-      title: content.seo.title,
-      description: content.seo.description,
-      images: buildPreviewImages(DEFAULT_LOCALE).map(({ url, alt }) => ({ url, alt })),
+      ...seo.twitter,
+      title: seo.title,
+      description: seo.description,
+      images: buildPreviewImages(DEFAULT_LOCALE, content).map(({ url, alt }) => ({ url, alt })),
     },
   };
 }
 
 export function buildMetadata(locale: Locale, content: SiteContent): Metadata {
   const canonical = getCanonicalUrl(locale);
+  const seo = getSeoConfig(content);
 
   return {
-    title: content.seo.title,
-    description: content.seo.description,
-    keywords: landingSeo.keywords,
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
     applicationName: siteName,
     metadataBase: canonicalBase ? new URL(canonicalBase) : undefined,
     alternates: {
       canonical,
       languages: buildLanguageAlternates(),
     },
-    robots: defaultRobots,
+    robots: (seo.robots as Metadata['robots'] | undefined) ?? defaultRobots,
     category: 'technology',
     creator: siteName,
     publisher: siteName,
     referrer: 'origin-when-cross-origin',
     openGraph: {
-      ...landingSeo.openGraph,
-      title: content.seo.title,
-      description: content.seo.description,
+      ...seo.openGraph,
+      title: seo.title,
+      description: seo.description,
       locale: localeToOgLocale[locale],
       url: canonical,
       siteName,
-      images: buildPreviewImages(locale),
+      images: buildPreviewImages(locale, content),
     },
     twitter: {
-      ...landingSeo.twitter,
-      title: content.seo.title,
-      description: content.seo.description,
-      images: buildPreviewImages(locale).map(({ url, alt }) => ({ url, alt })),
+      ...seo.twitter,
+      title: seo.title,
+      description: seo.description,
+      images: buildPreviewImages(locale, content).map(({ url, alt }) => ({ url, alt })),
     },
   };
 }
@@ -189,49 +195,52 @@ export function buildSubpageMetadata(
   description: string
 ): Metadata {
   const canonical = getCanonicalUrl(locale, pathSuffix);
+  const seo = getSeoConfig(getSiteContent(locale));
 
   return {
     title,
     description,
-    keywords: landingSeo.keywords,
+    keywords: seo.keywords,
     applicationName: siteName,
     metadataBase: canonicalBase ? new URL(canonicalBase) : undefined,
     alternates: {
       canonical,
       languages: buildLanguageAlternates(pathSuffix),
     },
-    robots: defaultRobots,
+    robots: (seo.robots as Metadata['robots'] | undefined) ?? defaultRobots,
     category: 'technology',
     creator: siteName,
     publisher: siteName,
     referrer: 'origin-when-cross-origin',
     openGraph: {
-      ...landingSeo.openGraph,
+      ...seo.openGraph,
       title,
       description,
       locale: localeToOgLocale[locale],
       url: canonical,
       siteName,
-      images: buildPreviewImages(locale),
+      images: buildPreviewImages(locale, getSiteContent(locale)),
     },
     twitter: {
-      ...landingSeo.twitter,
+      ...seo.twitter,
       title,
       description,
-      images: buildPreviewImages(locale).map(({ url, alt }) => ({ url, alt })),
+      images: buildPreviewImages(locale, getSiteContent(locale)).map(({ url, alt }) => ({ url, alt })),
     },
   };
 }
 
 export function buildStructuredData(locale: Locale, content: SiteContent) {
   const pageUrl = getCanonicalUrl(locale);
+  const seo = getSeoConfig(content);
+  const siteSchema = seo.schema;
   const webpage = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     '@id': `${pageUrl}#webpage`,
     url: pageUrl,
-    name: content.seo.title,
-    description: content.seo.description,
+    name: seo.title,
+    description: seo.description,
     inLanguage: locale,
     isPartOf: `${canonicalBase}/#website`,
     about: [
@@ -244,7 +253,7 @@ export function buildStructuredData(locale: Locale, content: SiteContent) {
   };
 
   const breadcrumbItems =
-    landingSeo.schema?.breadcrumbs?.map((crumb: Breadcrumb, index: number) => ({
+    siteSchema?.breadcrumbs?.map((crumb: Breadcrumb, index: number) => ({
       '@type': 'ListItem',
       position: index + 1,
       name: crumb.name,
@@ -252,24 +261,22 @@ export function buildStructuredData(locale: Locale, content: SiteContent) {
     })) || [];
 
   const organization =
-    landingSeo.schema?.organization && Object.keys(landingSeo.schema.organization).length > 0
+    siteSchema?.organization && Object.keys(siteSchema.organization).length > 0
       ? {
           '@context': 'https://schema.org',
           '@type': 'Organization',
-          ...landingSeo.schema.organization,
-          url: normalizeUrl(landingSeo.schema.organization.url),
-          logo: normalizeUrl(
-            (landingSeo.schema.organization as unknown as Record<string, string>).logo || ''
-          ),
+          ...siteSchema.organization,
+          url: normalizeUrl(siteSchema.organization.url),
+          logo: normalizeUrl((siteSchema.organization as unknown as Record<string, string>).logo || ''),
         }
       : null;
 
   const website =
-    landingSeo.schema?.website && Object.keys(landingSeo.schema.website).length > 0
+    siteSchema?.website && Object.keys(siteSchema.website).length > 0
       ? {
           '@context': 'https://schema.org',
           '@type': 'WebSite',
-          ...landingSeo.schema.website,
+          ...siteSchema.website,
           url: canonicalBase,
           name: content.header.brand.name,
           inLanguage: locale,
@@ -282,11 +289,11 @@ export function buildStructuredData(locale: Locale, content: SiteContent) {
   const softwareApplication = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'Odock.ai',
+    name: content.header.brand.name,
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web',
     url: pageUrl,
-    description: content.seo.description,
+    description: seo.description,
     inLanguage: locale,
     publisher: {
       '@id': `${canonicalBase}/#organization`,
@@ -334,4 +341,149 @@ export function buildStructuredData(locale: Locale, content: SiteContent) {
       : null;
 
   return [organization, website, webpage, softwareApplication, breadcrumbList, faq].filter(Boolean);
+}
+
+export function buildEnterpriseStructuredData(locale: Locale, content: SiteContent) {
+  const pageUrl = getCanonicalUrl(locale, '/enterprise');
+  const seo = getSeoConfig(content);
+  const organization =
+    seo.schema?.organization && Object.keys(seo.schema.organization).length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          ...seo.schema.organization,
+          url: normalizeUrl(seo.schema.organization.url),
+          logo: normalizeUrl((seo.schema.organization as unknown as Record<string, string>).logo || ''),
+        }
+      : null;
+
+  const softwareApplication = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: content.header.brand.name,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    url: pageUrl,
+    description: content.enterprisePage.metadata.description,
+    publisher: {
+      '@id': `${canonicalBase}/#organization`,
+    },
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      category: 'Enterprise software',
+    },
+    featureList: [
+      ...content.enterprisePage.capabilities.leftItems.map((item) => item.title),
+      ...content.enterprisePage.capabilities.rightItems.map((item) => item.title),
+    ],
+  };
+
+  const faq =
+    content.enterprisePage.faq.items.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: content.enterprisePage.faq.items.map((item) => ({
+            '@type': 'Question',
+            name: item.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: item.answer,
+            },
+          })),
+        }
+      : null;
+
+  const webpage = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: content.enterprisePage.metadata.title,
+    description: content.enterprisePage.metadata.description,
+    inLanguage: locale,
+    publisher: {
+      '@id': `${canonicalBase}/#organization`,
+    },
+  };
+
+  return [organization, webpage, softwareApplication, faq].filter(Boolean);
+}
+
+export function buildEuStructuredData(locale: Locale, content: SiteContent) {
+  const pageUrl = getCanonicalUrl(locale, '/eu');
+  const seo = getSeoConfig(content);
+  const organization =
+    seo.schema?.organization && Object.keys(seo.schema.organization).length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          ...seo.schema.organization,
+          url: normalizeUrl(seo.schema.organization.url),
+          logo: normalizeUrl((seo.schema.organization as unknown as Record<string, string>).logo || ''),
+        }
+      : null;
+
+  const faq =
+    content.euPage.faq.items.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: content.euPage.faq.items.map((item) => ({
+            '@type': 'Question',
+            name: item.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: item.answer,
+            },
+          })),
+        }
+      : null;
+
+  const webpage = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: content.euPage.metadata.title,
+    description: content.euPage.metadata.description,
+    inLanguage: locale,
+  };
+
+  return [organization, webpage, faq].filter(Boolean);
+}
+
+export function buildMcpGatewayStructuredData(locale: Locale, content: SiteContent) {
+  const pageUrl = getCanonicalUrl(locale, '/mcp-gateway');
+  const seo = getSeoConfig(content);
+
+  return [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: content.mcpGatewayPage.metadata.title,
+      description: content.mcpGatewayPage.metadata.description,
+      isPartOf: canonicalBase || undefined,
+      inLanguage: locale,
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'TechArticle',
+      headline: content.mcpGatewayPage.title,
+      description: content.mcpGatewayPage.metadata.description,
+      author: {
+        '@type': 'Organization',
+        name: seo.schema?.organization?.name || content.header.brand.name,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: seo.schema?.organization?.name || content.header.brand.name,
+      },
+      mainEntityOfPage: pageUrl,
+    },
+  ];
 }
