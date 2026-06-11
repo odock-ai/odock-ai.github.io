@@ -77,6 +77,18 @@ URL: https://odock.ai/blog/mcp-server-governance-for-ai-agents/
 Summary: How to govern MCP tool access for AI agents — allowlists, access
 policies, audit trails, and permission scoping at the infrastructure layer.
 
+### AI Security in 2026: Prompt Injection, Tool Poisoning, and the New Agentic Risk Stack
+URL: https://odock.ai/blog/ai-security-in-2026-prompt-injection-tool-poisoning-and-agentic-risk/
+Summary: A dated 2025-2026 comparison of the latest OWASP and MCP security
+guidance against Odock's runtime controls for prompt injection, leakage,
+capability governance, and unbounded consumption.
+
+### How to Build a Lifecycle-Aware AI Security Engine
+URL: https://odock.ai/blog/how-to-build-a-lifecycle-aware-ai-security-engine/
+Summary: Explains why modern AI security must be staged across request,
+identity, token, tool, and response phases, and compares that architecture
+with Odock's SafetySec and gateway enforcement model.
+
 ### How to Design Multi-Provider LLM Routing and Failover Before an Outage
 URL: https://odock.ai/blog/how-to-design-multi-provider-llm-routing-and-failover/
 Summary: A practical guide to multi-provider routing strategies, failover

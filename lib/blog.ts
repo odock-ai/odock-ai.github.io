@@ -80,17 +80,17 @@ const BLOG_INDEX_TITLES: Record<Locale, string> = {
 
 const DEFAULT_BLOG_AUTHORS: Record<Locale, BlogAuthor> = {
   en: {
-    name: 'Odock Editorial Team',
-    role: 'LLM infrastructure, security, and cost control',
-    bio: 'Practical writing from the Odock team on provider routing, guardrails, observability, and production AI operations.',
-    avatarLabel: 'OE',
+    name: 'Youcef Kaddour',
+    role: 'Founder at Odock and AI infrastructure engineer',
+    bio: 'Youcef Kaddour is the founder of Odock and an AI infrastructure engineer focused on secure LLM systems, MCP governance, runtime guardrails, and production-grade multi-provider AI architecture.',
+    avatarLabel: 'YK',
     profileHref: '/contact',
   },
   fr: {
-    name: 'Équipe éditoriale Odock',
-    role: 'Infrastructure LLM, sécurité et maîtrise des coûts',
-    bio: 'Des contenus pratiques de l’équipe Odock sur le routing multi-provider, les guardrails, l’observability et l’exploitation IA en production.',
-    avatarLabel: 'OE',
+    name: 'Youcef Kaddour',
+    role: 'Fondateur d’Odock et ingénieur en infrastructure IA',
+    bio: 'Youcef Kaddour est le fondateur d’Odock et un ingénieur en infrastructure IA spécialisé dans les systèmes LLM sécurisés, la gouvernance MCP, les guardrails runtime et les architectures IA multi-provider prêtes pour la production.',
+    avatarLabel: 'YK',
     profileHref: '/contact',
   },
 };
