@@ -2,7 +2,7 @@
   "seo": {
     "title": "Odock.ai - Plateforme de gouvernance IA pour le trafic LLM et MCP",
     "description": "Gouvernez chaque appel modèle. Contrôlez chaque appel outil. Odock.ai offre aux équipes une passerelle unique pour le trafic LLM et MCP avec politiques d'accès, garde-fous de sécurité, budgets, quotas, routage et journaux d'usage prêts pour l'audit.",
-    "canonical": "https://www.odock.ai/",
+    "canonical": "https://odock.ai/",
     "titleTemplate": "%s | Odock.ai",
     "keywords": [
       "AI governance gateway",
@@ -35,11 +35,11 @@
     "openGraph": {
       "title": "Odock.ai | Plateforme de gouvernance IA pour les LLM, MCP et agents IA",
       "description": "Gouvernez chaque requête LLM, MCP et agent IA avec des clés virtuelles, des droits d'accès, des budgets, du routage, des journaux d'usage et de l'observabilité.",
-      "url": "https://www.odock.ai/",
+      "url": "https://odock.ai/",
       "siteName": "Odock.ai",
       "images": [
         {
-          "url": "https://www.odock.ai/odock-ai-fr.png",
+          "url": "https://odock.ai/odock-ai-fr.png",
           "width": 1280,
           "height": 720,
           "alt": "Page d'accueil Odock.ai de la passerelle de gouvernance IA"
@@ -66,10 +66,10 @@
     },
     "schema": {
       "organization": {
-        "@id": "https://www.odock.ai/#organization",
+        "@id": "https://odock.ai/#organization",
         "name": "Odock.ai",
-        "url": "https://www.odock.ai",
-        "logo": "https://www.odock.ai/logo-dark.svg",
+        "url": "https://odock.ai",
+        "logo": "https://odock.ai/logo-dark.svg",
         "description": "Plateforme open source de gouvernance IA et passerelle pour le trafic LLM, MCP et agents IA.",
         "sameAs": [
           "https://github.com/odock-ai",
@@ -77,9 +77,9 @@
         ]
       },
       "website": {
-        "@id": "https://www.odock.ai/#website",
+        "@id": "https://odock.ai/#website",
         "name": "Odock.ai",
-        "url": "https://www.odock.ai",
+        "url": "https://odock.ai",
         "description": "Plateforme de gouvernance IA, AI gateway et passerelle MCP pour le trafic de modèles et d'outils."
       },
       "faq": [],

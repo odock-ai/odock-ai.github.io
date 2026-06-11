@@ -75,6 +75,19 @@ function deepMerge<T>(base: T, override: DeepPartial<T>): T {
   return (override as T) ?? base;
 }
 
+function withTrailingSlash(path: string) {
+  const match = path.match(/^([^?#]*)([?#].*)?$/);
+  if (!match) return path;
+
+  const pathname = match[1];
+  const suffix = match[2] ?? '';
+
+  if (!pathname || pathname === '/') return path;
+
+  const normalizedPathname = pathname.endsWith('/') ? pathname : `${pathname}/`;
+  return `${normalizedPathname}${suffix}`;
+}
+
 export function getSiteContent(locale: string): SiteContent {
   const normalized = normalizeLocale(locale);
   return deepMerge(enContent, TRANSLATIONS[normalized]);
@@ -95,11 +108,11 @@ export function localizePath(path: string, locale: Locale): string {
   if (path.startsWith('http')) return path;
 
   if (path.startsWith('#')) {
-    return localePrefix ? `${localePrefix}/${path}` : `/${path}`;
+    return withTrailingSlash(localePrefix ? `${localePrefix}/${path}` : `/${path}`);
   }
 
   if (!path.startsWith('/')) return path;
   if (path === '/') return localePrefix || '/';
 
-  return `${localePrefix}${path}`;
+  return withTrailingSlash(`${localePrefix}${path}`);
 }

@@ -2,7 +2,7 @@
   "seo": {
     "title": "AI Governance Gateway for LLM & MCP Traffic",
     "description": "Govern every model call. Control every tool call. Odock.ai gives teams one controlled gateway for LLM and MCP traffic with access policies, security guardrails, budgets, quotas, routing, compliance controls, and audit-ready usage records.",
-    "canonical": "https://www.odock.ai/",
+    "canonical": "https://odock.ai/",
     "titleTemplate": "%s | Odock.ai",
     "keywords": [
       "AI governance gateway",
@@ -35,11 +35,11 @@
     "openGraph": {
       "title": "Odock.ai | AI Governance Platform for LLMs, MCP, and AI Agents",
       "description": "Govern every LLM, MCP, and AI agent request with virtual keys, access grants, budgets, routing, usage records, and observability.",
-      "url": "https://www.odock.ai/",
+      "url": "https://odock.ai/",
       "siteName": "Odock.ai",
       "images": [
         {
-          "url": "https://www.odock.ai/odock-ai.png",
+          "url": "https://odock.ai/odock-ai.png",
           "width": 1280,
           "height": 720,
           "alt": "Odock.ai AI governance gateway landing page"
@@ -66,10 +66,10 @@
     },
     "schema": {
       "organization": {
-        "@id": "https://www.odock.ai/#organization",
+        "@id": "https://odock.ai/#organization",
         "name": "Odock.ai",
-        "url": "https://www.odock.ai",
-        "logo": "https://www.odock.ai/logo-dark.svg",
+        "url": "https://odock.ai",
+        "logo": "https://odock.ai/logo-dark.svg",
         "description": "Open-source AI governance platform and gateway for LLM, MCP, and AI agent traffic.",
         "sameAs": [
           "https://github.com/odock-ai",
@@ -77,9 +77,9 @@
         ]
       },
       "website": {
-        "@id": "https://www.odock.ai/#website",
+        "@id": "https://odock.ai/#website",
         "name": "Odock.ai",
-        "url": "https://www.odock.ai",
+        "url": "https://odock.ai",
         "description": "AI governance platform, AI gateway, and MCP gateway for governed model and tool traffic."
       },
       "faq": [],

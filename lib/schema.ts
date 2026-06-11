@@ -3,8 +3,8 @@ export function organizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Odock.ai',
-    url: 'https://www.odock.ai',
-    logo: 'https://www.odock.ai/logo-dark.svg',
+    url: 'https://odock.ai',
+    logo: 'https://odock.ai/logo-dark.svg',
     sameAs: [
       'https://github.com/odock-ai',
       'https://x.com/odock_ai',
@@ -12,7 +12,7 @@ export function organizationSchema() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
-      url: 'https://www.odock.ai/contact/',
+      url: 'https://odock.ai/contact/',
     },
   };
 }
@@ -24,7 +24,7 @@ export function softwareApplicationSchema() {
     name: 'Odock.ai',
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Linux, macOS, Windows',
-    url: 'https://www.odock.ai',
+    url: 'https://odock.ai',
     description:
       'AI governance gateway for LLM and MCP traffic. Enforce access policies, security guardrails, budgets, quotas, routing, and compliance controls from one controlled plane.',
     offers: {
@@ -56,21 +56,21 @@ export function articleSchema({
     '@type': 'TechArticle',
     headline: title,
     description,
-    url: `https://www.odock.ai/blog/${slug}/`,
+    url: `https://odock.ai/blog/${slug}/`,
     datePublished: publishedTime,
     dateModified: modifiedTime,
-    image: 'https://www.odock.ai/odock-ai.png',
+    image: 'https://odock.ai/odock-ai.png',
     author: {
       '@type': 'Organization',
       name: authorName,
-      url: 'https://www.odock.ai',
+      url: 'https://odock.ai',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Odock.ai',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.odock.ai/logo-dark.svg',
+        url: 'https://odock.ai/logo-dark.svg',
       },
     },
   };

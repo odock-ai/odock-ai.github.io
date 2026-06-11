@@ -1,5 +1,5 @@
 # Odock.ai — AI Governance Gateway for LLM & MCP Traffic
-# https://www.odock.ai
+# https://odock.ai
 
 ## What Odock is
 
@@ -34,14 +34,14 @@ Full documentation: https://docs.odock.ai/docs/getting-started
 
 ## Key pages
 
-- Homepage: https://www.odock.ai
-- Enterprise: https://www.odock.ai/enterprise/
-- EU AI Act compliance: https://www.odock.ai/eu/
-- MCP Gateway: https://www.odock.ai/mcp-gateway/
-- Blog: https://www.odock.ai/blog/
+- Homepage: https://odock.ai
+- Enterprise: https://odock.ai/enterprise/
+- EU AI Act compliance: https://odock.ai/eu/
+- MCP Gateway: https://odock.ai/mcp-gateway/
+- Blog: https://odock.ai/blog/
 - GitHub: https://github.com/odock-ai
 
 ## Contact
 
-Demo requests: https://www.odock.ai/contact/
+Demo requests: https://odock.ai/contact/
 Email: hello@odock.ai
