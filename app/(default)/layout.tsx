@@ -51,8 +51,8 @@ export default function DefaultLayout({
         <HtmlLangSync />
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
+          defaultTheme="system"
+          enableSystem
           disableTransitionOnChange
         >
           {children}

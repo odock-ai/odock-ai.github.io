@@ -56,8 +56,8 @@ export default async function LocaleLayout({
         <HtmlLangSync />
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
+          defaultTheme="system"
+          enableSystem
           disableTransitionOnChange
         >
           {children}
