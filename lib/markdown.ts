@@ -99,6 +99,51 @@ function isBlockquoteLine(line: string) {
   return line.startsWith('> ');
 }
 
+function isTableLine(line: string) {
+  return line.startsWith('|') && line.endsWith('|') && line.length > 1;
+}
+
+function isTableSeparatorLine(line: string) {
+  return /^\|(?:\s*:?-+:?\s*\|)+$/.test(line);
+}
+
+function splitTableRow(line: string) {
+  return line
+    .slice(1, -1)
+    .split('|')
+    .map((cell) => cell.trim());
+}
+
+function renderTable(headerCells: string[], bodyRows: string[][]) {
+  const head = headerCells
+    .map(
+      (cell) =>
+        `<th scope="col" class="border-b border-border bg-secondary/50 px-4 py-3 text-left text-sm font-semibold text-foreground">${renderInlineMarkdown(cell)}</th>`
+    )
+    .join('');
+
+  const body = bodyRows
+    .map(
+      (row) =>
+        `<tr class="border-b border-border/60 last:border-b-0">${row
+          .map(
+            (cell) =>
+              `<td class="px-4 py-3 align-top text-sm leading-relaxed text-muted-foreground">${renderInlineMarkdown(cell)}</td>`
+          )
+          .join('')}</tr>`
+    )
+    .join('');
+
+  return [
+    '<div class="my-10 overflow-x-auto rounded-xl border border-border bg-card shadow-sm">',
+    '<table class="w-full border-collapse text-left">',
+    `<thead><tr>${head}</tr></thead>`,
+    `<tbody>${body}</tbody>`,
+    '</table>',
+    '</div>',
+  ].join('');
+}
+
 export function extractMarkdownHeadings(markdown: string): MarkdownHeading[] {
   const headings: MarkdownHeading[] = [];
   let inFence = false;
@@ -216,6 +261,23 @@ export function markdownToHtml(markdown: string) {
       continue;
     }
 
+    // Tables (GitHub-style pipe tables)
+    if (isTableLine(line) && index + 1 < lines.length && isTableSeparatorLine(lines[index + 1].trim())) {
+      const headerCells = splitTableRow(line);
+      index += 2;
+
+      const bodyRows: string[][] = [];
+      while (index < lines.length && isTableLine(lines[index].trim())) {
+        const cells = splitTableRow(lines[index].trim());
+        while (cells.length < headerCells.length) cells.push('');
+        bodyRows.push(cells.slice(0, headerCells.length));
+        index += 1;
+      }
+
+      blocks.push(renderTable(headerCells, bodyRows));
+      continue;
+    }
+
     // Blockquotes
     if (isBlockquoteLine(line)) {
       const quoteLines: string[] = [];
@@ -261,7 +323,8 @@ export function markdownToHtml(markdown: string) {
         isListLine(current) ||
         isFenceLine(current) ||
         isImageLine(current) ||
-        isBlockquoteLine(current)
+        isBlockquoteLine(current) ||
+        isTableLine(current)
       ) {
         break;
       }

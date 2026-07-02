@@ -1,23 +1,29 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import { CheckCircle2, Server } from "lucide-react";
-import { CodeSnippet } from "@/components/shared/code-snippet";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  GatewayCodeTerminal,
+  type GatewayCodeExample,
+} from "@/components/shared/gateway-code-terminal";
 import type { SiteContent } from "@/lib/i18n";
 
 type MCPGatewayCodeSectionProps = {
   content: SiteContent["mcpGatewayPage"]["sections"]["gateway"];
+  examples: readonly GatewayCodeExample[];
+  methodOrder?: readonly string[];
+  methodTabsLabel: string;
+  languageTabsLabel: string;
+  copyCodeAriaLabel: string;
 };
 
-export function MCPGatewayCodeSection({ content }: MCPGatewayCodeSectionProps) {
-  const [activeMethod, setActiveMethod] = useState<string>(content.methods[0].id);
-
-  const activeExample = useMemo(
-    () => content.methods.find((method) => method.id === activeMethod) ?? content.methods[0],
-    [activeMethod, content.methods]
-  );
-
+export function MCPGatewayCodeSection({
+  content,
+  examples,
+  methodOrder,
+  methodTabsLabel,
+  languageTabsLabel,
+  copyCodeAriaLabel,
+}: MCPGatewayCodeSectionProps) {
   return (
     <section className="relative overflow-hidden py-24" id="mcp-gateway">
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/80 via-transparent to-background/80" />
@@ -56,34 +62,13 @@ export function MCPGatewayCodeSection({ content }: MCPGatewayCodeSectionProps) {
             </ul>
           </div>
 
-          <div className="overflow-hidden border border-border bg-card">
-            <Tabs value={activeMethod} onValueChange={setActiveMethod} className="gap-0">
-              <div className="border-b border-border px-4 py-3">
-                <TabsList className="h-auto flex-wrap justify-start gap-2 rounded-none border-0 bg-transparent p-0">
-                  {content.methods.map((method) => (
-                    <TabsTrigger
-                      key={method.id}
-                      value={method.id}
-                      className="border border-border bg-background px-3 py-2 text-[10px] uppercase tracking-wider data-[state=active]:border-chart-2 data-[state=active]:bg-chart-2/10 data-[state=active]:text-chart-2"
-                    >
-                      {method.label}
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
-              </div>
-
-              {content.methods.map((method) => (
-                <TabsContent key={method.id} value={method.id} className="m-0">
-                  <CodeSnippet
-                    filename={method.filename}
-                    code={method.code}
-                    copyLabel={content.copyLabel}
-                    copiedLabel={content.copiedLabel}
-                  />
-                </TabsContent>
-              ))}
-            </Tabs>
-          </div>
+          <GatewayCodeTerminal
+            examples={examples}
+            methodOrder={methodOrder}
+            methodTabsLabel={methodTabsLabel}
+            languageTabsLabel={languageTabsLabel}
+            copyCodeAriaLabel={copyCodeAriaLabel}
+          />
         </div>
       </div>
     </section>

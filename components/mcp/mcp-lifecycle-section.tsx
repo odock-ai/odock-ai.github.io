@@ -13,7 +13,13 @@ import {
 import type { SiteContent } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-type LifecycleOverview = SiteContent["mcpGatewayPage"]["sections"]["lifecycle"]["overview"];
+// Loosen blockedRequest so the LLM gateway page can show different request fields.
+type LifecycleOverview = Omit<
+  SiteContent["mcpGatewayPage"]["sections"]["lifecycle"]["overview"],
+  "blockedRequest"
+> & {
+  blockedRequest: Record<string, string | number>;
+};
 
 type MCPLifecycleSectionProps = {
   content: LifecycleOverview;

@@ -215,12 +215,12 @@ function createLocalizedPost(
   } satisfies BlogPost;
 }
 
-function loadBlogPosts() {
-  const filenames = fs.readdirSync(BLOGS_DIRECTORY).filter((filename) => filename.endsWith('.md'));
+export function loadLocalizedPostsFromDirectory(directory: string) {
+  const filenames = fs.readdirSync(directory).filter((filename) => filename.endsWith('.md'));
 
   return filenames
     .map((filename) => {
-      const raw = fs.readFileSync(path.join(BLOGS_DIRECTORY, filename), 'utf8');
+      const raw = fs.readFileSync(path.join(directory, filename), 'utf8');
       const { frontmatter, bodies } = parseBlogMarkdown(raw);
 
       return Object.fromEntries(
@@ -231,6 +231,10 @@ function loadBlogPosts() {
       ) as Record<Locale, BlogPost>;
     })
     .sort((a, b) => b.en.publishedAt.localeCompare(a.en.publishedAt));
+}
+
+function loadBlogPosts() {
+  return loadLocalizedPostsFromDirectory(BLOGS_DIRECTORY);
 }
 
 const BLOG_POSTS_BY_LOCALE = loadBlogPosts();

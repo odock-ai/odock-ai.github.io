@@ -7,7 +7,7 @@
   "description": "Compare LiteLLM, Kong AI Gateway, Cloudflare AI Gateway, Portkey, Envoy AI Gateway, and Odock by architecture, security, plugins, governance, and workflow extensibility.",
   "excerpt": "Most AI gateways overlap on provider routing, logs, budgets, and guardrails. The real difference is the philosophy: model access, API management, edge control, hosted AI ops, cloud-native routing, or modular AI workflow governance.",
   "publishedAt": "2026-04-27",
-  "updatedAt": "2026-04-27",
+  "updatedAt": "2026-07-02",
   "readingTime": "10 min",
   "keywords": [
     "litellm vs kong",
@@ -146,6 +146,20 @@
 }
 ---
 <!-- locale:en -->
+## Looking for a specific head-to-head?
+
+This guide covers the whole landscape. If you're deciding between two specific gateways, we've broken each matchup into its own detailed comparison:
+
+- [LiteLLM vs Kong AI Gateway](/compare/litellm-vs-kong-ai-gateway/)
+- [LiteLLM vs Portkey](/compare/litellm-vs-portkey/)
+- [LiteLLM vs Cloudflare AI Gateway](/compare/litellm-vs-cloudflare-ai-gateway/)
+- [LiteLLM vs Envoy AI Gateway](/compare/litellm-vs-envoy-ai-gateway/)
+- [Kong AI Gateway vs Cloudflare AI Gateway](/compare/kong-vs-cloudflare-ai-gateway/)
+- [Odock vs LiteLLM](/compare/odock-vs-litellm/)
+- [Odock vs Kong AI Gateway](/compare/odock-vs-kong-ai-gateway/)
+
+Or browse [all AI gateway comparisons](/compare/).
+
 ## The short version
 
 If you need the most mature open-source LLM gateway today, LiteLLM is hard to ignore. It has broad provider support, OpenAI-compatible access, virtual keys, spend tracking, budgets, rate limits, fallbacks, observability integrations, MCP gateway work, and a serious guardrail ecosystem.
@@ -299,6 +313,20 @@ Odock's thesis is narrower and sharper: AI teams need a gateway where security m
 That is the difference in approach.
 
 <!-- locale:fr -->
+## Vous cherchez un duel précis ?
+
+Ce guide couvre l'ensemble du paysage. Si vous hésitez entre deux gateways précises, chaque duel a son comparatif détaillé :
+
+- [LiteLLM vs Kong AI Gateway](/fr/compare/litellm-vs-kong-ai-gateway/)
+- [LiteLLM vs Portkey](/fr/compare/litellm-vs-portkey/)
+- [LiteLLM vs Cloudflare AI Gateway](/fr/compare/litellm-vs-cloudflare-ai-gateway/)
+- [LiteLLM vs Envoy AI Gateway](/fr/compare/litellm-vs-envoy-ai-gateway/)
+- [Kong AI Gateway vs Cloudflare AI Gateway](/fr/compare/kong-vs-cloudflare-ai-gateway/)
+- [Odock vs LiteLLM](/fr/compare/odock-vs-litellm/)
+- [Odock vs Kong AI Gateway](/fr/compare/odock-vs-kong-ai-gateway/)
+
+Ou parcourez [tous les comparatifs AI gateway](/fr/compare/).
+
 ## La version courte
 
 Si vous cherchez aujourd'hui la LLM gateway open-source la plus mature, LiteLLM est difficile à ignorer. Elle offre une large prise en charge des providers, un accès compatible OpenAI, des virtual keys, le suivi des dépenses, des budgets, des rate limits, des fallbacks, des intégrations d'observability, des travaux autour d'une gateway MCP et un écosystème sérieux de guardrails.

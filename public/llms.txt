@@ -38,7 +38,9 @@ Full documentation: https://docs.odock.ai/docs/getting-started
 - Enterprise: https://odock.ai/enterprise/
 - EU AI Act compliance: https://odock.ai/eu/
 - MCP Gateway: https://odock.ai/mcp-gateway/
+- LLM Gateway: https://odock.ai/llm-gateway/
 - Blog: https://odock.ai/blog/
+- AI gateway comparisons (LiteLLM, Kong, Cloudflare, Portkey, Envoy): https://odock.ai/compare/
 - GitHub: https://github.com/odock-ai
 
 ## Contact

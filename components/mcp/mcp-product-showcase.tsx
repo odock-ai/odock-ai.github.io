@@ -5,6 +5,7 @@ import {
   Activity,
   ArrowRight,
   BadgeDollarSign,
+  LineChart,
   LockKeyhole,
   Network,
   Shield,
@@ -21,6 +22,7 @@ const iconMap = {
   shield: Shield,
   badgeDollarSign: BadgeDollarSign,
   activity: Activity,
+  lineChart: LineChart,
   lockKeyhole: LockKeyhole,
 } as const;
 
@@ -203,6 +205,12 @@ export function MCPProductShowcase({ content }: MCPProductShowcaseProps) {
             ) : null}
             {activeTab === "usage" ? (
               <DataTable headers={content.tables.usage.headers} rows={content.tables.usage.rows} />
+            ) : null}
+            {activeTab === "observability" ? (
+              <DataTable
+                headers={content.tables.observability.headers}
+                rows={content.tables.observability.rows}
+              />
             ) : null}
             {activeTab === "auth" ? (
               <DataTable headers={content.tables.auth.headers} rows={content.tables.auth.rows} />

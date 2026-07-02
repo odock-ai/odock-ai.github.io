@@ -1175,6 +1175,8 @@
           { "label": "AI Gateway", "href": "/#platform" },
           { "label": "AI & MCP Gateway", "href": "/#ai-gateway" },
           { "label": "MCP Gateway", "href": "/mcp-gateway" },
+          { "label": "LLM Gateway", "href": "/llm-gateway" },
+          { "label": "Compare AI Gateways", "href": "/compare" },
           { "label": "Security", "href": "/#security" },
           { "label": "Pricing", "href": "/pricing" }
         ]
@@ -1396,9 +1398,39 @@
     ]
   },
   "lastUpdatedLabel": "Last updated",
-  "lastUpdatedDate": "2026-06-06",
+  "lastUpdatedDate": "2026-07-02",
   "backToHomepageLabel": "Back to homepage",
   "sections": {
+    "definition": {
+      "eyebrow": "What is an MCP gateway?",
+      "title": "A policy layer between AI agents and every tool they can touch",
+      "paragraphs": [
+        "An MCP gateway is a control plane between AI agents and the MCP servers that expose tools like GitHub, Slack, and databases. Instead of every agent holding upstream credentials and reaching each server directly, all tool traffic flows through one governed endpoint that authenticates the caller, checks tool-level permissions, enforces budgets, and records every call. Odock ships it as part of one AI governance plane, so the same keys, budgets, and audit records govern your MCP tool traffic and your LLM traffic alike."
+      ],
+      "useCasesTitle": "Where teams use it",
+      "useCases": [
+        {
+          "title": "Agent tool access control",
+          "description": "Expose only approved tools to each agent, block destructive actions like delete or deploy, and require approval for sensitive calls, regardless of what the model decides.",
+          "icon": "network"
+        },
+        {
+          "title": "Credential isolation",
+          "description": "Agents authenticate to the gateway with virtual API keys. Upstream GitHub, Slack, or database credentials are stored once in Odock and injected only after governance checks pass.",
+          "icon": "lockKeyhole"
+        },
+        {
+          "title": "Cost and audit on tool traffic",
+          "description": "Price tool calls per request and per byte, cap them with budgets and quotas, and attribute every call to a key, team, and user for chargeback and compliance review.",
+          "icon": "badgeDollarSign"
+        }
+      ],
+      "relatedLinksTitle": "Keep exploring",
+      "relatedLinks": [
+        { "label": "LLM Gateway", "href": "/llm-gateway" },
+        { "label": "MCP governance guide", "href": "/blog/mcp-server-governance-for-ai-agents" }
+      ]
+    },
     "lifecycle": {
       "steps": [
         "Authenticate the calling agent or app",
@@ -1501,6 +1533,12 @@
           "label": "Usage records",
           "icon": "activity",
           "caption": "Every request is attributed to server, tool, API key, team, bytes, latency, status, and cost ready for audit, internal review, or chargeback."
+        },
+        {
+          "id": "observability",
+          "label": "Observability",
+          "icon": "lineChart",
+          "caption": "Stream traces, logs, and cost events for every tool call to your existing stack, so agent tool traffic shows up in the same dashboards and alerts as the rest of your platform."
         },
         {
           "id": "auth",
@@ -1637,6 +1675,15 @@
             ["notion-knowledge-http", "OAUTH2", "Authorization: Bearer <access_token>", "Client credentials"],
             ["postgres-ops-stdio", "NONE", "No auth header", "Empty config"]
           ]
+        },
+        "observability": {
+          "headers": ["Signal", "What it captures", "Export target", "Status"],
+          "rows": [
+            ["Tool-call traces", "Server, tool, argument size, latency", "OTLP / Datadog / Grafana", "streaming"],
+            ["Cost events", "Spend per key, team, and server", "Webhook / warehouse", "live"],
+            ["Audit log", "Caller, tool, policy decision, outcome", "SIEM / object store", "immutable"],
+            ["Policy hits", "Blocked tools and payload filters", "Alerting / SIEM", "real-time"]
+          ]
         }
       }
     },
@@ -1728,7 +1775,7 @@
       "title": "Close the audit gap in your agent workflows",
       "description": "Compliance programs need answers to specific questions: who was authorized to use which tool, under what policy, with what evidence? An ungoverned MCP layer can't answer those questions. Odock can.",
       "items": [
-        "Route GitHub, Slack, database, and internal workflow tools through one governed, auditable endpoint",
+        "Route remote MCP servers, and internal workflow tools through one governed, auditable endpoint",
         "Reduce prompt injection risk by enforcing tool access constraints outside the agent runtime",
         "Produce evidence for internal AI reviews, vendor assessments, and EU AI Act compliance programs",
         "Keep LLM traffic and tool traffic inside the same policy and operational boundary"
@@ -1741,6 +1788,442 @@
       "primaryHref": "/contact",
       "secondaryLabel": "Read the MCP governance guide",
       "secondaryHref": "/blog/mcp-server-governance-for-ai-agents"
+    }
+  }
+  },
+  "llmGatewayPage": {
+  "metadata": {
+    "title": "LLM Gateway — Govern Every Model Call | Odock.ai",
+    "description": "Odock's LLM gateway gives teams one OpenAI-compatible endpoint for every provider, with virtual API keys, budgets, guardrails, routing, and audit-ready usage records on every model call."
+  },
+  "badge": "LLM Gateway",
+  "title": "Govern every model call your teams make",
+  "intro": "Providers multiply, keys leak, and spend surprises arrive at the end of the month. Odock puts a governed LLM gateway between your apps and every model provider, enforcing access, guardrails, budgets, and audit records before any completion is generated.",
+  "summary": "One governed path for every model call.",
+  "requestCardTitle": "Governed model request",
+  "heroPanel": {
+    "fileLabel": "llm-gateway.request",
+    "requestPath": "POST /v1/chat/completions",
+    "runtimeLabel": "app runtime",
+    "steps": [
+      {
+        "label": "Caller auth",
+        "status": "verified"
+      },
+      {
+        "label": "Model grants",
+        "status": "checked"
+      },
+      {
+        "label": "Guardrail scan",
+        "status": "clean"
+      },
+      {
+        "label": "Budget hold",
+        "status": "ready"
+      },
+      {
+        "label": "Route provider",
+        "status": "sent"
+      },
+      {
+        "label": "Usage logged",
+        "status": "saved"
+      }
+    ]
+  },
+  "lastUpdatedLabel": "Last updated",
+  "lastUpdatedDate": "2026-07-02",
+  "backToHomepageLabel": "Back to homepage",
+  "sections": {
+    "definition": {
+      "eyebrow": "What is an LLM gateway?",
+      "title": "One controlled endpoint between your apps and every model provider",
+      "paragraphs": [
+        "An LLM gateway is a control plane between your applications and model providers like OpenAI, Anthropic, Azure, or self-hosted models. Instead of every team holding raw provider keys and calling APIs directly, model traffic flows through one endpoint that authenticates the caller, applies guardrails, reserves budget, routes to an approved provider, and records the outcome. It becomes a governance platform when it goes beyond routing: access grants per team, budgets held before the call fires, prompt injection and data leakage scanning, and audit-ready usage records. That is what Odock is built for, and the same plane also governs agent tool traffic through the MCP gateway."
+      ],
+      "useCasesTitle": "Where teams use it",
+      "useCases": [
+        {
+          "title": "Multi-provider access",
+          "description": "Give every team one OpenAI-compatible endpoint and virtual API keys. Add, swap, or self-host providers behind the gateway with zero changes to application code.",
+          "icon": "network"
+        },
+        {
+          "title": "Cost control that blocks, not reports",
+          "description": "Set budgets and quotas per key, team, or project. Odock reserves spend before the call executes, so a runaway agent stops at the limit instead of at the invoice.",
+          "icon": "badgeDollarSign"
+        },
+        {
+          "title": "Security and compliance at the gateway",
+          "description": "Scan prompts for injection and data leakage, mask sensitive fields, enforce provider data policies, and produce audit records for every model decision.",
+          "icon": "shield"
+        }
+      ],
+      "relatedLinksTitle": "Keep exploring",
+      "relatedLinks": [
+        { "label": "MCP Gateway", "href": "/mcp-gateway" },
+        { "label": "Compare AI gateways", "href": "/compare" },
+        { "label": "LLM gateway guide", "href": "/blog/what-is-an-llm-gateway-and-why-ai-teams-need-one" }
+      ]
+    },
+    "lifecycle": {
+      "steps": [
+        "Authenticate the calling app or agent",
+        "Verify model and provider access grants",
+        "Scan the prompt for policy violations",
+        "Reserve budget or quota before the call fires",
+        "Route to an approved provider with failover",
+        "Record tokens, cost, and outcome for audit"
+      ],
+      "heroHighlights": [
+        {
+          "title": "Providers",
+          "description": "OpenAI, Anthropic, Azure, self-hosted"
+        },
+        {
+          "title": "Controls",
+          "description": "Keys, budgets, guardrails, audit"
+        }
+      ],
+      "overview": {
+        "eyebrow": "LLM request lifecycle",
+        "title": "Every model call follows a governed path",
+        "description": "No request reaches a provider until it passes auth, access, inspection, and cost controls. Every outcome is recorded with tokens, latency, and cost.",
+        "blockedRequestLabel": "Blocked request example",
+        "blockedStatusLabel": "Denied by governance",
+        "steps": [
+          {
+            "label": "Authenticate",
+            "description": "Validate the virtual API key.",
+            "icon": "keyRound"
+          },
+          {
+            "label": "Authorize",
+            "description": "Confirm model and provider grants.",
+            "icon": "shield"
+          },
+          {
+            "label": "Inspect & enforce",
+            "description": "Run guardrails on prompt and context.",
+            "icon": "checkCircle"
+          },
+          {
+            "label": "Reserve spend",
+            "description": "Check budgets and quotas before execution.",
+            "icon": "badgeDollarSign"
+          },
+          {
+            "label": "Route",
+            "description": "Send to an approved provider with failover.",
+            "icon": "route"
+          },
+          {
+            "label": "Record outcome",
+            "description": "Log tokens, latency, status, and cost.",
+            "icon": "fileText"
+          }
+        ],
+        "blockedRequest": {
+          "apiKey": "vk_team_marketing",
+          "model": "gpt-5.2",
+          "method": "chat.completions",
+          "reason": "budget_exceeded",
+          "status": 402
+        }
+      }
+    },
+    "productShowcase": {
+      "eyebrow": "What you configure",
+      "title": "A complete LLM control surface, not just a proxy",
+      "description": "Odock covers everything platform teams need to run LLM traffic in production: provider registration, model access grants, guardrails, pricing, budgets, and usage records your finance and security teams can actually read.",
+      "viewsLabel": "LLM views",
+      "activeViewLabel": "Selected view",
+      "liveLabel": "Live",
+      "viewFileSuffix": "llm",
+      "transportLabel": "API",
+      "scopeLabel": "Scope",
+      "grantsLabel": "Access",
+      "tabs": [
+        {
+          "id": "catalog",
+          "label": "Providers & models",
+          "icon": "network",
+          "caption": "Register providers once and expose approved models through one OpenAI-compatible endpoint. Review API type, auth config, scope, and enabled status before any team can call them."
+        },
+        {
+          "id": "security",
+          "label": "Security layers",
+          "icon": "shield",
+          "caption": "Stack six controls on every provider: access grants, team or key scope, allowed models, blocked models, prompt guardrails, and policy or quota rules."
+        },
+        {
+          "id": "pricing",
+          "label": "Pricing & budgets",
+          "icon": "badgeDollarSign",
+          "caption": "Track token pricing per model, then cap spend with budgets and quotas that reserve funds before expensive completions run, not after."
+        },
+        {
+          "id": "usage",
+          "label": "Usage records",
+          "icon": "activity",
+          "caption": "Every request is attributed to model, API key, team, tokens, latency, status, and cost, ready for audit, internal review, or chargeback."
+        },
+        {
+          "id": "observability",
+          "label": "Observability",
+          "icon": "lineChart",
+          "caption": "Stream traces, logs, cost events, and guardrail hits for every model call to your existing stack, so LLM traffic lands in the same dashboards and alerts as the rest of your platform."
+        },
+        {
+          "id": "auth",
+          "label": "Provider keys",
+          "icon": "lockKeyhole",
+          "caption": "Store provider credentials in Odock once. Your apps authenticate with virtual keys and never touch OpenAI, Anthropic, or Azure secrets directly."
+        }
+      ],
+      "serverRows": [
+        {
+          "name": "openai-prod",
+          "source": "Provider catalog",
+          "transport": "OPENAI_API",
+          "auth": "BEARER",
+          "scope": "org-wide",
+          "grants": "24 keys granted"
+        },
+        {
+          "name": "anthropic-prod",
+          "source": "Provider catalog",
+          "transport": "ANTHROPIC_API",
+          "auth": "BEARER",
+          "scope": "org-wide",
+          "grants": "18 keys granted"
+        },
+        {
+          "name": "azure-openai-eu",
+          "source": "Manual setup",
+          "transport": "OPENAI_API",
+          "auth": "BEARER",
+          "scope": "team:eu-products",
+          "grants": "6 keys granted"
+        },
+        {
+          "name": "bedrock-us",
+          "source": "Provider catalog",
+          "transport": "BEDROCK_API",
+          "auth": "OAUTH2",
+          "scope": "team:platform",
+          "grants": "4 keys granted"
+        },
+        {
+          "name": "mistral-eu",
+          "source": "Provider catalog",
+          "transport": "OPENAI_API",
+          "auth": "BEARER",
+          "scope": "team:eu-products",
+          "grants": "5 keys granted"
+        },
+        {
+          "name": "vllm-selfhosted",
+          "source": "Manual setup",
+          "transport": "OPENAI_API",
+          "auth": "NONE",
+          "scope": "team:research",
+          "grants": "3 keys granted"
+        }
+      ],
+      "securityLayers": [
+        {
+          "name": "Provider access grant",
+          "detail": "Required per virtual API key"
+        },
+        {
+          "name": "Team or API key scope",
+          "detail": "Optional provider boundary"
+        },
+        {
+          "name": "Allowed models",
+          "detail": "Approved models only"
+        },
+        {
+          "name": "Blocked models",
+          "detail": "Deny deprecated or non-compliant models"
+        },
+        {
+          "name": "Prompt guardrails",
+          "detail": "Injection, leakage, and content checks"
+        },
+        {
+          "name": "Policies and quotas",
+          "detail": "Rate, tokens, concurrency, budget"
+        }
+      ],
+      "policyTitle": "Runtime policy controls",
+      "policyItems": [
+        {
+          "name": "IP allowlist",
+          "detail": "Restrict which networks can use a sensitive provider or key."
+        },
+        {
+          "name": "Token and payload limits",
+          "detail": "Cap prompt and completion sizes before large requests get expensive."
+        },
+        {
+          "name": "Rate and concurrency",
+          "detail": "Throttle bursty callers and limit parallel completions."
+        },
+        {
+          "name": "Budget and quota checks",
+          "detail": "Stop usage when spend, request count, or token thresholds are exceeded."
+        }
+      ],
+      "tables": {
+        "pricing": {
+          "headers": ["Model", "Input / 1M tokens", "Output / 1M tokens", "Budget"],
+          "rows": [
+            ["gpt-5.2", "$1.75", "$14.00", "$800 / month"],
+            ["claude-sonnet-5", "$3.00", "$15.00", "$650 / month"],
+            ["claude-haiku-4-5", "$1.00", "$5.00", "$200 / month"],
+            ["mistral-large-eu", "$2.00", "$6.00", "$150 / month"],
+            ["azure-gpt-5.2-eu", "$1.90", "$15.20", "$400 / month"],
+            ["vllm-llama-4", "$0.00", "$0.00", "$60 / month infra"]
+          ]
+        },
+        "usage": {
+          "headers": ["Time", "Model", "Key", "Tokens", "Latency", "Status", "Cost"],
+          "rows": [
+            ["14:03:12", "gpt-5.2", "vk_support_bot", "1.2k / 0.4k", "820ms", "200", "$0.007700"],
+            ["14:04:01", "claude-sonnet-5", "vk_team_marketing", "2.1k / 1.8k", "1.9s", "402", "$0.000000"],
+            ["14:04:44", "claude-haiku-4-5", "vk_internal_tools", "0.8k / 0.2k", "310ms", "200", "$0.001800"],
+            ["14:05:10", "mistral-large-eu", "vk_eu_products", "1.5k / 0.6k", "640ms", "200", "$0.006600"],
+            ["14:05:43", "gpt-5.2", "vk_research", "3.4k / 2.2k", "2.4s", "200", "$0.036800"],
+            ["14:06:18", "vllm-llama-4", "vk_research", "1.1k / 0.9k", "450ms", "200", "$0.000000"]
+          ]
+        },
+        "auth": {
+          "headers": ["Provider", "Auth type", "Forwarded upstream", "Stored in Odock"],
+          "rows": [
+            ["openai-prod", "BEARER", "Authorization: Bearer <api_key>", "Static key"],
+            ["anthropic-prod", "BEARER", "x-api-key: <api_key>", "Static key"],
+            ["azure-openai-eu", "BEARER", "api-key: <api_key>", "Static key"],
+            ["bedrock-us", "OAUTH2", "AWS SigV4 credentials", "Role credentials"],
+            ["mistral-eu", "BEARER", "Authorization: Bearer <api_key>", "Static key"],
+            ["vllm-selfhosted", "NONE", "No auth header", "Empty config"]
+          ]
+        },
+        "observability": {
+          "headers": ["Signal", "What it captures", "Export target", "Status"],
+          "rows": [
+            ["Request traces", "Prompt, model, tokens, latency", "OTLP / Datadog / Grafana", "streaming"],
+            ["Cost events", "Spend per key, team, and model", "Webhook / warehouse", "live"],
+            ["Audit log", "Caller, policy decision, outcome", "SIEM / object store", "immutable"],
+            ["Guardrail hits", "Injection, leakage, blocked models", "Alerting / SIEM", "real-time"]
+          ]
+        }
+      }
+    },
+    "gateway": {
+      "eyebrow": "One endpoint, two ways in",
+      "title": "Your apps call Odock. Not the provider",
+      "description": "Reach Odock through one unified OpenAI-style endpoint across every provider, or through each provider's native endpoint and SDK when you need provider-specific features. Either way, Odock authenticates the caller, confirms model access, runs guardrails, reserves budget, injects provider credentials, and records the outcome before the provider sees the request.",
+      "featureTitle": "What the gateway handles",
+      "features": [
+        "Unified OpenAI-style API across every provider, so existing SDKs work unchanged.",
+        "Native provider endpoints and SDKs when you need provider-specific features.",
+        "Virtual API key required before any model is reachable.",
+        "Provider credentials injected after governance checks pass.",
+        "Routing and failover across approved providers."
+      ],
+      "copiedLabel": "Copied",
+      "copyLabel": "Copy",
+      "methods": [
+        {
+          "id": "curl",
+          "label": "curl",
+          "filename": "chat-completion.sh",
+          "code": "# Call Odock instead of the provider\ncurl \"$ODOCK_GATEWAY_URL/v1/chat/completions\" \\\n  -H \"Authorization: Bearer $ODOCK_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"model\": \"gpt-5.2\",\n    \"messages\": [\n      {\"role\": \"user\", \"content\": \"Summarize our Q3 usage.\"}\n    ]\n  }'"
+        },
+        {
+          "id": "python",
+          "label": "Python",
+          "filename": "chat_completion.py",
+          "code": "import os\nfrom openai import OpenAI\n\n# Use the governed Odock endpoint with the official SDK\nclient = OpenAI(\n    base_url=f\"{os.environ['ODOCK_GATEWAY_URL']}/v1\",\n    api_key=os.environ[\"ODOCK_API_KEY\"],\n)\n\nresponse = client.chat.completions.create(\n    model=\"claude-sonnet-5\",\n    messages=[\n        {\"role\": \"user\", \"content\": \"Summarize our Q3 usage.\"},\n    ],\n)\n\n# Inspect the governed completion\nprint(response.choices[0].message.content)"
+        },
+        {
+          "id": "typescript",
+          "label": "TypeScript",
+          "filename": "chat-completion.ts",
+          "code": "import OpenAI from \"openai\";\n\n// Point the OpenAI SDK at Odock's gateway endpoint\nconst client = new OpenAI({\n  baseURL: `${process.env.ODOCK_GATEWAY_URL}/v1`,\n  apiKey: process.env.ODOCK_API_KEY,\n});\n\nconst response = await client.chat.completions.create({\n  model: \"gpt-5.2\",\n  messages: [\n    { role: \"user\", content: \"Summarize our Q3 usage.\" },\n  ],\n});\n\n// Governed completion, recorded and attributed\nconsole.log(response.choices[0].message.content);"
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Questions teams ask about LLM gateways",
+      "description": "These are the recurring questions that come up when teams move from direct provider access to a governed gateway layer.",
+      "items": [
+        {
+          "question": "What is an LLM gateway?",
+          "answer": "An LLM gateway is a single controlled endpoint between your applications and model providers. It authenticates callers with its own keys, applies access policies and guardrails, enforces budgets, routes requests to approved providers, and records usage, so provider access stops being scattered across teams and codebases."
+        },
+        {
+          "question": "How is an LLM gateway different from calling providers directly?",
+          "answer": "Direct calls tie each app to one provider's SDK, spread raw API keys across environments, and leave cost and security controls to each team. A gateway centralizes keys, makes providers swappable behind one OpenAI-compatible API, and enforces spend and security policies in one place, before the call executes."
+        },
+        {
+          "question": "What makes an LLM gateway a governance platform?",
+          "answer": "Routing alone is a proxy. Governance adds who-can-do-what: access grants per team or key, budget reservation before execution, guardrails on prompts and outputs, and audit-ready records of every model decision. That combination is what compliance frameworks like the EU AI Act effectively require."
+        },
+        {
+          "question": "Does an LLM gateway add latency?",
+          "answer": "A well-built gateway adds milliseconds, dominated by policy checks that run in memory. That overhead is usually invisible next to model inference time, and it buys failover: when a provider degrades, the gateway reroutes instead of failing your feature."
+        },
+        {
+          "question": "Can I self-host an LLM gateway?",
+          "answer": "Yes. Odock is open source and self-hostable, so the gateway, its policies, and its usage records run inside your infrastructure. That matters for data residency, key custody, and compliance reviews where an external control plane is not acceptable."
+        }
+      ]
+    },
+    "controlPoints": {
+      "eyebrow": "Why it matters",
+      "title": "Model calls are spend, data, and compliance events",
+      "description": "Every completion moves money, may carry sensitive data, and may need to be explained to an auditor later. An LLM gateway gives platform, security, and finance teams one enforcement point for all three.",
+      "items": [
+        {
+          "title": "Control which models teams use",
+          "description": "Allowlist approved providers and models per team or key, block deprecated or non-compliant models, and roll out new models without touching application code.",
+          "icon": "network"
+        },
+        {
+          "title": "Enforce policy before execution",
+          "description": "Authenticate every caller, scan prompts for injection and data leakage, and reject requests that fail security, budget, or compliance rules before any provider call is made.",
+          "icon": "shield"
+        },
+        {
+          "title": "Attribute every token",
+          "description": "Tie every request to a key, team, and user with tokens, latency, and cost. Give finance chargeback data and give auditors the records they ask for.",
+          "icon": "fileCheck"
+        }
+      ]
+    },
+    "compliance": {
+      "eyebrow": "EU AI Act & compliance readiness",
+      "title": "Evidence for every model decision",
+      "description": "Compliance programs need answers to specific questions: which team used which model, under what policy, with what safeguards? Direct provider access can't answer those questions. Odock can.",
+      "items": [
+        "Route every provider through one governed, auditable OpenAI-compatible endpoint",
+        "Enforce prompt injection and data leakage controls outside application code",
+        "Produce evidence for internal AI reviews, vendor assessments, and EU AI Act compliance programs",
+        "Keep LLM traffic and MCP tool traffic inside the same policy and operational boundary"
+      ]
+    },
+    "cta": {
+      "title": "One endpoint for every model, with governance built in",
+      "description": "If your teams call LLMs in production, you need the same control you expect for any critical dependency. Odock governs model and tool traffic from a single request path.",
+      "primaryLabel": "Book a demo",
+      "primaryHref": "/contact",
+      "secondaryLabel": "Read the LLM gateway guide",
+      "secondaryHref": "/blog/what-is-an-llm-gateway-and-why-ai-teams-need-one"
     }
   }
   },

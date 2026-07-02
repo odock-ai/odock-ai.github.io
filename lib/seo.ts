@@ -485,5 +485,107 @@ export function buildMcpGatewayStructuredData(locale: Locale, content: SiteConte
       },
       mainEntityOfPage: pageUrl,
     },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: getCanonicalUrl(locale),
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: content.mcpGatewayPage.badge,
+          item: pageUrl,
+        },
+      ],
+    },
+    ...(content.mcpGatewayPage.sections.faq.items.length > 0
+      ? [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: content.mcpGatewayPage.sections.faq.items.map((item) => ({
+              '@type': 'Question',
+              name: item.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: item.answer,
+              },
+            })),
+          },
+        ]
+      : []),
+  ];
+}
+
+export function buildLlmGatewayStructuredData(locale: Locale, content: SiteContent) {
+  const pageUrl = getCanonicalUrl(locale, '/llm-gateway');
+  const seo = getSeoConfig(content);
+  const page = content.llmGatewayPage;
+
+  return [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: page.metadata.title,
+      description: page.metadata.description,
+      isPartOf: canonicalBase || undefined,
+      inLanguage: locale,
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'TechArticle',
+      headline: page.title,
+      description: page.metadata.description,
+      author: {
+        '@type': 'Organization',
+        name: seo.schema?.organization?.name || content.header.brand.name,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: seo.schema?.organization?.name || content.header.brand.name,
+      },
+      mainEntityOfPage: pageUrl,
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: getCanonicalUrl(locale),
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: page.badge,
+          item: pageUrl,
+        },
+      ],
+    },
+    ...(page.sections.faq.items.length > 0
+      ? [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: page.sections.faq.items.map((item) => ({
+              '@type': 'Question',
+              name: item.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: item.answer,
+              },
+            })),
+          },
+        ]
+      : []),
   ];
 }

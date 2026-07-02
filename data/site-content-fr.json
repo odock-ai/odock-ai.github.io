@@ -1176,7 +1176,9 @@
           { "label": "Gateway IA et MCP", "href": "/#ai-gateway" },
           { "label": "Sécurité", "href": "/#security" },
           { "label": "Tarifs", "href": "/pricing" },
-          { "label": "La Gateway MCP", "href": "/mcp-gateway" }
+          { "label": "La Gateway MCP", "href": "/mcp-gateway" },
+          { "label": "La Gateway LLM", "href": "/llm-gateway" },
+          { "label": "Comparer les AI gateways", "href": "/compare" }
         ]
       },
       {
@@ -1396,9 +1398,39 @@
     ]
   },
   "lastUpdatedLabel": "Dernière mise à jour",
-  "lastUpdatedDate": "2026-06-06",
+  "lastUpdatedDate": "2026-07-02",
   "backToHomepageLabel": "Retour à l'accueil",
   "sections": {
+    "definition": {
+      "eyebrow": "Qu'est-ce qu'une gateway MCP ?",
+      "title": "Une couche de politique d'accés entre les agents IA et chaque outil qu'ils peuvent toucher",
+      "paragraphs": [
+        "Une gateway MCP est un plan de contrôle placé entre les agents IA et les serveurs MCP qui exposent des outils comme GitHub, Slack et les bases de données. Plutôt que de laisser chaque agent détenir des credentials en amont et joindre chaque serveur directement, tout le trafic outils passe par un seul endpoint gouverné qui authentifie l'appelant, vérifie les permissions au niveau des outils, applique les budgets et enregistre chaque appel. Odock l'intègre à un unique plan de gouvernance IA : les mêmes keys, budgets et enregistrements d'audit gouvernent aussi bien votre trafic outils MCP que votre trafic LLM."
+      ],
+      "useCasesTitle": "Où les équipes l'utilisent",
+      "useCases": [
+        {
+          "title": "Contrôle d'accès aux outils des agents",
+          "description": "N'exposez que les outils approuvés à chaque agent, bloquez les actions destructrices comme delete ou deploy, et exigez une approbation pour les appels sensibles, quelle que soit la décision du model.",
+          "icon": "network"
+        },
+        {
+          "title": "Isolation des credentials",
+          "description": "Les agents s'authentifient auprès de la gateway avec des virtual API keys. Les credentials amont GitHub, Slack ou base de données sont stockés une seule fois dans Odock et injectés uniquement après validation des contrôles de gouvernance.",
+          "icon": "lockKeyhole"
+        },
+        {
+          "title": "Coûts et audit sur le trafic d'outils",
+          "description": "Tarifez les appels d'outils par requête et par octet, plafonnez-les avec des budgets et des quotas, et attribuez chaque appel à une clé, une équipe et un utilisateur pour la refacturation et les revues de conformité.",
+          "icon": "badgeDollarSign"
+        }
+      ],
+      "relatedLinksTitle": "Pour aller plus loin",
+      "relatedLinks": [
+        { "label": "Gateway LLM", "href": "/llm-gateway" },
+        { "label": "Guide de gouvernance MCP", "href": "/blog/mcp-server-governance-for-ai-agents" }
+      ]
+    },
     "lifecycle": {
       "steps": [
         "Authentifier l'agent ou l'application appelante",
@@ -1501,6 +1533,12 @@
           "label": "Enregistrements d'utilisation",
           "icon": "activity",
           "caption": "Chaque requête est attribuée au serveur, à l'outil, à la clé API, à l'équipe, aux octets, à la latence, au statut et au coût, prête pour l'audit, la revue interne ou la refacturation."
+        },
+        {
+          "id": "observability",
+          "label": "Observabilité",
+          "icon": "lineChart",
+          "caption": "Diffusez traces, logs et événements de coût de chaque appel d'outil vers votre stack existante, pour que le trafic outils des agents apparaisse dans les mêmes dashboards et alertes que le reste de votre plateforme."
         },
         {
           "id": "auth",
@@ -1637,6 +1675,15 @@
             ["notion-knowledge-http", "OAUTH2", "Authorization: Bearer <access_token>", "Identifiants client"],
             ["postgres-ops-stdio", "NONE", "Pas d'en-tête d'auth", "Configuration vide"]
           ]
+        },
+        "observability": {
+          "headers": ["Signal", "Ce qu'il capture", "Cible d'export", "Statut"],
+          "rows": [
+            ["Traces d'appels d'outils", "Serveur, outil, taille des arguments, latence", "OTLP / Datadog / Grafana", "streaming"],
+            ["Événements de coût", "Dépense par key, par équipe et par serveur", "Webhook / entrepôt", "live"],
+            ["Journal d'audit", "Appelant, outil, décision de politique, résultat", "SIEM / stockage objet", "immuable"],
+            ["Déclenchements de politique", "Outils bloqués et filtres de payload", "Alerting / SIEM", "temps réel"]
+          ]
         }
       }
     },
@@ -1741,6 +1788,442 @@
       "primaryHref": "/contact",
       "secondaryLabel": "Lire le guide de gouvernance MCP",
       "secondaryHref": "/blog/mcp-server-governance-for-ai-agents"
+    }
+  }
+  },
+  "llmGatewayPage": {
+  "metadata": {
+    "title": "Gateway LLM — Gouvernez chaque appel de model | Odock.ai",
+    "description": "La gateway LLM d'Odock donne aux équipes un endpoint unique compatible OpenAI pour tous les providers, avec virtual API keys, budgets, guardrails, routing et enregistrements d'usage prêts pour l'audit sur chaque appel de model."
+  },
+  "badge": "Gateway LLM",
+  "title": "Gouvernez chaque appel de model de vos équipes",
+  "intro": "Les providers se multiplient, les clés fuient et les surprises de facturation arrivent en fin de mois. Odock place une gateway LLM gouvernée entre vos applications et chaque provider de models, en appliquant accès, guardrails, budgets et enregistrements d'audit avant qu'une complétion ne soit générée.",
+  "summary": "Un chemin gouverné unique pour chaque appel de model.",
+  "requestCardTitle": "Requête de model gouvernée",
+  "heroPanel": {
+    "fileLabel": "llm-gateway.request",
+    "requestPath": "POST /v1/chat/completions",
+    "runtimeLabel": "runtime applicatif",
+    "steps": [
+      {
+        "label": "Auth de l'appelant",
+        "status": "vérifiée"
+      },
+      {
+        "label": "Droits models",
+        "status": "contrôlés"
+      },
+      {
+        "label": "Scan guardrails",
+        "status": "propre"
+      },
+      {
+        "label": "Réservation budget",
+        "status": "prête"
+      },
+      {
+        "label": "Routing provider",
+        "status": "envoyé"
+      },
+      {
+        "label": "Usage enregistré",
+        "status": "sauvé"
+      }
+    ]
+  },
+  "lastUpdatedLabel": "Dernière mise à jour",
+  "lastUpdatedDate": "2026-07-02",
+  "backToHomepageLabel": "Retour à l'accueil",
+  "sections": {
+    "definition": {
+      "eyebrow": "Qu'est-ce qu'une gateway LLM ?",
+      "title": "Un endpoint contrôlé unique entre vos applications et chaque provider de models",
+      "paragraphs": [
+        "Une gateway LLM est un plan de contrôle placé entre vos applications et les providers de models comme OpenAI, Anthropic, Azure ou des models auto-hébergés. Plutôt que de laisser chaque équipe détenir les keys brutes des providers et appeler les API directement, le trafic des models passe par un seul endpoint qui authentifie l'appelant, applique les guardrails, réserve le budget, route vers un provider approuvé et enregistre le résultat. Elle devient une plateforme de gouvernance lorsqu'elle va au-delà du routing : droits d'accès par équipe, budgets réservés avant le déclenchement de l'appel, détection des prompt injection et des fuites de données, et enregistrements d'usage prêts pour l'audit. C'est précisément ce pour quoi Odock est conçu, et le même plan gouverne aussi le trafic outils des agents via la gateway MCP."
+      ],
+      "useCasesTitle": "Où les équipes l'utilisent",
+      "useCases": [
+        {
+          "title": "Accès multi-provider",
+          "description": "Donnez à chaque équipe un endpoint compatible OpenAI et des virtual API keys. Ajoutez, remplacez ou auto-hébergez des providers derrière la gateway sans toucher au code applicatif.",
+          "icon": "network"
+        },
+        {
+          "title": "Un contrôle des coûts qui bloque, pas qui constate",
+          "description": "Définissez budgets et quotas par clé, équipe ou projet. Odock réserve la dépense avant l'exécution de l'appel : un agent hors de contrôle s'arrête à la limite, pas à la facture.",
+          "icon": "badgeDollarSign"
+        },
+        {
+          "title": "Sécurité et conformité à la gateway",
+          "description": "Scannez les prompts contre l'injection et la fuite de données, masquez les champs sensibles, appliquez les politiques de données par provider et produisez des enregistrements d'audit pour chaque décision de model.",
+          "icon": "shield"
+        }
+      ],
+      "relatedLinksTitle": "Pour aller plus loin",
+      "relatedLinks": [
+        { "label": "Gateway MCP", "href": "/mcp-gateway" },
+        { "label": "Comparer les AI gateways", "href": "/compare" },
+        { "label": "Guide de la gateway LLM", "href": "/blog/what-is-an-llm-gateway-and-why-ai-teams-need-one" }
+      ]
+    },
+    "lifecycle": {
+      "steps": [
+        "Authentifier l'application ou l'agent appelant",
+        "Vérifier les droits d'accès aux models et providers",
+        "Scanner le prompt pour détecter les violations de politique",
+        "Réserver le budget ou le quota avant l'exécution de l'appel",
+        "Router vers un provider approuvé avec failover",
+        "Enregistrer tokens, coût et résultat pour l'audit"
+      ],
+      "heroHighlights": [
+        {
+          "title": "Providers",
+          "description": "OpenAI, Anthropic, Azure, auto-hébergés"
+        },
+        {
+          "title": "Contrôles",
+          "description": "Clés, budgets, guardrails, audit"
+        }
+      ],
+      "overview": {
+        "eyebrow": "Cycle de vie d'une requête LLM",
+        "title": "Chaque appel de model suit un chemin gouverné",
+        "description": "Aucune requête n'atteint un provider avant d'avoir passé les contrôles d'authentification, d'accès, d'inspection et de coût. Chaque résultat est enregistré avec tokens, latence et coût.",
+        "blockedRequestLabel": "Exemple de requête bloquée",
+        "blockedStatusLabel": "Refusée par la gouvernance",
+        "steps": [
+          {
+            "label": "Authentifier",
+            "description": "Valider la virtual API key.",
+            "icon": "keyRound"
+          },
+          {
+            "label": "Autoriser",
+            "description": "Confirmer les droits models et providers.",
+            "icon": "shield"
+          },
+          {
+            "label": "Inspecter & appliquer",
+            "description": "Exécuter les guardrails sur le prompt et le contexte.",
+            "icon": "checkCircle"
+          },
+          {
+            "label": "Réserver la dépense",
+            "description": "Vérifier budgets et quotas avant exécution.",
+            "icon": "badgeDollarSign"
+          },
+          {
+            "label": "Router",
+            "description": "Envoyer vers un provider approuvé avec failover.",
+            "icon": "route"
+          },
+          {
+            "label": "Enregistrer le résultat",
+            "description": "Journaliser tokens, latence, statut et coût.",
+            "icon": "fileText"
+          }
+        ],
+        "blockedRequest": {
+          "apiKey": "vk_team_marketing",
+          "model": "gpt-5.2",
+          "method": "chat.completions",
+          "reason": "budget_exceeded",
+          "status": 402
+        }
+      }
+    },
+    "productShowcase": {
+      "eyebrow": "Ce que vous configurez",
+      "title": "Une surface de contrôle LLM complète, pas seulement un proxy",
+      "description": "Odock couvre tout ce dont les équipes plateforme ont besoin pour faire tourner le trafic LLM en production : enregistrement des providers, droits d'accès aux models, guardrails, tarification, budgets et enregistrements d'usage que vos équipes finance et sécurité peuvent réellement lire.",
+      "viewsLabel": "Vues LLM",
+      "activeViewLabel": "Vue sélectionnée",
+      "liveLabel": "Live",
+      "viewFileSuffix": "llm",
+      "transportLabel": "API",
+      "scopeLabel": "Périmètre",
+      "grantsLabel": "Accès",
+      "tabs": [
+        {
+          "id": "catalog",
+          "label": "Providers & models",
+          "icon": "network",
+          "caption": "Enregistrez les providers une seule fois et exposez les models approuvés via un endpoint compatible OpenAI. Vérifiez le type d'API, la config d'auth, le périmètre et le statut avant qu'une équipe puisse les appeler."
+        },
+        {
+          "id": "security",
+          "label": "Couches de sécurité",
+          "icon": "shield",
+          "caption": "Empilez six contrôles sur chaque provider : droits d'accès, périmètre par équipe ou clé, models autorisés, models bloqués, guardrails de prompt et règles de politique ou de quota."
+        },
+        {
+          "id": "pricing",
+          "label": "Tarification & budgets",
+          "icon": "badgeDollarSign",
+          "caption": "Suivez la tarification en tokens par model, puis plafonnez la dépense avec des budgets et quotas qui réservent les fonds avant les complétions coûteuses, pas après."
+        },
+        {
+          "id": "usage",
+          "label": "Enregistrements d'usage",
+          "icon": "activity",
+          "caption": "Chaque requête est attribuée à un model, une API key, une équipe, des tokens, une latence, un statut et un coût, prête pour l'audit, la revue interne ou la refacturation."
+        },
+        {
+          "id": "observability",
+          "label": "Observabilité",
+          "icon": "lineChart",
+          "caption": "Diffusez traces, logs, événements de coût et déclenchements de guardrails de chaque appel de model vers votre stack existante, pour que le trafic LLM arrive dans les mêmes dashboards et alertes que le reste de votre plateforme."
+        },
+        {
+          "id": "auth",
+          "label": "Clés providers",
+          "icon": "lockKeyhole",
+          "caption": "Stockez les credentials providers une seule fois dans Odock. Vos applications s'authentifient avec des virtual keys et ne touchent jamais directement les secrets OpenAI, Anthropic ou Azure."
+        }
+      ],
+      "serverRows": [
+        {
+          "name": "openai-prod",
+          "source": "Catalogue providers",
+          "transport": "OPENAI_API",
+          "auth": "BEARER",
+          "scope": "org entière",
+          "grants": "24 clés accordées"
+        },
+        {
+          "name": "anthropic-prod",
+          "source": "Catalogue providers",
+          "transport": "ANTHROPIC_API",
+          "auth": "BEARER",
+          "scope": "org entière",
+          "grants": "18 clés accordées"
+        },
+        {
+          "name": "azure-openai-eu",
+          "source": "Configuration manuelle",
+          "transport": "OPENAI_API",
+          "auth": "BEARER",
+          "scope": "team:eu-products",
+          "grants": "6 clés accordées"
+        },
+        {
+          "name": "bedrock-us",
+          "source": "Catalogue providers",
+          "transport": "BEDROCK_API",
+          "auth": "OAUTH2",
+          "scope": "team:platform",
+          "grants": "4 clés accordées"
+        },
+        {
+          "name": "mistral-eu",
+          "source": "Catalogue providers",
+          "transport": "OPENAI_API",
+          "auth": "BEARER",
+          "scope": "team:eu-products",
+          "grants": "5 clés accordées"
+        },
+        {
+          "name": "vllm-selfhosted",
+          "source": "Configuration manuelle",
+          "transport": "OPENAI_API",
+          "auth": "NONE",
+          "scope": "team:research",
+          "grants": "3 clés accordées"
+        }
+      ],
+      "securityLayers": [
+        {
+          "name": "Droit d'accès provider",
+          "detail": "Requis par virtual API key"
+        },
+        {
+          "name": "Périmètre équipe ou API key",
+          "detail": "Frontière provider optionnelle"
+        },
+        {
+          "name": "Models autorisés",
+          "detail": "Models approuvés uniquement"
+        },
+        {
+          "name": "Models bloqués",
+          "detail": "Refuser les models obsolètes ou non conformes"
+        },
+        {
+          "name": "Guardrails de prompt",
+          "detail": "Contrôles injection, fuite et contenu"
+        },
+        {
+          "name": "Politiques et quotas",
+          "detail": "Débit, tokens, concurrence, budget"
+        }
+      ],
+      "policyTitle": "Contrôles de politique au runtime",
+      "policyItems": [
+        {
+          "name": "Liste blanche IP",
+          "detail": "Restreignez les réseaux autorisés à utiliser un provider ou une clé sensible."
+        },
+        {
+          "name": "Limites de tokens et de payload",
+          "detail": "Plafonnez la taille des prompts et des complétions avant que les grosses requêtes ne coûtent cher."
+        },
+        {
+          "name": "Débit et concurrence",
+          "detail": "Régulez les appelants en rafale et limitez les complétions parallèles."
+        },
+        {
+          "name": "Contrôles de budget et de quota",
+          "detail": "Stoppez l'usage quand les seuils de dépense, de requêtes ou de tokens sont dépassés."
+        }
+      ],
+      "tables": {
+        "pricing": {
+          "headers": ["Model", "Input / 1M tokens", "Output / 1M tokens", "Budget"],
+          "rows": [
+            ["gpt-5.2", "$1.75", "$14.00", "$800 / mois"],
+            ["claude-sonnet-5", "$3.00", "$15.00", "$650 / mois"],
+            ["claude-haiku-4-5", "$1.00", "$5.00", "$200 / mois"],
+            ["mistral-large-eu", "$2.00", "$6.00", "$150 / mois"],
+            ["azure-gpt-5.2-eu", "$1.90", "$15.20", "$400 / mois"],
+            ["vllm-llama-4", "$0.00", "$0.00", "$60 / mois infra"]
+          ]
+        },
+        "usage": {
+          "headers": ["Heure", "Model", "Clé", "Tokens", "Latence", "Statut", "Coût"],
+          "rows": [
+            ["14:03:12", "gpt-5.2", "vk_support_bot", "1.2k / 0.4k", "820ms", "200", "$0.007700"],
+            ["14:04:01", "claude-sonnet-5", "vk_team_marketing", "2.1k / 1.8k", "1.9s", "402", "$0.000000"],
+            ["14:04:44", "claude-haiku-4-5", "vk_internal_tools", "0.8k / 0.2k", "310ms", "200", "$0.001800"],
+            ["14:05:10", "mistral-large-eu", "vk_eu_products", "1.5k / 0.6k", "640ms", "200", "$0.006600"],
+            ["14:05:43", "gpt-5.2", "vk_research", "3.4k / 2.2k", "2.4s", "200", "$0.036800"],
+            ["14:06:18", "vllm-llama-4", "vk_research", "1.1k / 0.9k", "450ms", "200", "$0.000000"]
+          ]
+        },
+        "auth": {
+          "headers": ["Provider", "Type d'auth", "Transmis en amont", "Stocké dans Odock"],
+          "rows": [
+            ["openai-prod", "BEARER", "Authorization: Bearer <api_key>", "Clé statique"],
+            ["anthropic-prod", "BEARER", "x-api-key: <api_key>", "Clé statique"],
+            ["azure-openai-eu", "BEARER", "api-key: <api_key>", "Clé statique"],
+            ["bedrock-us", "OAUTH2", "Credentials AWS SigV4", "Credentials de rôle"],
+            ["mistral-eu", "BEARER", "Authorization: Bearer <api_key>", "Clé statique"],
+            ["vllm-selfhosted", "NONE", "Pas d'en-tête d'auth", "Config vide"]
+          ]
+        },
+        "observability": {
+          "headers": ["Signal", "Ce qu'il capture", "Cible d'export", "Statut"],
+          "rows": [
+            ["Traces de requêtes", "Prompt, model, tokens, latence", "OTLP / Datadog / Grafana", "streaming"],
+            ["Événements de coût", "Dépense par key, par équipe et par model", "Webhook / entrepôt", "live"],
+            ["Journal d'audit", "Appelant, décision de politique, résultat", "SIEM / stockage objet", "immuable"],
+            ["Déclenchements de guardrails", "Injection, fuite, models bloqués", "Alerting / SIEM", "temps réel"]
+          ]
+        }
+      }
+    },
+    "gateway": {
+      "eyebrow": "Un endpoint, deux voies d'accès",
+      "title": "Vos applications appellent Odock. Pas le provider",
+      "description": "Accédez à Odock via un endpoint unifié OpenAI-style commun à tous les providers, ou via l'endpoint natif et le SDK de chaque provider lorsque vous avez besoin de fonctionnalités propres à un provider. Dans les deux cas, Odock authentifie l'appelant, confirme l'accès au model, exécute les guardrails, réserve le budget, injecte les credentials du provider et enregistre le résultat avant que le provider ne voie la requête.",
+      "featureTitle": "Ce que la gateway prend en charge",
+      "features": [
+        "API unifiée OpenAI-style commune à tous les providers, pour que vos SDK existants fonctionnent sans modification.",
+        "Endpoints et SDK natifs des providers lorsque vous avez besoin de fonctionnalités propres à un provider.",
+        "Virtual API key requise avant qu'un model soit accessible.",
+        "Credentials du provider injectés une fois les contrôles de gouvernance validés.",
+        "Routing et failover entre providers approuvés."
+      ],
+      "copiedLabel": "Copié",
+      "copyLabel": "Copier",
+      "methods": [
+        {
+          "id": "curl",
+          "label": "curl",
+          "filename": "chat-completion.sh",
+          "code": "# Appelez Odock au lieu du provider\ncurl \"$ODOCK_GATEWAY_URL/v1/chat/completions\" \\\n  -H \"Authorization: Bearer $ODOCK_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"model\": \"gpt-5.2\",\n    \"messages\": [\n      {\"role\": \"user\", \"content\": \"Résume notre usage du T3.\"}\n    ]\n  }'"
+        },
+        {
+          "id": "python",
+          "label": "Python",
+          "filename": "chat_completion.py",
+          "code": "import os\nfrom openai import OpenAI\n\n# Utilisez l'endpoint gouverné d'Odock avec le SDK officiel\nclient = OpenAI(\n    base_url=f\"{os.environ['ODOCK_GATEWAY_URL']}/v1\",\n    api_key=os.environ[\"ODOCK_API_KEY\"],\n)\n\nresponse = client.chat.completions.create(\n    model=\"claude-sonnet-5\",\n    messages=[\n        {\"role\": \"user\", \"content\": \"Résume notre usage du T3.\"},\n    ],\n)\n\n# Inspectez la complétion gouvernée\nprint(response.choices[0].message.content)"
+        },
+        {
+          "id": "typescript",
+          "label": "TypeScript",
+          "filename": "chat-completion.ts",
+          "code": "import OpenAI from \"openai\";\n\n// Pointez le SDK OpenAI vers l'endpoint de la gateway Odock\nconst client = new OpenAI({\n  baseURL: `${process.env.ODOCK_GATEWAY_URL}/v1`,\n  apiKey: process.env.ODOCK_API_KEY,\n});\n\nconst response = await client.chat.completions.create({\n  model: \"gpt-5.2\",\n  messages: [\n    { role: \"user\", content: \"Résume notre usage du T3.\" },\n  ],\n});\n\n// Complétion gouvernée, enregistrée et attribuée\nconsole.log(response.choices[0].message.content);"
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Les questions que les équipes posent sur les gateways LLM",
+      "description": "Voici les questions récurrentes lorsque les équipes passent d'un accès provider direct à une couche gateway gouvernée.",
+      "items": [
+        {
+          "question": "Qu'est-ce qu'une gateway LLM ?",
+          "answer": "Une gateway LLM est un endpoint contrôlé unique entre vos applications et les providers de models. Elle authentifie les appelants avec ses propres clés, applique des politiques d'accès et des guardrails, fait respecter les budgets, route les requêtes vers des providers approuvés et enregistre l'usage — l'accès aux providers cesse d'être dispersé entre les équipes et les bases de code."
+        },
+        {
+          "question": "Quelle différence avec des appels directs aux providers ?",
+          "answer": "Les appels directs lient chaque application au SDK d'un provider, dispersent des clés API brutes dans les environnements et laissent les contrôles de coût et de sécurité à chaque équipe. Une gateway centralise les clés, rend les providers interchangeables derrière une API compatible OpenAI et applique les politiques de dépense et de sécurité en un seul endroit, avant l'exécution de l'appel."
+        },
+        {
+          "question": "Qu'est-ce qui fait d'une gateway LLM une plateforme de gouvernance ?",
+          "answer": "Le routing seul est un proxy. La gouvernance ajoute le qui-peut-faire-quoi : droits d'accès par équipe ou par clé, réservation de budget avant exécution, guardrails sur les prompts et les sorties, et enregistrements prêts pour l'audit de chaque décision de model. C'est cette combinaison que des cadres comme le règlement européen sur l'IA exigent en pratique."
+        },
+        {
+          "question": "Une gateway LLM ajoute-t-elle de la latence ?",
+          "answer": "Une gateway bien conçue ajoute quelques millisecondes, dominées par des contrôles de politique exécutés en mémoire. Ce surcoût est généralement invisible face au temps d'inférence du model, et il apporte le failover : quand un provider se dégrade, la gateway reroute au lieu de faire échouer votre fonctionnalité."
+        },
+        {
+          "question": "Peut-on auto-héberger une gateway LLM ?",
+          "answer": "Oui. Odock est open source et auto-hébergeable : la gateway, ses politiques et ses enregistrements d'usage tournent dans votre infrastructure. C'est important pour la résidence des données, la garde des clés et les revues de conformité où un plan de contrôle externe n'est pas acceptable."
+        }
+      ]
+    },
+    "controlPoints": {
+      "eyebrow": "Pourquoi c'est important",
+      "title": "Les appels de models sont des événements de dépense, de données et de conformité",
+      "description": "Chaque complétion déplace de l'argent, peut transporter des données sensibles et devra peut-être être expliquée à un auditeur. Une gateway LLM donne aux équipes plateforme, sécurité et finance un point d'application unique pour les trois.",
+      "items": [
+        {
+          "title": "Contrôlez les models utilisés par les équipes",
+          "description": "Autorisez les providers et models approuvés par équipe ou par clé, bloquez les models obsolètes ou non conformes, et déployez de nouveaux models sans toucher au code applicatif.",
+          "icon": "network"
+        },
+        {
+          "title": "Appliquez la politique avant l'exécution",
+          "description": "Authentifiez chaque appelant, scannez les prompts contre l'injection et la fuite de données, et rejetez les requêtes qui échouent aux règles de sécurité, de budget ou de conformité avant tout appel provider.",
+          "icon": "shield"
+        },
+        {
+          "title": "Attribuez chaque token",
+          "description": "Reliez chaque requête à une clé, une équipe et un utilisateur avec tokens, latence et coût. Donnez à la finance des données de refacturation et aux auditeurs les enregistrements qu'ils demandent.",
+          "icon": "fileCheck"
+        }
+      ]
+    },
+    "compliance": {
+      "eyebrow": "Règlement IA européen & conformité",
+      "title": "Une preuve pour chaque décision de model",
+      "description": "Les programmes de conformité ont besoin de réponses précises : quelle équipe a utilisé quel model, sous quelle politique, avec quelles protections ? L'accès provider direct ne peut pas répondre à ces questions. Odock le peut.",
+      "items": [
+        "Faites passer chaque provider par un endpoint unique compatible OpenAI, gouverné et auditable",
+        "Appliquez les contrôles de prompt injection et de fuite de données hors du code applicatif",
+        "Produisez des preuves pour les revues IA internes, les évaluations fournisseurs et les programmes de conformité au règlement européen sur l'IA",
+        "Gardez le trafic LLM et le trafic d'outils MCP dans la même frontière opérationnelle et de politique"
+      ]
+    },
+    "cta": {
+      "title": "Un endpoint pour chaque model, avec la gouvernance intégrée",
+      "description": "Si vos équipes appellent des LLM en production, il vous faut le même contrôle que pour toute dépendance critique. Odock gouverne le trafic de models et d'outils depuis un chemin de requête unique.",
+      "primaryLabel": "Réserver une démo",
+      "primaryHref": "/contact",
+      "secondaryLabel": "Lire le guide de la gateway LLM",
+      "secondaryHref": "/blog/what-is-an-llm-gateway-and-why-ai-teams-need-one"
     }
   }
   },

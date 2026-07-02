@@ -2,7 +2,18 @@
 
 import { useEffect, useState, type ReactNode } from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import {
+  Activity,
+  ArrowRight,
+  BadgeDollarSign,
+  CheckCircle2,
+  FileCheck,
+  KeyRound,
+  LockKeyhole,
+  Network,
+  Route,
+  Shield,
+} from 'lucide-react';
 import { Header } from '@/components/landing/header';
 import { Footer } from '@/components/landing/footer';
 import { MCPGatewayCodeSection } from '@/components/mcp/mcp-gateway-code-section';
@@ -12,20 +23,57 @@ import { MCPProductShowcase } from '@/components/mcp/mcp-product-showcase';
 import { Button } from '@/components/ui/button';
 import { localizePath, type Locale, type SiteContent } from '@/lib/i18n';
 
+// Shared shape for the MCP and LLM gateway pillar pages. blockedRequest is
+// loosened so each page can display its own request fields.
+type MCPGatewaySections = SiteContent['mcpGatewayPage']['sections'];
+export type GatewayPageData = Omit<SiteContent['mcpGatewayPage'], 'sections'> & {
+  sections: Omit<MCPGatewaySections, 'lifecycle'> & {
+    lifecycle: Omit<MCPGatewaySections['lifecycle'], 'overview'> & {
+      overview: Omit<MCPGatewaySections['lifecycle']['overview'], 'blockedRequest'> & {
+        blockedRequest: Record<string, string | number>;
+      };
+    };
+  };
+};
+
+const sectionIconMap = {
+  network: Network,
+  shield: Shield,
+  fileCheck: FileCheck,
+  keyRound: KeyRound,
+  badgeDollarSign: BadgeDollarSign,
+  route: Route,
+  activity: Activity,
+  lockKeyhole: LockKeyhole,
+} as const;
+
+function getSectionIcon(icon: string) {
+  return sectionIconMap[icon as keyof typeof sectionIconMap] ?? Shield;
+}
+
 type MCPGatewayPageContentProps = {
   locale: Locale;
   content: SiteContent;
+  pageContent?: GatewayPageData;
+  gatewayFlow?: 'llm' | 'mcp';
 };
 
 export function MCPGatewayPageContent({
   locale,
   content,
+  pageContent: pageContentProp,
+  gatewayFlow = 'mcp',
 }: MCPGatewayPageContentProps) {
-  const pageContent = content.mcpGatewayPage;
-  const { lifecycle, cta, gateway } = pageContent.sections;
+  const pageContent = pageContentProp ?? content.mcpGatewayPage;
+  const { lifecycle, cta, gateway, definition, controlPoints, compliance } = pageContent.sections;
   const heroPanel = pageContent.heroPanel;
   const heroHighlights = lifecycle.heroHighlights;
-  const ctaCodeLines = gateway.methods[0]?.code.split('\n') ?? [];
+  const gatewayExamples = content.mcp[gatewayFlow].examples ?? [];
+  const gatewayMethodOrder =
+    gatewayFlow === 'llm' ? ['unified', 'native', 'http'] : ['mcp', 'framework', 'http'];
+  const ctaExample =
+    gatewayExamples.find((example) => example.method === gatewayMethodOrder[0]) ?? gatewayExamples[0];
+  const ctaCodeLines = ctaExample?.code.split('\n') ?? [];
   const [activeStep, setActiveStep] = useState(0);
 
   useEffect(() => {
@@ -177,9 +225,145 @@ export function MCPGatewayPageContent({
           </div>
         </section>
 
+        <section id="definition" className="relative overflow-hidden py-16 sm:py-24">
+          <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/80 via-transparent to-background/80" />
+          <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
+            <div className="mb-10 max-w-3xl">
+              <div className="mb-4 flex items-center gap-3">
+                <div className="h-px max-w-12 flex-1 bg-primary" />
+                <span className="text-[10px] uppercase tracking-widest text-primary">
+                  {definition.eyebrow}
+                </span>
+              </div>
+              <h2 className="text-3xl font-medium tracking-tight text-foreground lg:text-4xl">
+                {definition.title}
+              </h2>
+              <div className="mt-4 space-y-4">
+                {definition.paragraphs.map((paragraph) => (
+                  <p key={paragraph} className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            <div className="mb-10">
+              <div className="mb-6 text-[10px] uppercase tracking-widest text-muted-foreground">
+                {definition.useCasesTitle}
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {definition.useCases.map((useCase) => {
+                  const Icon = getSectionIcon(useCase.icon);
+                  return (
+                    <article key={useCase.title} className="border border-border bg-card p-5">
+                      <div className="mb-3 flex h-9 w-9 items-center justify-center border border-border bg-secondary">
+                        <Icon className="h-4 w-4 text-primary" />
+                      </div>
+                      <h3 className="mb-2 text-sm font-medium text-foreground">{useCase.title}</h3>
+                      <p className="text-[11px] leading-relaxed text-muted-foreground">{useCase.description}</p>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="border-t border-border pt-6">
+              <div className="mb-4 text-[10px] uppercase tracking-widest text-muted-foreground">
+                {definition.relatedLinksTitle}
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {definition.relatedLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={localizePath(link.href, locale)}
+                    prefetch={false}
+                    className="group inline-flex items-center gap-2 border border-border bg-card px-4 py-2 text-xs text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                  >
+                    {link.label}
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         <MCPLifecycleSection content={lifecycle.overview} />
+
+        <section id="control-points" className="relative overflow-hidden py-16 sm:py-24">
+          <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/80 via-transparent to-background/80" />
+          <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
+            <div className="mb-12 max-w-3xl">
+              <div className="mb-4 flex items-center gap-3">
+                <div className="h-px max-w-12 flex-1 bg-primary" />
+                <span className="text-[10px] uppercase tracking-widest text-primary">
+                  {controlPoints.eyebrow}
+                </span>
+              </div>
+              <h2 className="text-3xl font-medium tracking-tight text-foreground lg:text-4xl">
+                {controlPoints.title}
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                {controlPoints.description}
+              </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {controlPoints.items.map((item) => {
+                const Icon = getSectionIcon(item.icon);
+                return (
+                  <article key={item.title} className="border border-border bg-card p-5">
+                    <div className="mb-3 flex h-9 w-9 items-center justify-center border border-border bg-secondary">
+                      <Icon className="h-4 w-4 text-primary" />
+                    </div>
+                    <h3 className="mb-2 text-sm font-medium text-foreground">{item.title}</h3>
+                    <p className="text-[11px] leading-relaxed text-muted-foreground">{item.description}</p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         <MCPProductShowcase content={pageContent.sections.productShowcase} />
-        <MCPGatewayCodeSection content={pageContent.sections.gateway} />
+        <MCPGatewayCodeSection
+          content={gateway}
+          examples={gatewayExamples}
+          methodOrder={gatewayMethodOrder}
+          methodTabsLabel={content.mcp.methodTabsLabel}
+          languageTabsLabel={content.mcp.languageTabsLabel}
+          copyCodeAriaLabel={content.mcp.copyCodeAriaLabel}
+        />
+
+        <section id="compliance" className="relative overflow-hidden bg-card/30 py-16 sm:py-24">
+          <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/80 via-transparent to-background/80" />
+          <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
+            <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+              <div className="max-w-xl">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="h-px max-w-12 flex-1 bg-primary" />
+                  <span className="text-[10px] uppercase tracking-widest text-primary">
+                    {compliance.eyebrow}
+                  </span>
+                </div>
+                <h2 className="text-3xl font-medium tracking-tight text-foreground lg:text-4xl">
+                  {compliance.title}
+                </h2>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  {compliance.description}
+                </p>
+              </div>
+              <ul className="space-y-3">
+                {compliance.items.map((item) => (
+                  <li key={item} className="flex items-start gap-3 border border-border bg-card px-4 py-3">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    <span className="text-xs leading-relaxed text-muted-foreground sm:text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
         <MCPFAQSection content={pageContent.sections.faq} />
 
         <section id="cta" className="relative overflow-hidden py-16 sm:py-24">
@@ -212,7 +396,7 @@ export function MCPGatewayPageContent({
 
                 <div className="min-w-0 rounded-sm border border-border bg-background p-3 sm:p-4">
                   <div className="mb-3 text-[10px] uppercase tracking-widest text-muted-foreground sm:text-xs">
-                    {gateway.methods[0]?.filename ?? 'gateway-request'}
+                    {ctaExample?.filename ?? 'gateway-request'}
                   </div>
                   <pre className="overflow-x-auto text-[11px] leading-relaxed text-foreground sm:text-xs">
                     <code>
