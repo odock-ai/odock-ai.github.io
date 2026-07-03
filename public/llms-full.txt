@@ -50,6 +50,27 @@ Email: hello@odock.ai
 
 ## Blog articles
 
+### EU AI Act 2026: What the August 2 Deadline Actually Means for AI Teams
+URL: https://odock.ai/blog/eu-ai-act-2026-what-the-august-deadline-means-for-ai-teams/
+Summary: A plain-language guide to the EU AI Act in 2026: what became applicable on
+2 August 2026, how the Omnibus package postponed most Annex III high-risk
+obligations to December 2027, the penalty tiers, and how an AI governance gateway
+produces the access control, logging, and audit evidence the Act requires.
+
+### Why the AI Gateway Became Mandatory Infrastructure in 2026
+URL: https://odock.ai/blog/why-the-ai-gateway-became-mandatory-infrastructure-in-2026/
+Summary: Provider sprawl, MCP agent traffic, and tightening regulation turned the
+AI gateway from optimization into requirement. Defines what enterprise-grade means
+in 2026 (low overhead, hierarchical governance, audit-grade logging, multi-provider
+failover, MCP tool governance) and why security must be native to the request lifecycle.
+
+### The 6 MCP Security Risks Every Enterprise Faces in 2026
+URL: https://odock.ai/blog/mcp-security-risks-enterprise-ai-agents-2026/
+Summary: The six recurring MCP security risks for enterprise AI agents, over-privileged
+access, indirect prompt injection, tool poisoning and rug pulls, credential sprawl,
+audit blind spots, and unbounded consumption, and how each is closed at the gateway
+by treating MCP access as scoped, inspected, recorded capability access.
+
 ### What Is an LLM Gateway and Why AI Teams Need One Before Production
 URL: https://odock.ai/blog/what-is-an-llm-gateway-and-why-ai-teams-need-one/
 Summary: Explains what an LLM gateway does, why governance becomes necessary after
