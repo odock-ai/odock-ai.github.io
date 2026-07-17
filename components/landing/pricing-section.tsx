@@ -38,6 +38,18 @@ export function PricingSection() {
               }`}
             >
               <div className="mb-6">
+                {tier.badge && (
+                  <div className="mb-3 flex flex-wrap items-center gap-2">
+                    <span className="rounded-sm bg-primary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary-foreground">
+                      {tier.badge}
+                    </span>
+                    {tier.badgeDetail && (
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-primary">
+                        {tier.badgeDetail}
+                      </span>
+                    )}
+                  </div>
+                )}
                 <h3 className="mb-2 text-lg font-medium text-foreground">{tier.name}</h3>
                 <div className="mb-2 flex items-baseline gap-1">
                   <span className="text-3xl font-medium text-foreground">{tier.price}</span>

@@ -1009,6 +1009,8 @@
         "name": "Cloud",
         "price": "$299",
         "period": "/mois",
+        "badge": "1 mois d'essai gratuit",
+        "badgeDetail": "Offre managée",
         "description": "Odock managé, sans infrastructure à opérer",
         "features": [
           "Tout ce qui est inclus dans Open Source",

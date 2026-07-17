@@ -1009,6 +1009,8 @@
         "name": "Cloud",
         "price": "$299",
         "period": "/month",
+        "badge": "1 month free trial",
+        "badgeDetail": "Managed offer",
         "description": "Managed Odock with zero infrastructure",
         "features": [
           "Everything in Open Source",
