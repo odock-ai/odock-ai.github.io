@@ -46,8 +46,13 @@ Full documentation: https://docs.odock.ai/docs/getting-started
 ## Featured articles
 
 - EU AI Act 2026, what the August 2 deadline means for AI teams: https://odock.ai/blog/eu-ai-act-2026-what-the-august-deadline-means-for-ai-teams/
+- ISO 42001 vs NIST AI RMF vs EU AI Act, AI governance frameworks compared: https://odock.ai/blog/iso-42001-vs-nist-ai-rmf-vs-eu-ai-act-ai-governance-frameworks-compared/
 - Why the AI gateway became mandatory infrastructure in 2026: https://odock.ai/blog/why-the-ai-gateway-became-mandatory-infrastructure-in-2026/
 - The 6 MCP security risks every enterprise faces in 2026: https://odock.ai/blog/mcp-security-risks-enterprise-ai-agents-2026/
+- AI agents are non-human identities now, the 2026 credential sprawl problem: https://odock.ai/blog/ai-agent-identity-and-non-human-identity-security-in-2026/
+- Shadow AI in 2026, why banning tools fails and governed enablement wins: https://odock.ai/blog/shadow-ai-2026-how-to-govern-unsanctioned-ai-tool-use/
+- The great model churn of 2026, why model-agnostic routing matters: https://odock.ai/blog/the-great-model-churn-of-2026-why-model-agnostic-routing-matters/
+- Self-host LLMs with Ollama and vLLM, distribute them with Odock: https://odock.ai/blog/self-host-llms-with-ollama-and-vllm-and-distribute-them-with-odock/
 
 ## Contact
 

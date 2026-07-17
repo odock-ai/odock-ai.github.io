@@ -43,7 +43,8 @@
     "what-is-an-llm-gateway-and-why-ai-teams-need-one",
     "how-to-build-a-plugin-layer-for-llm-workflows",
     "mcp-server-governance-for-ai-agents",
-    "prompt-injection-data-leakage-and-llm-security-guardrails"
+    "prompt-injection-data-leakage-and-llm-security-guardrails",
+    "the-great-model-churn-of-2026-why-model-agnostic-routing-matters"
   ],
   "cta": {
     "title": "Want an AI-native gateway with modular security and workflow plugins?",

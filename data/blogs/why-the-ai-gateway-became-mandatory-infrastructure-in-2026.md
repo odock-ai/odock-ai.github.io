@@ -43,7 +43,8 @@
     "what-is-an-llm-gateway-and-why-ai-teams-need-one",
     "eu-ai-act-2026-what-the-august-deadline-means-for-ai-teams",
     "litellm-kong-cloudflare-portkey-vs-odock-ai-gateway-comparison",
-    "how-to-design-multi-provider-llm-routing-and-failover"
+    "how-to-design-multi-provider-llm-routing-and-failover",
+    "shadow-ai-2026-how-to-govern-unsanctioned-ai-tool-use"
   ],
   "cta": {
     "title": "Put every model and tool behind one control plane",

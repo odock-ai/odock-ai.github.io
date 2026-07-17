@@ -41,7 +41,8 @@
   "relatedSlugs": [
     "ai-security-in-2026-prompt-injection-tool-poisoning-and-agentic-risk",
     "prompt-injection-data-leakage-and-llm-security-guardrails",
-    "what-to-log-monitor-and-trace-in-production-llm-apps"
+    "what-to-log-monitor-and-trace-in-production-llm-apps",
+    "ai-agent-identity-and-non-human-identity-security-in-2026"
   ],
   "cta": {
     "title": "Need a security engine that works across the full AI request lifecycle?",

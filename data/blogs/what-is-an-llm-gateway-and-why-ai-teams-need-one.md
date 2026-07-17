@@ -40,7 +40,8 @@
   ],
   "relatedSlugs": [
     "prompt-injection-data-leakage-and-llm-security-guardrails",
-    "how-to-control-llm-costs-with-virtual-api-keys-budgets-and-quotas"
+    "how-to-control-llm-costs-with-virtual-api-keys-budgets-and-quotas",
+    "shadow-ai-2026-how-to-govern-unsanctioned-ai-tool-use"
   ],
   "cta": {
     "title": "Need a production-ready control plane for AI traffic?",

@@ -41,7 +41,8 @@
   "relatedSlugs": [
     "what-is-an-llm-gateway-and-why-ai-teams-need-one",
     "how-to-control-llm-costs-with-virtual-api-keys-budgets-and-quotas",
-    "what-to-log-monitor-and-trace-in-production-llm-apps"
+    "what-to-log-monitor-and-trace-in-production-llm-apps",
+    "the-great-model-churn-of-2026-why-model-agnostic-routing-matters"
   ],
   "cta": {
     "title": "Need routing that survives provider changes?",

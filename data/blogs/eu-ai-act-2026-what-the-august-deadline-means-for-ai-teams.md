@@ -43,7 +43,8 @@
     "why-the-ai-gateway-became-mandatory-infrastructure-in-2026",
     "what-to-log-monitor-and-trace-in-production-llm-apps",
     "how-to-build-a-lifecycle-aware-ai-security-engine",
-    "mcp-server-governance-for-ai-agents"
+    "mcp-server-governance-for-ai-agents",
+    "iso-42001-vs-nist-ai-rmf-vs-eu-ai-act-ai-governance-frameworks-compared"
   ],
   "cta": {
     "title": "Turn every AI request into audit-ready evidence",

@@ -40,7 +40,8 @@
   ],
   "relatedSlugs": [
     "what-is-an-llm-gateway-and-why-ai-teams-need-one",
-    "how-to-control-llm-costs-with-virtual-api-keys-budgets-and-quotas"
+    "how-to-control-llm-costs-with-virtual-api-keys-budgets-and-quotas",
+    "shadow-ai-2026-how-to-govern-unsanctioned-ai-tool-use"
   ],
   "cta": {
     "title": "Need IA security controls that live outside app code?",

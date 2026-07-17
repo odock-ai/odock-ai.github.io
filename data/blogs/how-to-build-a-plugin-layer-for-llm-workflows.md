@@ -41,7 +41,8 @@
   "relatedSlugs": [
     "mcp-server-governance-for-ai-agents",
     "prompt-injection-data-leakage-and-llm-security-guardrails",
-    "what-to-log-monitor-and-trace-in-production-llm-apps"
+    "what-to-log-monitor-and-trace-in-production-llm-apps",
+    "self-host-llms-with-ollama-and-vllm-and-distribute-them-with-odock"
   ],
   "cta": {
     "title": "Need extensible controls around every AI request?",
@@ -52,93 +53,93 @@
     "secondaryHref": "https://github.com/odock-ai"
   },
   "locales": {
-  "fr": {
-    "category": "Architecture des workflows IA",
-    "title": "Comment créer une couche de plugins pour les workflows LLM sans transformer les applications en code de liaison",
-    "seoTitle": "Comment créer une couche de plugins pour les workflows LLM",
-    "description": "Les applications LLM ont besoin de validation, de transformations, de contrôles de politique et de hooks de workflow. Découvrez pourquoi ces extensions ont leur place dans une couche de plugins au niveau de la passerelle.",
-    "excerpt": "À mesure que les workflows IA se développent, chaque application finit par ajouter le même code de liaison : filtres de prompts, validateurs de sortie, règles de routage et callbacks. Une couche de plugins au niveau de la passerelle rend cette logique réutilisable.",
-    "heroEyebrow": "Workflows avec plugins",
-    "intro": "La première intégration LLM se résume souvent à une requête et une réponse. La dixième est différente. Les équipes ont besoin de validation de prompts, d’enrichissement des requêtes, d’analyse des sorties, de contrôles de sécurité, d’indications de routage, de journalisation personnalisée, de règles propres à chaque client et de callbacks vers les systèmes internes. Si chaque application implémente ces éléments séparément, l’infrastructure IA se transforme en code de liaison. Une couche de plugins au niveau de la passerelle offre aux équipes un endroit plus propre pour étendre leurs workflows.",
-    "keyTakeaways": [
-      "Une couche de plugins permet de garder la logique partagée des workflows IA en dehors des services applicatifs.",
-      "Les plugins de passerelle sont utiles pour la validation, les transformations, les garde-fous, les indications de routage, l’observabilité et les flux d’approbation personnalisés.",
-      "Odock est conçu avec des plugins extensibles afin que les équipes puissent personnaliser le trafic IA tout en conservant un point d’entrée unique et contrôlé."
-    ],
-    "cta": {
-      "title": "Besoin de contrôles extensibles autour de chaque requête IA ?",
-      "description": "Odock combine une passerelle unifiée avec des plugins, des garde-fous, des budgets, du routage fournisseur et un accès MCP afin que la logique de workflow reste centralisée.",
-      "primaryLabel": "Demander une démo",
-      "secondaryLabel": "Voir sur GitHub"
+    "fr": {
+      "category": "Architecture des workflows IA",
+      "title": "Comment créer une couche de plugins pour les workflows LLM sans transformer les applications en code de liaison",
+      "seoTitle": "Comment créer une couche de plugins pour les workflows LLM",
+      "description": "Les applications LLM ont besoin de validation, de transformations, de contrôles de politique et de hooks de workflow. Découvrez pourquoi ces extensions ont leur place dans une couche de plugins au niveau de la passerelle.",
+      "excerpt": "À mesure que les workflows IA se développent, chaque application finit par ajouter le même code de liaison : filtres de prompts, validateurs de sortie, règles de routage et callbacks. Une couche de plugins au niveau de la passerelle rend cette logique réutilisable.",
+      "heroEyebrow": "Workflows avec plugins",
+      "intro": "La première intégration LLM se résume souvent à une requête et une réponse. La dixième est différente. Les équipes ont besoin de validation de prompts, d’enrichissement des requêtes, d’analyse des sorties, de contrôles de sécurité, d’indications de routage, de journalisation personnalisée, de règles propres à chaque client et de callbacks vers les systèmes internes. Si chaque application implémente ces éléments séparément, l’infrastructure IA se transforme en code de liaison. Une couche de plugins au niveau de la passerelle offre aux équipes un endroit plus propre pour étendre leurs workflows.",
+      "keyTakeaways": [
+        "Une couche de plugins permet de garder la logique partagée des workflows IA en dehors des services applicatifs.",
+        "Les plugins de passerelle sont utiles pour la validation, les transformations, les garde-fous, les indications de routage, l’observabilité et les flux d’approbation personnalisés.",
+        "Odock est conçu avec des plugins extensibles afin que les équipes puissent personnaliser le trafic IA tout en conservant un point d’entrée unique et contrôlé."
+      ],
+      "cta": {
+        "title": "Besoin de contrôles extensibles autour de chaque requête IA ?",
+        "description": "Odock combine une passerelle unifiée avec des plugins, des garde-fous, des budgets, du routage fournisseur et un accès MCP afin que la logique de workflow reste centralisée.",
+        "primaryLabel": "Demander une démo",
+        "secondaryLabel": "Voir sur GitHub"
+      },
+      "readingTime": "8 min",
+      "keywords": [
+        "llm plugins",
+        "ai workflow plugins",
+        "gateway plugin architecture",
+        "llm validation",
+        "ai gateway extensions",
+        "odock plugins"
+      ],
+      "faq": [
+        {
+          "question": "Les plugins sont-ils réservés aux agents IA avancés ?",
+          "answer": "Non. Les plugins sont aussi utiles pour les appels LLM ordinaires, notamment pour la validation des requêtes, les contrôles de sortie, la journalisation, la rédaction des données sensibles, les indications de routage et les politiques propres à chaque client."
+        },
+        {
+          "question": "Pourquoi ne pas mettre la logique des plugins dans chaque application ?",
+          "answer": "Une logique locale peut convenir pour un workflow isolé, mais les contrôles partagés dérivent lorsqu’ils sont répétés dans plusieurs services. Une couche de plugins au niveau de la passerelle facilite la maintenance et l’audit des comportements réutilisables."
+        },
+        {
+          "question": "Les plugins peuvent-ils aider à la conformité ?",
+          "answer": "Oui. Les plugins peuvent prendre en charge la rédaction des données sensibles, les contrôles de politique, les étapes d’approbation, les métadonnées d’audit et les schémas de routage restreints, même si la conformité dépend toujours de la conception globale du système."
+        }
+      ]
     },
-    "readingTime": "8 min",
-    "keywords": [
-      "llm plugins",
-      "ai workflow plugins",
-      "gateway plugin architecture",
-      "llm validation",
-      "ai gateway extensions",
-      "odock plugins"
-    ],
-    "faq": [
-      {
-        "question": "Les plugins sont-ils réservés aux agents IA avancés ?",
-        "answer": "Non. Les plugins sont aussi utiles pour les appels LLM ordinaires, notamment pour la validation des requêtes, les contrôles de sortie, la journalisation, la rédaction des données sensibles, les indications de routage et les politiques propres à chaque client."
+    "it": {
+      "category": "Architettura dei workflow AI",
+      "title": "Come costruire un livello di plugin per i workflow LLM senza trasformare le app in codice di collegamento",
+      "seoTitle": "Come costruire un livello di plugin per i workflow LLM",
+      "description": "Le applicazioni LLM hanno bisogno di validazione, trasformazioni, controlli di policy e hook di workflow. Scopri perché queste estensioni dovrebbero vivere in un livello di plugin del gateway.",
+      "excerpt": "Man mano che i workflow AI crescono, ogni app finisce per aggiungere lo stesso codice di collegamento: filtri sui prompt, validatori di output, regole di routing e callback. Un livello di plugin nel gateway rende questa logica riutilizzabile.",
+      "heroEyebrow": "Workflow con plugin",
+      "intro": "La prima integrazione LLM è di solito una richiesta e una risposta. La decima è diversa. I team hanno bisogno di validazione dei prompt, arricchimento delle richieste, parsing degli output, controlli di sicurezza, indicazioni di routing, logging personalizzato, regole specifiche per cliente e callback verso sistemi interni. Se ogni applicazione implementa questi elementi separatamente, l’infrastruttura AI si trasforma in codice di collegamento. Un livello di plugin nel gateway offre ai team un punto più pulito in cui estendere i workflow.",
+      "keyTakeaways": [
+        "Un livello di plugin mantiene la logica condivisa dei workflow AI fuori dai singoli servizi applicativi.",
+        "I plugin del gateway sono utili per validazione, trasformazioni, guardrail, indicazioni di routing, osservabilità e flussi di approvazione personalizzati.",
+        "Odock è progettato con plugin estensibili, così i team possono personalizzare il traffico AI mantenendo un unico endpoint controllato."
+      ],
+      "cta": {
+        "title": "Ti servono controlli estensibili attorno a ogni richiesta AI?",
+        "description": "Odock combina un gateway unificato con plugin, guardrail, budget, routing dei provider e accesso MCP, così la logica di workflow resta centralizzata.",
+        "primaryLabel": "Richiedi una demo",
+        "secondaryLabel": "Vedi su GitHub"
       },
-      {
-        "question": "Pourquoi ne pas mettre la logique des plugins dans chaque application ?",
-        "answer": "Une logique locale peut convenir pour un workflow isolé, mais les contrôles partagés dérivent lorsqu’ils sont répétés dans plusieurs services. Une couche de plugins au niveau de la passerelle facilite la maintenance et l’audit des comportements réutilisables."
-      },
-      {
-        "question": "Les plugins peuvent-ils aider à la conformité ?",
-        "answer": "Oui. Les plugins peuvent prendre en charge la rédaction des données sensibles, les contrôles de politique, les étapes d’approbation, les métadonnées d’audit et les schémas de routage restreints, même si la conformité dépend toujours de la conception globale du système."
-      }
-    ]
-  },
-  "it": {
-    "category": "Architettura dei workflow AI",
-    "title": "Come costruire un livello di plugin per i workflow LLM senza trasformare le app in codice di collegamento",
-    "seoTitle": "Come costruire un livello di plugin per i workflow LLM",
-    "description": "Le applicazioni LLM hanno bisogno di validazione, trasformazioni, controlli di policy e hook di workflow. Scopri perché queste estensioni dovrebbero vivere in un livello di plugin del gateway.",
-    "excerpt": "Man mano che i workflow AI crescono, ogni app finisce per aggiungere lo stesso codice di collegamento: filtri sui prompt, validatori di output, regole di routing e callback. Un livello di plugin nel gateway rende questa logica riutilizzabile.",
-    "heroEyebrow": "Workflow con plugin",
-    "intro": "La prima integrazione LLM è di solito una richiesta e una risposta. La decima è diversa. I team hanno bisogno di validazione dei prompt, arricchimento delle richieste, parsing degli output, controlli di sicurezza, indicazioni di routing, logging personalizzato, regole specifiche per cliente e callback verso sistemi interni. Se ogni applicazione implementa questi elementi separatamente, l’infrastruttura AI si trasforma in codice di collegamento. Un livello di plugin nel gateway offre ai team un punto più pulito in cui estendere i workflow.",
-    "keyTakeaways": [
-      "Un livello di plugin mantiene la logica condivisa dei workflow AI fuori dai singoli servizi applicativi.",
-      "I plugin del gateway sono utili per validazione, trasformazioni, guardrail, indicazioni di routing, osservabilità e flussi di approvazione personalizzati.",
-      "Odock è progettato con plugin estensibili, così i team possono personalizzare il traffico AI mantenendo un unico endpoint controllato."
-    ],
-    "cta": {
-      "title": "Ti servono controlli estensibili attorno a ogni richiesta AI?",
-      "description": "Odock combina un gateway unificato con plugin, guardrail, budget, routing dei provider e accesso MCP, così la logica di workflow resta centralizzata.",
-      "primaryLabel": "Richiedi una demo",
-      "secondaryLabel": "Vedi su GitHub"
-    },
-    "readingTime": "8 min",
-    "keywords": [
-      "llm plugins",
-      "ai workflow plugins",
-      "gateway plugin architecture",
-      "llm validation",
-      "ai gateway extensions",
-      "odock plugins"
-    ],
-    "faq": [
-      {
-        "question": "I plugin servono solo per agenti AI avanzati?",
-        "answer": "No. I plugin sono utili anche per le normali chiamate LLM, incluse validazione delle richieste, controlli sugli output, logging, redazione dei dati sensibili, indicazioni di routing e policy specifiche per cliente."
-      },
-      {
-        "question": "Perché non mettere la logica dei plugin dentro ogni app?",
-        "answer": "La logica locale può andare bene per un singolo workflow, ma i controlli condivisi tendono a divergere quando vengono ripetuti in più servizi. Un livello di plugin nel gateway rende i comportamenti riutilizzabili più facili da mantenere e verificare."
-      },
-      {
-        "question": "I plugin possono aiutare con la compliance?",
-        "answer": "Sì. I plugin possono supportare redazione dei dati sensibili, controlli di policy, passaggi di approvazione, metadati di audit e schemi di routing limitati, anche se la compliance dipende comunque dalla progettazione complessiva del sistema."
-      }
-    ]
+      "readingTime": "8 min",
+      "keywords": [
+        "llm plugins",
+        "ai workflow plugins",
+        "gateway plugin architecture",
+        "llm validation",
+        "ai gateway extensions",
+        "odock plugins"
+      ],
+      "faq": [
+        {
+          "question": "I plugin servono solo per agenti AI avanzati?",
+          "answer": "No. I plugin sono utili anche per le normali chiamate LLM, incluse validazione delle richieste, controlli sugli output, logging, redazione dei dati sensibili, indicazioni di routing e policy specifiche per cliente."
+        },
+        {
+          "question": "Perché non mettere la logica dei plugin dentro ogni app?",
+          "answer": "La logica locale può andare bene per un singolo workflow, ma i controlli condivisi tendono a divergere quando vengono ripetuti in più servizi. Un livello di plugin nel gateway rende i comportamenti riutilizzabili più facili da mantenere e verificare."
+        },
+        {
+          "question": "I plugin possono aiutare con la compliance?",
+          "answer": "Sì. I plugin possono supportare redazione dei dati sensibili, controlli di policy, passaggi di approvazione, metadati di audit e schemi di routing limitati, anche se la compliance dipende comunque dalla progettazione complessiva del sistema."
+        }
+      ]
+    }
   }
-}
 }
 ---
 <!-- locale:en -->

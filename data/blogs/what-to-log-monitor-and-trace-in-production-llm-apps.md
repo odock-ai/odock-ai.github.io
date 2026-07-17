@@ -41,7 +41,8 @@
   "relatedSlugs": [
     "how-to-design-multi-provider-llm-routing-and-failover",
     "prompt-injection-data-leakage-and-llm-security-guardrails",
-    "how-to-control-llm-costs-with-virtual-api-keys-budgets-and-quotas"
+    "how-to-control-llm-costs-with-virtual-api-keys-budgets-and-quotas",
+    "iso-42001-vs-nist-ai-rmf-vs-eu-ai-act-ai-governance-frameworks-compared"
   ],
   "cta": {
     "title": "Need one observability layer for AI traffic?",

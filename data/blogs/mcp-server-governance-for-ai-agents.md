@@ -41,7 +41,8 @@
   "relatedSlugs": [
     "prompt-injection-data-leakage-and-llm-security-guardrails",
     "what-is-an-llm-gateway-and-why-ai-teams-need-one",
-    "how-to-build-a-plugin-layer-for-llm-workflows"
+    "how-to-build-a-plugin-layer-for-llm-workflows",
+    "ai-agent-identity-and-non-human-identity-security-in-2026"
   ],
   "cta": {
     "title": "Need a governed path for models and tools?",

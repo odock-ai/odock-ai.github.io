@@ -41,7 +41,8 @@
   "relatedSlugs": [
     "mcp-server-governance-for-ai-agents",
     "prompt-injection-data-leakage-and-llm-security-guardrails",
-    "how-to-build-a-lifecycle-aware-ai-security-engine"
+    "how-to-build-a-lifecycle-aware-ai-security-engine",
+    "ai-agent-identity-and-non-human-identity-security-in-2026"
   ],
   "cta": {
     "title": "Need runtime AI security that covers models and tools?",

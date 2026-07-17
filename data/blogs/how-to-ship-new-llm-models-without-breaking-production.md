@@ -41,7 +41,8 @@
   "relatedSlugs": [
     "how-to-design-multi-provider-llm-routing-and-failover",
     "what-to-log-monitor-and-trace-in-production-llm-apps",
-    "what-is-an-llm-gateway-and-why-ai-teams-need-one"
+    "what-is-an-llm-gateway-and-why-ai-teams-need-one",
+    "the-great-model-churn-of-2026-why-model-agnostic-routing-matters"
   ],
   "cta": {
     "title": "Need safer model rollouts across providers?",

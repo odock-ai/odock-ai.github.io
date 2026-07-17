@@ -123,3 +123,38 @@ URL: https://odock.ai/blog/what-to-log-monitor-and-trace-in-production-llm-apps/
 Summary: A production observability guide covering what to log (quality, latency,
 cost, safety, routing), how to trace requests across providers and tools, and
 how gateway-level logging differs from application-level logging.
+
+### Shadow AI in 2026: Why Banning Tools Fails and Governed Enablement Wins
+URL: https://odock.ai/blog/shadow-ai-2026-how-to-govern-unsanctioned-ai-tool-use/
+Summary: 2026 data shows 67% of employees use AI tools at work against 18% of
+organisations with a formal AI security policy, and shadow AI detections up 4x
+in a year. Explains why blocking access fails and how governed enablement,
+routing all usage through a gateway with identity, logging, and guardrails,
+closes the gap instead.
+
+### AI Agents Are Non-Human Identities Now: The 2026 Credential Sprawl Problem
+URL: https://odock.ai/blog/ai-agent-identity-and-non-human-identity-security-in-2026/
+Summary: Non-human identities now outnumber humans 144 to 1 in cloud-native
+environments. Explains why an AI agent's credential behaves differently from a
+static service account, and how gateway-issued scoped virtual keys with
+in-place rotation and revocation close the agent identity lifecycle gap.
+
+### ISO 42001 vs NIST AI RMF vs EU AI Act: One Gateway, Three Frameworks
+URL: https://odock.ai/blog/iso-42001-vs-nist-ai-rmf-vs-eu-ai-act-ai-governance-frameworks-compared/
+Summary: Compares the voluntary NIST AI RMF risk methodology, the certifiable
+ISO 42001 management system, and the binding EU AI Act, and maps how one
+gateway's access control, logging, and policy layers produce evidence that
+satisfies all three simultaneously.
+
+### The Great Model Churn of 2026: Why Model-Agnostic Routing Stopped Being Optional
+URL: https://odock.ai/blog/the-great-model-churn-of-2026-why-model-agnostic-routing-matters/
+Summary: New models ship roughly every three days in 2026 and open-weight models
+now lead specific benchmarks outright. Explains why hardcoding a model name is a
+liability and how a model-agnostic gateway catalog absorbs the release velocity.
+
+### From Laptop to Production: Self-Host LLMs with Ollama and vLLM, Then Distribute Them Like a Pro with Odock
+URL: https://odock.ai/blog/self-host-llms-with-ollama-and-vllm-and-distribute-them-with-odock/
+Summary: A practical path from prototyping on Ollama to serving production
+traffic on vLLM, then registering the self-hosted endpoint as a gateway
+provider so it can be distributed to teams or paying customers with virtual
+keys, budgets, pricing, and usage records.

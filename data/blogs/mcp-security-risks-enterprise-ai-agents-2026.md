@@ -43,7 +43,8 @@
     "mcp-server-governance-for-ai-agents",
     "ai-security-in-2026-prompt-injection-tool-poisoning-and-agentic-risk",
     "prompt-injection-data-leakage-and-llm-security-guardrails",
-    "why-the-ai-gateway-became-mandatory-infrastructure-in-2026"
+    "why-the-ai-gateway-became-mandatory-infrastructure-in-2026",
+    "ai-agent-identity-and-non-human-identity-security-in-2026"
   ],
   "cta": {
     "title": "Govern MCP tool access as a capability, not a convenience",

@@ -40,7 +40,8 @@
   ],
   "relatedSlugs": [
     "what-is-an-llm-gateway-and-why-ai-teams-need-one",
-    "prompt-injection-data-leakage-and-llm-security-guardrails"
+    "prompt-injection-data-leakage-and-llm-security-guardrails",
+    "self-host-llms-with-ollama-and-vllm-and-distribute-them-with-odock"
   ],
   "cta": {
     "title": "Need better control over AI spend before traffic scales?",
