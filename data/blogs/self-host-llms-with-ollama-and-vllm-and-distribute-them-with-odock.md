@@ -6,8 +6,8 @@
   "seoTitle": "Ollama vs vLLM: Self-Host LLMs and Distribute with Odock",
   "description": "Ollama and vLLM made self-hosted, open-weight models a credible production option in 2026. Learn the practical split between the two, and how to put a self-hosted model behind Odock to give it governed, multi-tenant distribution with virtual keys, pricing, and full audit records.",
   "excerpt": "You can prototype on Ollama in an afternoon and serve real production traffic on vLLM at 6x the throughput. The part most guides skip is what happens next: turning that self-hosted model into something you can safely hand out to teams, customers, or a pro tier with proper access control and billing.",
-  "publishedAt": "2026-07-17",
-  "updatedAt": "2026-07-17",
+  "publishedAt": "2026-07-18",
+  "updatedAt": "2026-07-18",
   "readingTime": "12 min",
   "keywords": [
     "ollama vs vllm",
