@@ -50,6 +50,27 @@ Email: hello@odock.ai
 
 ## Blog articles
 
+### From Chatbots to Delegated Work: Why Agentic AI Needs a Runtime Control Plane
+URL: https://odock.ai/blog/from-chatbots-to-delegated-work-why-agentic-ai-needs-a-runtime-control-plane/
+Summary: Explains the 2026 shift from short chatbot interactions to delegated,
+long-running agentic work. Covers why agents need runtime identity, tool
+governance, pre-execution budget reservation, routing controls, and durable
+usage evidence before enterprises scale autonomous workflows.
+
+### AI Act Transparency and GPAI Enforcement: What Changed After August 2026
+URL: https://odock.ai/blog/ai-act-transparency-and-gpai-enforcement-what-changed-after-august-2026/
+Summary: Covers what changed when EU AI Act enforcement and transparency
+obligations became operational on 2 August 2026. Explains why AI teams now need
+runtime evidence for identity, access, model and tool usage, policy outcomes,
+safety checks, logs, and oversight.
+
+### A2A, MCP, and the Agent Standards Race: Why Interoperability Needs Governance
+URL: https://odock.ai/blog/a2a-mcp-and-the-agent-standards-race-why-interoperability-needs-governance/
+Summary: Explains the agent interoperability wave around A2A and MCP. Shows why
+standardized agent-to-agent communication and agent-to-tool execution require a
+governance layer with scoped identities, tool-level access controls, semantic
+payload filters, upstream auth injection, and audit records.
+
 ### EU AI Act 2026: What the August 2 Deadline Actually Means for AI Teams
 URL: https://odock.ai/blog/eu-ai-act-2026-what-the-august-deadline-means-for-ai-teams/
 Summary: A plain-language guide to the EU AI Act in 2026: what became applicable on
