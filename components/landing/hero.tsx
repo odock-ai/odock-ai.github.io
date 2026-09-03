@@ -44,13 +44,6 @@ export function Hero() {
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:gap-8">
           <div className="flex min-w-0 flex-col justify-center stagger-children">
-            <div className="mb-5 inline-flex w-fit max-w-full items-center gap-2 border border-border bg-card px-3 py-1.5 sm:mb-6">
-              <span className="h-1.5 w-1.5 bg-primary pulse-glow" />
-              <span className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground sm:text-[10px]">
-                {content.hero.eyebrow}
-              </span>
-            </div>
-
             <h1 className="mb-5 max-w-[12ch] text-3xl font-medium leading-[1.05] tracking-tight text-foreground sm:mb-6 sm:max-w-[13ch] sm:text-4xl lg:max-w-none lg:text-5xl">
               {heroHeadline}
             </h1>

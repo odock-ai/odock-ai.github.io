@@ -88,13 +88,6 @@ export function BlogIndexContent({
 
             {/* Page Header */}
             <div className="mb-12 max-w-3xl">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5">
-                <span className="h-2 w-2 rounded-full bg-primary pulse-glow" />
-                <span className="text-xs font-medium uppercase tracking-wider text-primary">
-                  {ui.badge}
-                </span>
-              </div>
-
               <h1 className="text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
                 {ui.title}
               </h1>

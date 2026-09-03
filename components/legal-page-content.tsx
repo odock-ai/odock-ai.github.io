@@ -30,9 +30,6 @@ export function LegalPageContent({
         <Header />
         <section className="px-4 pb-20 pt-24 lg:px-8">
           <div className="mx-auto max-w-4xl">
-            <div className="mb-6 inline-flex border border-border bg-card px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-primary">
-              {pageContent.badge}
-            </div>
             <h1 className="mb-4 text-4xl font-medium tracking-tight text-foreground md:text-5xl">
               {pageContent.title}
             </h1>

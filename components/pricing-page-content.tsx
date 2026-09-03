@@ -66,10 +66,6 @@ export function PricingPageContent({ locale, content }: PricingPageContentProps)
           <div className="absolute left-1/3 top-16 h-96 w-96 rounded-full bg-primary/5 blur-3xl" aria-hidden="true" />
 
           <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-28 lg:px-8 lg:pb-28 lg:pt-36">
-            <Badge variant="outline" className="mb-8 border-primary/30 bg-card px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-primary">
-              {content.eyebrow}
-            </Badge>
-
             <div className="grid gap-12 lg:grid-cols-2 lg:items-end">
               <div>
                 <h1 className="text-5xl font-medium leading-[1.02] tracking-tight text-foreground sm:text-6xl lg:text-7xl">

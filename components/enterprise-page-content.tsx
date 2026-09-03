@@ -102,9 +102,6 @@ export function EnterprisePageContent({ locale, content }: EnterprisePageContent
             </div>
 
             <div className="max-w-4xl">
-              <Badge variant="outline" className="mb-6 border-primary/30 bg-card px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-primary">
-                {content.hero.eyebrow}
-              </Badge>
               <h1 className="max-w-4xl text-4xl font-medium leading-[1.02] tracking-tight text-foreground sm:text-5xl">
                 {content.hero.title}
               </h1>
