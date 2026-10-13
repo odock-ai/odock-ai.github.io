@@ -25,7 +25,10 @@ existing API calls to the Odock endpoint and issue virtual API keys.
 - Prompt injection protection and data leakage controls at the gateway layer
 - Multi-provider routing, failover, and load balancing (OpenAI, Anthropic, etc.)
 - EU AI Act compliance support: structured audit evidence for every request
-- Plugin architecture for custom workflow steps
+- Plugin architecture for custom workflow steps (Marketplace plugins, per-key plugin chains)
+- Flow Studio: visual and YAML automation graphs at pre-route, pre-upstream,
+  post-upstream, and post-response (conditions, model routing, HTTP calls to
+  external decision services, approval gates, webhooks)
 - Deployment: cloud-hosted, self-hosted, or hybrid (VPC data plane)
 
 ## Documentation
@@ -45,6 +48,9 @@ Full documentation: https://docs.odock.ai/docs/getting-started
 
 ## Featured articles
 
+- Jev meets the gateway, millisecond AI decisions with Odock Flow Studio and plugins: https://odock.ai/blog/jev-decision-model-with-odock-flow-studio-and-plugins/
+- AI coding agents write 30% more code but ship no more, measure cost per resolved issue at the gateway: https://odock.ai/blog/ai-coding-agents-productivity-paradox-measure-cost-per-resolved-issue/
+- Agent supervision became a category, who did what, with which data, at what cost: https://odock.ai/blog/agent-supervision-runtime-oversight-for-enterprise-ai-agents/
 - From chatbots to delegated work, why agentic AI needs a runtime control plane: https://odock.ai/blog/from-chatbots-to-delegated-work-why-agentic-ai-needs-a-runtime-control-plane/
 - AI Act transparency and GPAI enforcement, what changed after August 2026: https://odock.ai/blog/ai-act-transparency-and-gpai-enforcement-what-changed-after-august-2026/
 - A2A, MCP, and the agent standards race, why interoperability needs governance: https://odock.ai/blog/a2a-mcp-and-the-agent-standards-race-why-interoperability-needs-governance/

@@ -1,0 +1,67 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">Gating MCP tool calls with a decision model</title>
+  <desc id="d">An agent sends an MCP tools/call through Odock. Access grants, tool allowlists, blocklists and semantic filters run first. A Flow Studio graph at pre-upstream checks whether the tool is high impact; if so it asks Jev whether the action is consistent with the task. High confidence allows, medium confidence calls an approval service, low confidence aborts. Everything is recorded.</desc>
+  <defs><marker id="a-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563EB"/></marker><marker id="a-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16A34A"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D97706"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#DC2626"/></marker></defs>
+  <rect width="1200" height="700" fill="#F8FAFC"/>
+  <text x="600" y="52" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="bold" text-anchor="middle">Gating MCP tool calls with a decision model</text>
+  <text x="600" y="84" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="normal" text-anchor="middle">Static controls first, then a typed judgment only where the action is high impact</text>
+  <rect x="40" y="150" width="180" height="130" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="130" y="192" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="bold" text-anchor="middle">Agent</text>
+  <text x="130" y="222" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="middle">task: add a column</text>
+  <text x="130" y="248" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="middle">tools/call db.reset</text>
+  <rect x="260" y="120" width="680" height="480" rx="14" fill="#0F172A" stroke="#2563EB" stroke-width="3"/>
+  <rect x="260" y="120" width="680" height="40" rx="14" fill="#111827"/>
+  <rect x="260" y="146" width="680" height="14" fill="#111827"/>
+  <circle cx="284" cy="140" r="6" fill="#F87171"/>
+  <circle cx="306" cy="140" r="6" fill="#FBBF24"/>
+  <circle cx="328" cy="140" r="6" fill="#38BDF8"/>
+  <text x="600.0" y="146" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" text-anchor="middle">odock gateway · MCP traffic</text>
+  <text x="600" y="190" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">Deterministic MCP controls</text>
+  <rect x="290" y="205" width="145" height="54" rx="8" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+  <text x="362" y="238" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">Access grant</text>
+  <rect x="450" y="205" width="145" height="54" rx="8" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+  <text x="522" y="238" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">Allowlist</text>
+  <rect x="610" y="205" width="145" height="54" rx="8" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+  <text x="682" y="238" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">Blocklist</text>
+  <rect x="770" y="205" width="145" height="54" rx="8" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+  <text x="842" y="238" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">Semantic filter</text>
+  <line x1="435" y1="232" x2="448" y2="232" stroke="#2563EB" stroke-width="2.5" marker-end="url(#a-blue)"/>
+  <line x1="595" y1="232" x2="608" y2="232" stroke="#2563EB" stroke-width="2.5" marker-end="url(#a-blue)"/>
+  <line x1="755" y1="232" x2="768" y2="232" stroke="#2563EB" stroke-width="2.5" marker-end="url(#a-blue)"/>
+  <line x1="220" y1="215" x2="288" y2="232" stroke="#475569" stroke-width="2.5" marker-end="url(#a-muted)"/>
+  <text x="905" y="312" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" text-anchor="end">Pre-upstream flow graph</text>
+  <rect x="290" y="340" width="200" height="70" rx="8" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+  <text x="390" y="370" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">If: high-impact tool?</text>
+  <text x="390" y="394" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" text-anchor="middle">request.metadata.mcp_tool</text>
+  <polyline points="842,259 842,285 390,285 390,336" stroke="#2563EB" stroke-width="2.5" fill="none" marker-end="url(#a-blue)"/>
+  <rect x="540" y="340" width="200" height="70" rx="8" fill="#1E293B" stroke="#D97706" stroke-width="2"/>
+  <text x="640" y="370" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">HTTP Request → Jev</text>
+  <text x="640" y="394" fill="#FDE68A" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" text-anchor="middle">Noul: consistent w/ task?</text>
+  <line x1="490" y1="375" x2="538" y2="375" stroke="#D97706" stroke-width="2.5" marker-end="url(#a-amber)"/>
+  <text x="514" y="365" fill="#D97706" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">yes</text>
+  <rect x="290" y="490" width="190" height="80" rx="8" fill="#052E16" stroke="#16A34A" stroke-width="2"/>
+  <text x="385" y="523" fill="#BBF7D0" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Allow</text>
+  <text x="385" y="548" fill="#BBF7D0" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" text-anchor="middle">continue to server</text>
+  <rect x="505" y="490" width="190" height="80" rx="8" fill="#451A03" stroke="#D97706" stroke-width="2"/>
+  <text x="600" y="523" fill="#FDE68A" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Approval service</text>
+  <text x="600" y="548" fill="#FDE68A" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" text-anchor="middle">human or policy engine</text>
+  <rect x="720" y="490" width="190" height="80" rx="8" fill="#450A0A" stroke="#DC2626" stroke-width="2"/>
+  <text x="815" y="523" fill="#FECACA" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Abort 403</text>
+  <text x="815" y="548" fill="#FECACA" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" text-anchor="middle">clear reason to the agent</text>
+  <line x1="600" y1="410" x2="387" y2="488" stroke="#16A34A" stroke-width="2.5" marker-end="url(#a-green)"/>
+  <text x="470" y="440" fill="#16A34A" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">p ≥ 0.9</text>
+  <line x1="640" y1="410" x2="600" y2="488" stroke="#D97706" stroke-width="2.5" marker-end="url(#a-amber)"/>
+  <text x="650" y="460" fill="#D97706" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">0.5–0.9</text>
+  <line x1="680" y1="410" x2="813" y2="488" stroke="#DC2626" stroke-width="2.5" marker-end="url(#a-red)"/>
+  <text x="790" y="440" fill="#DC2626" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">p &lt; 0.5</text>
+  <line x1="330" y1="410" x2="330" y2="488" stroke="#16A34A" stroke-width="2.5" marker-end="url(#a-green)"/>
+  <text x="352" y="460" fill="#16A34A" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">no</text>
+  <rect x="985" y="400" width="180" height="130" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="1075" y="445" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="bold" text-anchor="middle">MCP server</text>
+  <text x="1075" y="475" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="middle">database</text>
+  <text x="1075" y="501" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="middle">GitHub</text>
+  <text x="1075" y="527" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="middle">payments</text>
+  <polyline points="385,570 385,580 1075,580 1075,532" stroke="#16A34A" stroke-width="2.5" fill="none" marker-end="url(#a-green)"/>
+  <rect x="260" y="625" width="680" height="56" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="600" y="660" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="normal" text-anchor="middle">Evidence: MCP usage record · flow trace (node, outcome, duration) · request id</text>
+</svg>

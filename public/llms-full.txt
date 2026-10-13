@@ -25,7 +25,10 @@ existing API calls to the Odock endpoint and issue virtual API keys.
 - Prompt injection protection and data leakage controls at the gateway layer
 - Multi-provider routing, failover, and load balancing (OpenAI, Anthropic, etc.)
 - EU AI Act compliance support: structured audit evidence for every request
-- Plugin architecture for custom workflow steps
+- Plugin architecture for custom workflow steps (Marketplace plugins, per-key plugin chains)
+- Flow Studio: visual and YAML automation graphs at pre-route, pre-upstream,
+  post-upstream, and post-response (conditions, model routing, HTTP calls to
+  external decision services, approval gates, webhooks)
 - Deployment: cloud-hosted, self-hosted, or hybrid (VPC data plane)
 
 ## Documentation
@@ -49,6 +52,33 @@ Demo requests: https://odock.ai/contact/
 Email: hello@odock.ai
 
 ## Blog articles
+
+### Jev Meets the Gateway: Millisecond AI Decisions with Odock Flow Studio and Plugins
+URL: https://odock.ai/blog/jev-decision-model-with-odock-flow-studio-and-plugins/
+Summary: TypeSafe AI's Jev (September 2026) is a "System One" decision model that
+returns typed Choice, Score, and yes/no answers with probabilities in about
+100 ms. Shows how to call it from Odock Flow Studio (HTTP Request, Switch, If,
+Route Model, Abort, Run Plugin) for confidence-aware model routing, MCP
+tool-call gating at pre-upstream, confidence-gated escalation, and async output
+scoring, with fail-open and fail-closed patterns and a rollout checklist.
+
+### AI Coding Agents Write 30% More Code but Ship No More: Measure Cost per Resolved Issue at the Gateway
+URL: https://odock.ai/blog/ai-coding-agents-productivity-paradox-measure-cost-per-resolved-issue/
+Summary: A Harvard/Jellyfish study of 700+ software firms (October 2026) found
+coding agents raise lines of code ~30% while Jira issue resolution stays flat and
+PR merge time rises ~49%. Explains how to route Claude Code and other coding
+agents through Odock native endpoints with per-developer virtual keys, team
+budgets, ticket tagging via Flow Studio, and GitHub MCP tool rules, then compute
+cost per resolved issue.
+
+### Agent Supervision Became a Category: Who Did What, With Which Data, at What Cost
+URL: https://odock.ai/blog/agent-supervision-runtime-oversight-for-enterprise-ai-agents/
+Summary: Classie Supervise, Gurucul AI Risk and Response, and Zscaler's Agentic
+SOC made AI agent supervision a product category in autumn 2026. Defines the five
+supervision questions (who, what, which data, what cost, can we stop it) and maps
+each to Odock gateway controls: virtual key principals, agent identity headers,
+usage records, flow traces, SafetySec, budgets reserved before the call, approval
+gates, loop ceilings, and a shared request id for chain of custody.
 
 ### From Chatbots to Delegated Work: Why Agentic AI Needs a Runtime Control Plane
 URL: https://odock.ai/blog/from-chatbots-to-delegated-work-why-agentic-ai-needs-a-runtime-control-plane/

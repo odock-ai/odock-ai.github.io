@@ -1,0 +1,42 @@
+<svg width="1200" height="780" viewBox="0 0 1200 780" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">The five questions of agent supervision</title>
+  <desc id="d">Five supervision questions mapped to Odock controls: who initiated the action (virtual API key principals and agent identity headers), what the agent did (usage records, MCP usage records, flow traces), what data it touched (SafetySec redaction, pii_mask, semantic filters), what it cost (budget reservation before the call, quotas), and whether it can be stopped (Abort nodes, approval gates, loop ceilings, key revocation). A shared request id ties the chain of custody together.</desc>
+  <defs><marker id="a-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563EB"/></marker><marker id="a-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16A34A"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D97706"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#DC2626"/></marker></defs>
+  <rect width="1200" height="780" fill="#F8FAFC"/>
+  <text x="600" y="52" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="bold" text-anchor="middle">The five questions of agent supervision</text>
+  <text x="600" y="84" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="normal" text-anchor="middle">…and where each answer comes from when agent traffic runs through Odock</text>
+  <text x="250" y="132" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">Supervision question</text>
+  <text x="790" y="132" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">Odock control that answers it</text>
+  <rect x="60" y="150" width="380" height="92" rx="12" fill="#FFFFFF" stroke="#2563EB" stroke-width="2.5"/>
+  <text x="250" y="204" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle">Who initiated it?</text>
+  <line x1="440" y1="196" x2="498" y2="196" stroke="#2563EB" stroke-width="2.5" marker-end="url(#a-blue)"/>
+  <rect x="500" y="150" width="640" height="92" rx="12" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  <text x="520" y="188" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" text-anchor="start">Virtual API key principal</text>
+  <text x="520" y="216" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="start">org · team · user · key  +  x-odock-agent-id header</text>
+  <rect x="60" y="258" width="380" height="92" rx="12" fill="#FFFFFF" stroke="#2563EB" stroke-width="2.5"/>
+  <text x="250" y="312" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle">What did it do?</text>
+  <line x1="440" y1="304" x2="498" y2="304" stroke="#2563EB" stroke-width="2.5" marker-end="url(#a-blue)"/>
+  <rect x="500" y="258" width="640" height="92" rx="12" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  <text x="520" y="296" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" text-anchor="start">Usage records &amp; flow traces</text>
+  <text x="520" y="324" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="start">model, MCP server, tool, status, routing trace, node outcomes</text>
+  <rect x="60" y="366" width="380" height="92" rx="12" fill="#FFFFFF" stroke="#D97706" stroke-width="2.5"/>
+  <text x="250" y="420" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle">What data did it touch?</text>
+  <line x1="440" y1="412" x2="498" y2="412" stroke="#D97706" stroke-width="2.5" marker-end="url(#a-amber)"/>
+  <rect x="500" y="366" width="640" height="92" rx="12" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  <text x="520" y="404" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" text-anchor="start">SafetySec · pii_mask · semantic filters</text>
+  <text x="520" y="432" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="start">redact before egress, inspect tool payloads and responses</text>
+  <rect x="60" y="474" width="380" height="92" rx="12" fill="#FFFFFF" stroke="#16A34A" stroke-width="2.5"/>
+  <text x="250" y="528" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle">What did it cost?</text>
+  <line x1="440" y1="520" x2="498" y2="520" stroke="#16A34A" stroke-width="2.5" marker-end="url(#a-green)"/>
+  <rect x="500" y="474" width="640" height="92" rx="12" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  <text x="520" y="512" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" text-anchor="start">Budgets &amp; quotas</text>
+  <text x="520" y="540" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="start">estimated cost reserved before the call, settled after</text>
+  <rect x="60" y="582" width="380" height="92" rx="12" fill="#FFFFFF" stroke="#DC2626" stroke-width="2.5"/>
+  <text x="250" y="636" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle">Can we stop it?</text>
+  <line x1="440" y1="628" x2="498" y2="628" stroke="#DC2626" stroke-width="2.5" marker-end="url(#a-red)"/>
+  <rect x="500" y="582" width="640" height="92" rx="12" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  <text x="520" y="620" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" text-anchor="start">Abort · approval gate · loop ceiling</text>
+  <text x="520" y="648" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="start">inline block, fail closed, revoke or rotate the key</text>
+  <rect x="60" y="694" width="1080" height="66" rx="12" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5"/>
+  <text x="600" y="734" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">Chain of custody: one gateway request id across usage records, logs, metrics and OTel traces</text>
+</svg>

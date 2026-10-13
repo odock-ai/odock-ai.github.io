@@ -1,0 +1,69 @@
+<svg width="1200" height="770" viewBox="0 0 1200 770" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">Des tokens aux résultats livrés</title>
+  <desc id="d">Les agents de code appellent modèles et outils MCP via Odock avec des virtual keys par développeur, des budgets d'équipe, un routage par tiers, un marquage par flow et des règles d'outils MCP GitHub. Les usage records sont exportés en asynchrone et croisés avec les résultats Jira et GitHub pour calculer le coût par ticket résolu, qui alimente la politique de routage et de budget.</desc>
+  <defs><marker id="a-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563EB"/></marker><marker id="a-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16A34A"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D97706"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#DC2626"/></marker></defs>
+  <rect width="1200" height="770" fill="#F8FAFC"/>
+  <text x="600" y="52" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="bold" text-anchor="middle">Des tokens aux résultats livrés</text>
+  <text x="600" y="84" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="normal" text-anchor="middle">Faire passer chaque agent de code par une seule gateway, puis relier la dépense à ce qui est livré</text>
+  <rect x="40" y="140" width="220" height="200" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="150" y="180" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="bold" text-anchor="middle">Agents de code</text>
+  <text x="150" y="214" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="middle">Claude Code</text>
+  <text x="150" y="239" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="middle">CLIs type Codex</text>
+  <text x="150" y="264" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="middle">Assistants IDE</text>
+  <text x="150" y="289" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="middle">Bots de revue de PR</text>
+  <text x="150" y="314" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="middle">Agents CI</text>
+  <rect x="300" y="120" width="560" height="340" rx="14" fill="#0F172A" stroke="#2563EB" stroke-width="3"/>
+  <rect x="300" y="120" width="560" height="40" rx="14" fill="#111827"/>
+  <rect x="300" y="146" width="560" height="14" fill="#111827"/>
+  <circle cx="324" cy="140" r="6" fill="#F87171"/>
+  <circle cx="346" cy="140" r="6" fill="#FBBF24"/>
+  <circle cx="368" cy="140" r="6" fill="#38BDF8"/>
+  <text x="580.0" y="146" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" text-anchor="middle">odock gateway</text>
+  <rect x="330" y="180" width="500" height="46" rx="8" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+  <text x="345" y="209" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" text-anchor="start">Virtual key par dev / agent</text>
+  <text x="815" y="209" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" text-anchor="end">qui a dépensé</text>
+  <rect x="330" y="234" width="500" height="46" rx="8" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+  <text x="345" y="263" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" text-anchor="start">Budgets + quotas d'équipe</text>
+  <text x="815" y="263" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" text-anchor="end">réservés avant l'appel</text>
+  <rect x="330" y="288" width="500" height="46" rx="8" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+  <text x="345" y="317" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" text-anchor="start">Tiers de routage</text>
+  <text x="815" y="317" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" text-anchor="end">frontier seulement si utile</text>
+  <rect x="330" y="342" width="500" height="46" rx="8" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+  <text x="345" y="371" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" text-anchor="start">Flow : tag repo + ticket</text>
+  <text x="815" y="371" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" text-anchor="end">headers x-repo · x-ticket</text>
+  <rect x="330" y="396" width="500" height="46" rx="8" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+  <text x="345" y="425" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" text-anchor="start">Règles MCP : GitHub, CI</text>
+  <text x="815" y="425" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" text-anchor="end">ni force-push, ni delete</text>
+  <line x1="260" y1="240" x2="298" y2="240" stroke="#475569" stroke-width="2.5" marker-end="url(#a-muted)"/>
+  <rect x="900" y="140" width="260" height="90" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="1030" y="178" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle">Providers de modèles</text>
+  <text x="1030" y="206" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="middle">Anthropic · OpenAI · Mistral · vLLM</text>
+  <rect x="900" y="260" width="260" height="90" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="1030" y="298" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" text-anchor="middle">Serveurs MCP</text>
+  <text x="1030" y="326" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" text-anchor="middle">GitHub · Jira · CI · docs</text>
+  <line x1="860" y1="200" x2="898" y2="185" stroke="#475569" stroke-width="2.5" marker-end="url(#a-muted)"/>
+  <line x1="860" y1="300" x2="898" y2="305" stroke="#475569" stroke-width="2.5" marker-end="url(#a-muted)"/>
+  <rect x="300" y="520" width="260" height="128" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="430" y="560" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle">Usage records</text>
+  <text x="430" y="588" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" text-anchor="middle">clé · équipe · modèle</text>
+  <text x="430" y="610" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" text-anchor="middle">tokens · coût · latence</text>
+  <text x="430" y="632" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" text-anchor="middle">métadonnées ticket</text>
+  <line x1="580" y1="460" x2="430" y2="518" stroke="#2563EB" stroke-width="2.5" marker-end="url(#a-blue)"/>
+  <text x="640" y="492" fill="#2563EB" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">webhook post-response</text>
+  <rect x="620" y="520" width="260" height="128" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="750" y="560" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="bold" text-anchor="middle">Résultats de livraison</text>
+  <text x="750" y="588" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" text-anchor="middle">tickets Jira résolus</text>
+  <text x="750" y="610" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" text-anchor="middle">délai de merge des PR</text>
+  <text x="750" y="632" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" text-anchor="middle">reverts et correctifs</text>
+  <rect x="460" y="690" width="280" height="60" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5"/>
+  <text x="600" y="727" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">Coût par ticket résolu</text>
+  <line x1="430" y1="648" x2="520" y2="688" stroke="#2563EB" stroke-width="2.5" marker-end="url(#a-blue)"/>
+  <line x1="750" y1="648" x2="680" y2="688" stroke="#2563EB" stroke-width="2.5" marker-end="url(#a-blue)"/>
+  <rect x="920" y="520" width="240" height="128" rx="10" fill="#FFFFFF" stroke="#D97706" stroke-width="2"/>
+  <text x="1040" y="558" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">Ajuster la policy</text>
+  <text x="1040" y="586" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" text-anchor="middle">budgets par équipe</text>
+  <text x="1040" y="608" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" text-anchor="middle">tiers de routage</text>
+  <text x="1040" y="630" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" text-anchor="middle">capacité de revue</text>
+  <line x1="740" y1="720" x2="1040" y2="650" stroke="#D97706" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#a-amber)"/>
+  <line x1="1040" y1="520" x2="830" y2="462" stroke="#D97706" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#a-amber)"/>
+</svg>
