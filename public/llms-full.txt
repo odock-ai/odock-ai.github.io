@@ -53,6 +53,13 @@ Email: hello@odock.ai
 
 ## Blog articles
 
+### AI Agency Cost Management: Set Client Spend Limits with Odock
+URL: https://odock.ai/blog/ai-agency-cost-management-odock/
+Summary: Odock reserves estimated cost before upstream execution and settles actual cost
+after completion. Every active matching control applies to the request's
+principal. This tutorial proposes separate workload keys, budget-window reviews,
+spending exports, and explicit worker handling for budget and quota rejections.
+
 ### Jev Meets the Gateway: Millisecond AI Decisions with Odock Flow Studio and Plugins
 URL: https://odock.ai/blog/jev-decision-model-with-odock-flow-studio-and-plugins/
 Summary: TypeSafe AI's Jev (September 2026) is a "System One" decision model that

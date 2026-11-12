@@ -48,6 +48,7 @@ Full documentation: https://docs.odock.ai/docs/getting-started
 
 ## Featured articles
 
+- AI Agency Cost Management, Set Client Spend Limits with Odock: https://odock.ai/blog/ai-agency-cost-management-odock/
 - Jev meets the gateway, millisecond AI decisions with Odock Flow Studio and plugins: https://odock.ai/blog/jev-decision-model-with-odock-flow-studio-and-plugins/
 - AI coding agents write 30% more code but ship no more, measure cost per resolved issue at the gateway: https://odock.ai/blog/ai-coding-agents-productivity-paradox-measure-cost-per-resolved-issue/
 - Agent supervision became a category, who did what, with which data, at what cost: https://odock.ai/blog/agent-supervision-runtime-oversight-for-enterprise-ai-agents/
